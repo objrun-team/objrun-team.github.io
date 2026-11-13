@@ -1,0 +1,773 @@
+<!doctype html>
+<html lang="en" data-language="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#08090a">
+  <meta name="description" content="ObjRun is an objective runtime for AI agents and scientific research: sealed criteria, feedback, and recorded verdicts. Explore 20 benchmarks, replays, and case studies.">
+  <title>ObjRun · Objective Runtime for AI Agents and Science</title>
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <script>document.documentElement.classList.add('js')</script>
+  <link rel="stylesheet" href="/home.css?v=c67c753469f3">
+  <script src="/language.js?v=83edee4d6447" defer></script>
+  <script src="/app.js?v=c750d1bac3e5" defer></script>
+  <script src="/loop.js?v=3bb67cbe1355" defer></script>
+  <link rel="canonical" href="https://objrun-team.github.io/">
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+  <link rel="alternate" hreflang="zh-Hans" href="https://objrun-team.github.io/zh/">
+  <link rel="alternate" hreflang="en" href="https://objrun-team.github.io/">
+  <link rel="alternate" hreflang="x-default" href="https://objrun-team.github.io/">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="ObjRun">
+  <meta property="og:title" content="ObjRun · Objective Runtime for AI Agents and Science">
+  <meta property="og:description" content="ObjRun is an objective runtime for AI agents and scientific research: sealed criteria, feedback, and recorded verdicts. Explore 20 benchmarks, replays, and case studies.">
+  <meta property="og:url" content="https://objrun-team.github.io/">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:locale:alternate" content="zh_CN">
+  <meta property="og:image" content="https://objrun-team.github.io/media/objrun-poster.png">
+  <meta property="og:image:type" content="image/png">
+  <meta property="og:image:width" content="1920">
+  <meta property="og:image:height" content="1080">
+  <meta property="og:image:alt" content="Object Run">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="ObjRun · Objective Runtime for AI Agents and Science">
+  <meta name="twitter:description" content="ObjRun is an objective runtime for AI agents and scientific research: sealed criteria, feedback, and recorded verdicts. Explore 20 benchmarks, replays, and case studies.">
+  <meta name="twitter:image" content="https://objrun-team.github.io/media/objrun-poster.png">
+  <meta name="twitter:image:alt" content="Object Run">
+  <link rel="alternate" type="application/json" href="https://objrun-team.github.io/benchmark-results.json" title="Research data">
+  <link rel="alternate" type="text/plain" href="/llms.txt" title="ObjRun source index">
+  <script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "WebPage", "@id": "https://objrun-team.github.io/#page", "url": "https://objrun-team.github.io/", "name": "ObjRun · Objective Runtime for AI Agents and Science", "description": "ObjRun is an objective runtime for AI agents and scientific research: sealed criteria, feedback, and recorded verdicts. Explore 20 benchmarks, replays, and case studies.", "inLanguage": "en", "isPartOf": {"@id": "https://objrun-team.github.io/#website"}, "about": {"@id": "https://objrun-team.github.io/#software"}}, {"@type": "WebSite", "@id": "https://objrun-team.github.io/#website", "url": "https://objrun-team.github.io/", "name": "ObjRun", "alternateName": "Object Run", "inLanguage": ["zh-Hans", "en"]}, {"@type": "SoftwareSourceCode", "@id": "https://objrun-team.github.io/#software", "name": "ObjRun", "alternateName": "Object Run", "codeRepository": "https://github.com/objrun-team/objrun", "url": "https://objrun-team.github.io/", "description": "ObjRun is an objective runtime for AI agents and scientific research: sealed criteria, feedback, and recorded verdicts. Explore 20 benchmarks, replays, and case studies.", "programmingLanguage": "TypeScript"}]}</script>
+</head>
+<body class="home-page">
+  <header class="site-header" id="site-header">
+    <nav class="navigation" aria-label="Main navigation">
+      <a class="brand" href="#top">Object Run</a>
+      <div class="nav-links">
+        <a href="#benchmarks" data-zh="评测" data-en="Benchmarks">Benchmarks</a>
+        <a href="#video" data-zh="视频" data-en="Film">Film</a>
+        <a href="#leaderboards" data-zh="排行榜" data-en="Leaderboards">Leaderboards</a>
+        <a href="/runs/" data-zh="运行回放" data-en="Replays">Replays</a>
+        <a href="#research" data-zh="科研" data-en="Research">Research</a>
+        <a href="/blog/" data-zh="博客" data-en="Blog">Blog</a>
+        <a id="language" aria-label="切换为中文" href="/zh/" hreflang="zh-Hans">中文</a>
+      </div>
+    </nav>
+  </header>
+
+  <main id="top">
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero-backdrop" aria-hidden="true"><span class="aurora aurora-a"></span><span class="aurora aurora-b"></span></div>
+
+      <div class="hero-head">
+        <h1 id="hero-title"><span data-zh="你定义目标。" data-en="You define the goal.">You define the goal.</span><br><span class="gradient-text" data-zh="AI 带着反馈去完成。" data-en="AI works with feedback.">AI works with feedback.</span></h1>
+        <p class="hero-lead" data-zh="ObjRun 是目标运行时：封存标准，让 AI 带着反馈尝试，记录每一次判决。" data-en="ObjRun is an objective runtime: sealed criteria, feedback for every attempt, and a record of every verdict.">ObjRun is an objective runtime: sealed criteria, feedback for every attempt, and a record of every verdict.</p>
+        <div class="hero-actions">
+          <button class="button button-primary" type="button" data-coming-soon>
+            <svg width="18" height="18" viewbox="0 0 16 16" fill="currentColor" aria-hidden="true" focusable="false"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82a7.65 7.65 0 0 1 2-.27c.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8Z"></path></svg>
+            <span>GitHub</span>
+          </button>
+          <a class="button button-secondary" href="/paper.pdf" data-zh="论文 ↗" data-en="Paper ↗">Paper ↗</a>
+        </div>
+      </div>
+
+      <figure class="system" id="system" aria-label="Object Run: AI submits to a sealed objective, receives feedback, and retries until accepted.">
+        <ol class="loop-steps" id="loop-steps" aria-hidden="true">
+          <li data-step="submit" data-zh="提交" data-en="Submit">Submit</li>
+          <li data-step="check" data-zh="检查" data-en="Check">Check</li>
+          <li data-step="feedback" data-zh="反馈" data-en="Feedback">Feedback</li>
+        </ol>
+        <p class="loop-passed" aria-hidden="true" data-zh="全部正确 · 通过" data-en="All correct · accepted">All correct · accepted</p>
+        <canvas class="loop-field" id="loop-field" aria-hidden="true"></canvas>
+        <div class="loop-tag" id="loop-ai" aria-hidden="true">
+          <span class="loop-name">AI</span>
+          <span class="loop-dots" id="loop-dots"></span>
+        </div>
+        <div class="loop-tag" id="loop-g" aria-hidden="true">
+          <span class="loop-name">G<span class="loop-sub" data-zh="封存的目标" data-en="sealed objective">sealed objective</span></span>
+          <span class="loop-score"><span id="loop-score">0</span><small>%</small><em data-zh="正确" data-en="correct">correct</em></span>
+        </div>
+      </figure>
+    </section>
+
+    <section class="section" id="benchmarks" aria-labelledby="benchmarks-title">
+      <div class="container">
+        <div class="section-head" data-reveal>
+          <h2 id="benchmarks-title"><span data-zh="加入反馈之后，" data-en="With feedback, ">With feedback, </span><span class="muted" data-zh="能走多远。" data-en="how far it goes.">how far it goes.</span></h2>
+          <p class="section-lead" data-zh="同一个模型：单次作答 U，对比挂载目标后的 F。" data-en="One model: single attempt U against objective-mounted F.">One model: single attempt U against objective-mounted F.</p>
+        </div>
+
+        <!-- BENCHMARKS:BEGIN (generated by tools/build_benchmarks.py) -->
+        <div class="bench-grid">
+          <article class="card spot bench" data-benchmark="FrontierScience-Olympiad" data-reveal style="--d:0">
+            <h3>FrontierScience-Olympiad</h3>
+            <p class="bench-meta" data-zh="100 题" data-en="100 tasks">100 tasks</p>
+            <p class="score"><span>86.0</span><small>%</small></p>
+            <div class="compare"><div class="compare-row"><span class="compare-label">U</span><span class="track"><span class="bar baseline" style="--score:59.0%"></span></span><span class="compare-value">59.0</span></div><div class="compare-row"><span class="compare-label">F</span><span class="track"><span class="bar mounted" style="--score:86.0%"></span></span><span class="compare-value strong">86.0</span></div></div>
+          </article>
+          <article class="card spot bench" data-benchmark="LAB-Bench" data-reveal style="--d:1">
+            <h3>LAB-Bench</h3>
+            <p class="bench-meta" data-zh="708 题" data-en="708 tasks">708 tasks</p>
+            <p class="score"><span>99.6</span><small>%</small></p>
+            <div class="compare"><div class="compare-row"><span class="compare-label">U</span><span class="track"><span class="bar baseline" style="--score:41.8%"></span></span><span class="compare-value">41.8</span></div><div class="compare-row"><span class="compare-label">F</span><span class="track"><span class="bar mounted" style="--score:99.6%"></span></span><span class="compare-value strong">99.6</span></div></div>
+          </article>
+          <article class="card spot bench" data-benchmark="BIRD" data-reveal style="--d:2">
+            <h3>BIRD</h3>
+            <p class="bench-meta" data-zh="1534 题" data-en="1534 tasks">1534 tasks</p>
+            <p class="score"><span>86.6</span><small>%</small></p>
+            <div class="compare"><div class="compare-row"><span class="compare-label">U</span><span class="track"><span class="bar baseline" style="--score:63.9%"></span></span><span class="compare-value">63.9</span></div><div class="compare-row"><span class="compare-label">F</span><span class="track"><span class="bar mounted" style="--score:86.6%"></span></span><span class="compare-value strong">86.6</span></div></div>
+          </article>
+          <article class="card spot bench" data-benchmark="Terminal-Bench 2.1" data-reveal style="--d:3">
+            <h3>Terminal-Bench 2.1</h3>
+            <p class="bench-meta" data-zh="89 题 · 仅报告 F" data-en="89 tasks · F only">89 tasks · F only</p>
+            <p class="score"><span>85.4</span><small>%</small></p>
+            <div class="compare"><div class="compare-row"><span class="compare-label">F</span><span class="track"><span class="bar mounted" style="--score:85.4%"></span></span><span class="compare-value strong">85.4</span></div></div>
+          </article>
+        </div>
+        <details class="bench-more">
+          <summary class="bench-toggle"><span class="when-closed" data-zh="展开全部 20 项评测" data-en="Show all 20 benchmarks">Show all 20 benchmarks</span><span class="when-open" data-zh="收起" data-en="Show fewer">Show fewer</span><svg viewbox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"></path></svg></summary>
+          <div class="bench-grid">
+            <article class="card spot bench" data-benchmark="AIME 2024–25" data-reveal style="--d:0">
+              <h3>AIME 2024–25</h3>
+              <p class="bench-meta" data-zh="60 题" data-en="60 tasks">60 tasks</p>
+              <p class="score"><span>100.0</span><small>%</small></p>
+              <div class="compare"><div class="compare-row"><span class="compare-label">U</span><span class="track"><span class="bar baseline" style="--score:93.3%"></span></span><span class="compare-value">93.3</span></div><div class="compare-row"><span class="compare-label">F</span><span class="track"><span class="bar mounted" style="--score:100.0%"></span></span><span class="compare-value strong">100.0</span></div></div>
+            </article>
+            <article class="card spot bench" data-benchmark="GPQA Diamond" data-reveal style="--d:1">
+              <h3>GPQA Diamond</h3>
+              <p class="bench-meta" data-zh="198 题" data-en="198 tasks">198 tasks</p>
+              <p class="score"><span>98.5</span><small>%</small></p>
+              <div class="compare"><div class="compare-row"><span class="compare-label">U</span><span class="track"><span class="bar baseline" style="--score:82.3%"></span></span><span class="compare-value">82.3</span></div><div class="compare-row"><span class="compare-label">F</span><span class="track"><span class="bar mounted" style="--score:98.5%"></span></span><span class="compare-value strong">98.5</span></div></div>
+            </article>
+            <article class="card spot bench" data-benchmark="CMT-Benchmark" data-reveal style="--d:2">
+              <h3>CMT-Benchmark</h3>
+              <p class="bench-meta" data-zh="50 题" data-en="50 tasks">50 tasks</p>
+              <p class="score"><span>86.0</span><small>%</small></p>
+              <div class="compare"><div class="compare-row"><span class="compare-label">U</span><span class="track"><span class="bar baseline" style="--score:26.0%"></span></span><span class="compare-value">26.0</span></div><div class="compare-row"><span class="compare-label">F</span><span class="track"><span class="bar mounted" style="--score:86.0%"></span></span><span class="compare-value strong">86.0</span></div></div>
+            </article>
+            <article class="card spot bench" data-benchmark="ClimaQA-Gold MCQ" data-reveal style="--d:3">
+              <h3>ClimaQA-Gold MCQ</h3>
+              <p class="bench-meta" data-zh="245 题" data-en="245 tasks">245 tasks</p>
+              <p class="score"><span>96.3</span><small>%</small></p>
+              <div class="compare"><div class="compare-row"><span class="compare-label">U</span><span class="track"><span class="bar baseline" style="--score:87.3%"></span></span><span class="compare-value">87.3</span></div><div class="compare-row"><span class="compare-label">F</span><span class="track"><span class="bar mounted" style="--score:96.3%"></span></span><span class="compare-value strong">96.3</span></div></div>
+            </article>
+            <article class="card spot bench" data-benchmark="ChemBench (500)" data-reveal style="--d:0">
+              <h3>ChemBench (500)</h3>
+              <p class="bench-meta" data-zh="500 题" data-en="500 tasks">500 tasks</p>
+              <p class="score"><span>95.8</span><small>%</small></p>
+              <div class="compare"><div class="compare-row"><span class="compare-label">U</span><span class="track"><span class="bar baseline" style="--score:67.4%"></span></span><span class="compare-value">67.4</span></div><div class="compare-row"><span class="compare-label">F</span><span class="track"><span class="bar mounted" style="--score:95.8%"></span></span><span class="compare-value strong">95.8</span></div></div>
+            </article>
+            <article class="card spot bench" data-benchmark="ChemIQ" data-reveal style="--d:1">
+              <h3>ChemIQ</h3>
+              <p class="bench-meta" data-zh="816 题" data-en="816 tasks">816 tasks</p>
+              <p class="score"><span>96.1</span><small>%</small></p>
+              <div class="compare"><div class="compare-row"><span class="compare-label">U</span><span class="track"><span class="bar baseline" style="--score:65.6%"></span></span><span class="compare-value">65.6</span></div><div class="compare-row"><span class="compare-label">F</span><span class="track"><span class="bar mounted" style="--score:96.1%"></span></span><span class="compare-value strong">96.1</span></div></div>
+            </article>
+            <article class="card spot bench" data-benchmark="HumanEval+" data-reveal style="--d:2">
+              <h3>HumanEval+</h3>
+              <p class="bench-meta" data-zh="164 题" data-en="164 tasks">164 tasks</p>
+              <p class="score"><span>96.3</span><small>%</small></p>
+              <div class="compare"><div class="compare-row"><span class="compare-label">U</span><span class="track"><span class="bar baseline" style="--score:93.3%"></span></span><span class="compare-value">93.3</span></div><div class="compare-row"><span class="compare-label">F</span><span class="track"><span class="bar mounted" style="--score:96.3%"></span></span><span class="compare-value strong">96.3</span></div></div>
+            </article>
+            <article class="card spot bench" data-benchmark="MBPP+" data-reveal style="--d:3">
+              <h3>MBPP+</h3>
+              <p class="bench-meta" data-zh="378 题" data-en="378 tasks">378 tasks</p>
+              <p class="score"><span>84.7</span><small>%</small></p>
+              <div class="compare"><div class="compare-row"><span class="compare-label">U</span><span class="track"><span class="bar baseline" style="--score:83.9%"></span></span><span class="compare-value">83.9</span></div><div class="compare-row"><span class="compare-label">F</span><span class="track"><span class="bar mounted" style="--score:84.7%"></span></span><span class="compare-value strong">84.7</span></div></div>
+            </article>
+            <article class="card spot bench" data-benchmark="ClassEval" data-reveal style="--d:0">
+              <h3>ClassEval</h3>
+              <p class="bench-meta" data-zh="100 题" data-en="100 tasks">100 tasks</p>
+              <p class="score"><span>62.0</span><small>%</small></p>
+              <div class="compare"><div class="compare-row"><span class="compare-label">U</span><span class="track"><span class="bar baseline" style="--score:46.0%"></span></span><span class="compare-value">46.0</span></div><div class="compare-row"><span class="compare-label">F</span><span class="track"><span class="bar mounted" style="--score:62.0%"></span></span><span class="compare-value strong">62.0</span></div></div>
+            </article>
+            <article class="card spot bench" data-benchmark="SciBench" data-reveal style="--d:1">
+              <h3>SciBench</h3>
+              <p class="bench-meta" data-zh="416 题" data-en="416 tasks">416 tasks</p>
+              <p class="score"><span>92.1</span><small>%</small></p>
+              <div class="compare"><div class="compare-row"><span class="compare-label">U</span><span class="track"><span class="bar baseline" style="--score:45.9%"></span></span><span class="compare-value">45.9</span></div><div class="compare-row"><span class="compare-label">F</span><span class="track"><span class="bar mounted" style="--score:92.1%"></span></span><span class="compare-value strong">92.1</span></div></div>
+            </article>
+            <article class="card spot bench" data-benchmark="SciCode" data-reveal style="--d:2">
+              <h3>SciCode</h3>
+              <p class="bench-meta" data-zh="65 题" data-en="65 tasks">65 tasks</p>
+              <p class="score"><span>23.1</span><small>%</small></p>
+              <div class="compare"><div class="compare-row"><span class="compare-label">U</span><span class="track"><span class="bar baseline" style="--score:10.8%"></span></span><span class="compare-value">10.8</span></div><div class="compare-row"><span class="compare-label">F</span><span class="track"><span class="bar mounted" style="--score:23.1%"></span></span><span class="compare-value strong">23.1</span></div></div>
+            </article>
+            <article class="card spot bench" data-benchmark="TheoPhysEval" data-reveal style="--d:3">
+              <h3>TheoPhysEval</h3>
+              <p class="bench-meta" data-zh="49 题" data-en="49 tasks">49 tasks</p>
+              <p class="score"><span>42.9</span><small>%</small></p>
+              <div class="compare"><div class="compare-row"><span class="compare-label">U</span><span class="track"><span class="bar baseline" style="--score:6.1%"></span></span><span class="compare-value">6.1</span></div><div class="compare-row"><span class="compare-label">F</span><span class="track"><span class="bar mounted" style="--score:42.9%"></span></span><span class="compare-value strong">42.9</span></div></div>
+            </article>
+            <article class="card spot bench" data-benchmark="LLM-SRBench" data-reveal style="--d:0">
+              <h3>LLM-SRBench</h3>
+              <p class="bench-meta" data-zh="240 题" data-en="240 tasks">240 tasks</p>
+              <p class="score"><span>51.7</span><small>%</small></p>
+              <div class="compare"><div class="compare-row"><span class="compare-label">U</span><span class="track"><span class="bar baseline" style="--score:38.8%"></span></span><span class="compare-value">38.8</span></div><div class="compare-row"><span class="compare-label">F</span><span class="track"><span class="bar mounted" style="--score:51.7%"></span></span><span class="compare-value strong">51.7</span></div></div>
+            </article>
+            <article class="card spot bench" data-benchmark="OlympiadBench" data-reveal style="--d:1">
+              <h3>OlympiadBench</h3>
+              <p class="bench-meta" data-zh="236 题" data-en="236 tasks">236 tasks</p>
+              <p class="score"><span>76.3</span><small>%</small></p>
+              <div class="compare"><div class="compare-row"><span class="compare-label">U</span><span class="track"><span class="bar baseline" style="--score:39.4%"></span></span><span class="compare-value">39.4</span></div><div class="compare-row"><span class="compare-label">F</span><span class="track"><span class="bar mounted" style="--score:76.3%"></span></span><span class="compare-value strong">76.3</span></div></div>
+            </article>
+            <article class="card spot bench" data-benchmark="DeepSWE" data-reveal style="--d:2">
+              <h3>DeepSWE</h3>
+              <p class="bench-meta" data-zh="112 题 · 仅报告 F" data-en="112 tasks · F only">112 tasks · F only</p>
+              <p class="score"><span>81.2</span><small>%</small></p>
+              <div class="compare"><div class="compare-row"><span class="compare-label">F</span><span class="track"><span class="bar mounted" style="--score:81.2%"></span></span><span class="compare-value strong">81.2</span></div></div>
+            </article>
+            <article class="card spot bench" data-benchmark="SkillsBench 1.1" data-reveal style="--d:3">
+              <h3>SkillsBench 1.1</h3>
+              <p class="bench-meta" data-zh="87 题 · 仅报告 F" data-en="87 tasks · F only">87 tasks · F only</p>
+              <p class="score"><span>80.5</span><small>%</small></p>
+              <div class="compare"><div class="compare-row"><span class="compare-label">F</span><span class="track"><span class="bar mounted" style="--score:80.5%"></span></span><span class="compare-value strong">80.5</span></div></div>
+            </article>
+          </div>
+        </details>
+        <!-- BENCHMARKS:END -->
+      </div>
+    </section>
+
+    <section class="section" id="video" aria-labelledby="video-title">
+      <div class="container">
+        <div class="section-head">
+          <h2 id="video-title" data-zh="看 Object Run 如何工作" data-en="See Object Run at work">See Object Run at work</h2>
+        </div>
+        <figure class="film">
+          <div class="film-player">
+            <video id="overview-film" controls controlslist="nodownload" playsinline preload="none" width="1920" height="1080" poster="/media/objrun-poster.png" tabindex="0" aria-label="Object Run film">
+              <source src="/media/objrun-film-en-1080p60.mp4" type="video/mp4">
+            </video>
+            <button class="film-play" id="play-film" type="button" aria-controls="overview-film" hidden>
+              <img src="/media/objrun-poster.png" width="1920" height="1080" loading="lazy" decoding="async" alt="">
+              <span class="film-play-label"><svg viewbox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"></path></svg><span data-zh="播放视频" data-en="Play film">Play film</span></span>
+            </button>
+          </div>
+        </figure>
+      </div>
+    </section>
+
+    <section class="section" id="leaderboards" aria-labelledby="leaderboards-title">
+      <div class="container">
+        <div class="board-intro">
+          <h2 id="leaderboards-title" data-zh="排行榜" data-en="Leaderboards">Leaderboards</h2>
+          <p data-zh="20 个评测，每个一张表。Object Run（F）及有本地基线时同一模型的单次作答（U）来自论文的运行记录；其余是已发表的分数，只列低于 F 的方法。" data-en="20 benchmarks, one table each. Object Run (F) and, where available, the same model&#x27;s local single attempt (U) come from the paper&#x27;s run records; the other rows are published scores, listing only methods below F.">20 benchmarks, one table each. Object Run (F) and, where available, the same model's local single attempt (U) come from the paper's run records; the other rows are published scores, listing only methods below F.</p>
+        </div>
+
+        <div class="board-panel">
+        <!-- LEADERBOARDS:BEGIN (generated by tools/build_leaderboards.py) -->
+        <div class="board-tabs" role="tablist" aria-label="Benchmark leaderboards"><button class="board-tab" type="button" role="tab" id="tab-aime" aria-controls="board-aime" aria-selected="true" tabindex="0">AIME 2024–25</button><button class="board-tab" type="button" role="tab" id="tab-gpqa" aria-controls="board-gpqa" aria-selected="false" tabindex="-1">GPQA Diamond</button><button class="board-tab" type="button" role="tab" id="tab-cmt" aria-controls="board-cmt" aria-selected="false" tabindex="-1">CMT-Benchmark</button><button class="board-tab" type="button" role="tab" id="tab-chembench" aria-controls="board-chembench" aria-selected="false" tabindex="-1">ChemBench (500)</button><button class="board-tab" type="button" role="tab" id="tab-chemiq" aria-controls="board-chemiq" aria-selected="false" tabindex="-1">ChemIQ</button><button class="board-tab" type="button" role="tab" id="tab-scibench" aria-controls="board-scibench" aria-selected="false" tabindex="-1">SciBench</button><button class="board-tab" type="button" role="tab" id="tab-fso" aria-controls="board-fso" aria-selected="false" tabindex="-1">FrontierScience-Olympiad</button><button class="board-tab" type="button" role="tab" id="tab-olympiad" aria-controls="board-olympiad" aria-selected="false" tabindex="-1">OlympiadBench</button><button class="board-tab" type="button" role="tab" id="tab-labbench" aria-controls="board-labbench" aria-selected="false" tabindex="-1">LAB-Bench</button><button class="board-tab" type="button" role="tab" id="tab-climaqa" aria-controls="board-climaqa" aria-selected="false" tabindex="-1">ClimaQA-Gold MCQ</button><button class="board-tab" type="button" role="tab" id="tab-scicode" aria-controls="board-scicode" aria-selected="false" tabindex="-1">SciCode</button><button class="board-tab" type="button" role="tab" id="tab-theophys" aria-controls="board-theophys" aria-selected="false" tabindex="-1">TheoPhysEval</button><button class="board-tab" type="button" role="tab" id="tab-llmsr" aria-controls="board-llmsr" aria-selected="false" tabindex="-1">LLM-SRBench</button><button class="board-tab" type="button" role="tab" id="tab-bird" aria-controls="board-bird" aria-selected="false" tabindex="-1">BIRD Dev</button><button class="board-tab" type="button" role="tab" id="tab-humaneval" aria-controls="board-humaneval" aria-selected="false" tabindex="-1">HumanEval+</button><button class="board-tab" type="button" role="tab" id="tab-mbpp" aria-controls="board-mbpp" aria-selected="false" tabindex="-1">MBPP+</button><button class="board-tab" type="button" role="tab" id="tab-classeval" aria-controls="board-classeval" aria-selected="false" tabindex="-1">ClassEval</button><button class="board-tab" type="button" role="tab" id="tab-deepswe" aria-controls="board-deepswe" aria-selected="false" tabindex="-1">DeepSWE</button><button class="board-tab" type="button" role="tab" id="tab-terminal" aria-controls="board-terminal" aria-selected="false" tabindex="-1">Terminal-Bench 2.1</button><button class="board-tab" type="button" role="tab" id="tab-skills" aria-controls="board-skills" aria-selected="false" tabindex="-1">SkillsBench 1.1</button></div>
+        <div class="board" id="board-aime" role="tabpanel" aria-labelledby="tab-aime">
+          <div class="board-head"><span class="board-title">AIME 2024–25</span><span class="board-meta" data-zh="60 题 · 完成率（%）" data-en="60 tasks · completion rate (%)">60 tasks · completion rate (%)</span></div>
+          <div class="table-scroll">
+            <table class="board">
+              <thead><tr><th scope="col">#</th><th scope="col"><span data-zh="方法" data-en="Method">Method</span></th><th scope="col" class="num"><span data-zh="分数" data-en="Score">Score</span></th><th scope="col" class="bar-col"><span class="visually-hidden">Chart</span></th><th scope="col" class="note"><span data-zh="说明" data-en="Notes">Notes</span></th></tr></thead>
+              <tbody class="board-body">
+                <tr class="ours"><td class="rank">1</td><td class="method">Object Run <span class="board-tag">F</span></td><td class="score">100.0</td><td class="bar-col" aria-hidden="true"><span class="bar" style="--score:100.0%"></span></td><td class="note"><span data-zh="10 次检查 / 8 次重启，30 分钟" data-en="10 checks / 8 restarts, 30 min">10 checks / 8 restarts, 30 min</span></td></tr>
+                <tr><td class="rank">2</td><td class="method">Claude Opus 4.6</td><td class="score">99.8</td><td class="bar-col" aria-hidden="true"><span class="bar" style="--score:99.8%"></span></td><td class="note"><span data-zh="单次作答，仅 AIME 2025" data-en="Single attempt, AIME 2025 only">Single attempt, AIME 2025 only</span></td></tr>
+                <tr><td class="rank">3</td><td class="method">Gemini 3 Flash</td><td class="score">99.7</td><td class="bar-col" aria-hidden="true"><span class="bar" style="--score:99.7%"></span></td><td class="note"><span data-zh="单次作答，仅 AIME 2025" data-en="Single attempt, AIME 2025 only">Single attempt, AIME 2025 only</span></td></tr>
+                <tr><td class="rank">4</td><td class="method">Step 3.5 Flash</td><td class="score">98.3</td><td class="bar-col" aria-hidden="true"><span class="bar" style="--score:98.3%"></span></td><td class="note"><span data-zh="MathArena，仅 AIME 2025，4 次平均" data-en="MathArena, AIME 2025 only, mean of 4">MathArena, AIME 2025 only, mean of 4</span></td></tr>
+                <tr><td class="rank">5</td><td class="method">TUMIX+</td><td class="score">96.7</td><td class="bar-col" aria-hidden="true"><span class="bar" style="--score:96.7%"></span></td><td class="note"></td></tr>
+                <tr><td class="rank">6</td><td class="method">GLM-5</td><td class="score">96.7</td><td class="bar-col" aria-hidden="true"><span class="bar" style="--score:96.7%"></span></td><td class="note"><span data-zh="MathArena，仅 AIME 2025，4 次平均" data-en="MathArena, AIME 2025 only, mean of 4">MathArena, AIME 2025 only, mean of 4</span></td></tr>
+                <tr><td class="rank">7</td><td class="method">DeepSeek-V3.2-Speciale</td><td class="score">95.8</td><td class="bar-col" aria-hidden="true"><span class="bar" style="--score:95.8%"></span></td><td class="note"><span data-zh="MathArena，仅 AIME 2025，4 次平均" data-en="MathArena, AIME 2025 only, mean of 4">MathArena, AIME 2025 only, mean of 4</span></td></tr>
+                <tr><td class="rank">8</td><td class="method">Kimi K2.5</td><td class="score">95.8</td><td class="bar-col" aria-hidden="true"><span class="bar" style="--score:95.8%"></span></td><td class="note"><span data-zh="MathArena，仅 AIME 2025，4 次平均" data-en="MathArena, AIME 2025 only, mean of 4">MathArena, AIME 2025 only, mean of 4</span></td></tr>
+                <tr><td class="rank">9</td><td class="method">GPT-5</td><td class="score">95.0</td><td class="bar-col" aria-hidden="true"><span class="bar" style="--score:95.0%"></span></td><td class="note"><span data-zh="MathArena，仅 AIME 2025，4 次平均" data-en="MathArena, AIME 2025 only, mean of 4">MathArena, AIME 2025 only, mean of 4</span></td></tr>
+                <tr><td class="rank">10</td><td class="method">Self-MoA</td><td class="score">94.7</td><td class="bar-col" aria-hidden="true"><span class="bar" style="--score:94.7%"></span></td><td class="note"></td></tr>
+                <tr><td class="rank">11</td><td class="method">SETS</td><td class="score">94.7</td><td class="bar-col" aria-hidden="true"><span class="bar" style="--score:94.7%"></span></td><td class="note"></td></tr>
+                <tr><td class="rank">12</td><td class="method">SciMaster</td><td class="score">94.1</td><td class="bar-col" aria-hidden="true"><span class="bar" style="--score:94.1%"></span></td><td class="note"></td></tr>
+                <tr class="local"><td class="rank">13</td><td class="method"><span data-zh="单次作答" data-en="Single attempt">Single attempt</span> <span class="board-tag">U</span></td><td class="score">93.3</td><td class="bar-col" aria-hidden="true"><span class="bar" style="--score:93.3%"></span></td><td class="note"><span data-zh="本地基线，同一模型" data-en="Local baseline, same model">Local baseline, same model</span></td></tr>
+                <tr><td class="rank">14</td><td class="method">Self-Reflection</td><td class="score">88.3</td><td class="bar-col" aria-hidden="true"><span class="bar" style="--score:88.3%"></span></td><td class="note"></td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div class="board" id="board-gpqa" role="tabpanel" aria-labelledby="tab-gpqa" hidden>
+          <div class="board-head"><span class="board-title">GPQA Diamond</span><span class="board-meta" data-zh="198 题 · 完成率（%）" data-en="198 tasks · completion rate (%)">198 tasks · completion rate (%)</span></div>
+          <div class="table-scroll">
+            <table class="board">
+              <thead><tr><th scope="col">#</th><th scope="col"><span data-zh="方法" data-en="Method">Method</span></th><th scope="col" class="num"><span data-zh="分数" data-en="Score">Score</span></th><th scope="col" class="bar-col"><span class="visually-hidden">Chart</span></th><th scope="col" class="note"><span data-zh="说明" data-en="Notes">Notes</span></th></tr></thead>
+              <tbody class="board-body">
+                <tr class="ours"><td class="rank">1</td><td class="method">Object Run <span class="board-tag">F</span></td><td class="score">98.5</td><td class="bar-col" aria-hidden="true"><span class="bar" style="--score:98.5%"></span></td><td class="note"><span data-zh="每次尝试 5 次检查，10 分钟" data-en="5 checks per attempt, 10 min">5 checks per attempt, 10 min</span></td></tr>
+                <tr><td class="rank">2</td><td class="method">GPT-6 Astra (xhigh)</td><td class="score">96.3</td><td class="bar-col" aria-hidden="true"><span class="bar" style="--score:96.3%"></span></td><td class="note"><span data-zh="单次作答" data-en="Single attempt">Single attempt</span></td></tr>
+                <tr><td class="rank">3</td><td class="method">Gemini 3.8 Flash (high)</td><td class="score">95.3</td><td class="bar-col" aria-hidden="true"><span class="bar" style="--score:95.3%"></span></td><td class="note"><span data-zh="单次作答" data-en="Single attempt">Single attempt</span></td></tr>
+                <tr><td class="rank">4</td><td class="method">Grok 4.6</td><td class="score">94.9</td><td class="bar-col" aria-hidden="true"><span class="bar" style="--score:94.9%"></span></td><td class="note"><span data-zh="Artificial Analysis，5 次平均" data-en="Artificial Analysis, mean of 5">Artificial Analysis, mean of 5</span></td></tr>
+                <tr><td class="rank">5</td><td class="method">Claude Opus 4.7</td><td class="score">94.2</td><td class="bar-col" aria-hidden="true"><span class="bar" style="--score:94.2%"></span></td><td class="note"><span data-zh="单次作答" data-en="Single attempt">Single attempt</span></td></tr>
+                <tr><td class="rank">6</td><td class="method">Gemini 3.1 Pro Preview</td><td class="score">94.1</td><td class="bar-col" aria-hidden="true"><span class="bar" style="--score:94.1%"></span></td><td class="note"><span data-zh="Artificial Analysis，5 次平均" data-en="Artificial Analysis, mean of 5">Artificial Analysis, mean of 5</span></td></tr>
+                <tr><td class="rank">7</td><td class="method">GPT-5.6 Sol</td><td class="score">94.1</td><td class="bar-col" aria-hidden="true"><span class="bar" style="--score:94.1%"></span></td><td class="note"><span data-zh="Artificial Analysis，5 次平均" data-en="Artificial Analysis, mean of 5">Artificial Analysis, mean of 5</span></td></tr>
+                <tr><td class="rank">8</td><td class="method">Claude Opus 5</td><td class="score">93.7</td><td class="bar-col" aria-hidden="true"><span class="bar" style="--score:93.7%"></span></td><td class="note"><span data-zh="Artificial Analysis，5 次平均" data-en="Artificial Analysis, mean of 5">Artificial Analysis, mean of 5</span></td></tr>
+                <tr><td class="rank">9</td><td class="method">TUMIX+</td><td class="score">88.3</td><td class="bar-col" aria-hidden="true"><span class="bar" style="--score:88.3%"></span></td><td class="note"></td></tr>
+                <tr><td class="rank">10</td><td class="method">SciMaster</td><td class="score">86.9</td><td class="bar-col" aria-hidden="true"><span class="bar" style="--score:86.9%"></span></td><td class="note"></td></tr>
+                <tr><td class="rank">11</td><td class="method">Self-MoA</td><td class="score">85.5</td><td class="bar-col" aria-hidden="true"><span class="bar" style="--score:85.5%"></span></td><td class="note"></td></tr>
+                <tr><td class="rank">12</td><td class="method">SETS</td><td class="score">85.3</td><td class="bar-col" aria-hidden="true"><span class="bar" style="--score:85.3%"></span></td><td class="note"></td></tr>
+                <tr><td class="rank">13</td><td class="method">Self-Reflection</td><td class="score">84.9</td><td class="bar-col" aria-hidden="true"><span class="bar" style="--score:84.9%"></span></td><td class="note"></td></tr>
+                <tr class="local"><td class="rank">14</td><td class="method"><span data-zh="单次作答" data-en="Single attempt">Single attempt</span> <span class="board-tag">U</span></td><td class="score">82.3</td><td class="bar-col" aria-hidden="true"><span class="bar" style="--score:82.3%"></span></td><td class="note"><span data-zh="本地基线，同一模型" data-en="Local baseline, same model">Local baseline, same model</span></td></tr>
+                <tr><td class="rank">15</td><td class="method">PhD experts</td><td class="score">69.7</td><td class="bar-col" aria-hidden="true"><span class="bar" style="--score:69.7%"></span></td><td class="note"><span data-zh="人类专家" data-en="Human experts">Human experts</span></td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div class="board" id="board-cmt" role="tabpanel" aria-labelledby="tab-cmt" hidden>
+          <div class="board-head"><span class="board-title">CMT-Benchmark</span><span class="board-meta" data-zh="50 题 · 完成率（%）" data-en="50 tasks · completion rate (%)">50 tasks · completion rate (%)</span></div>
+          <div class="table-scroll">
+            <table class="board">
+              <thead><tr><th scope="col">#</th><th scope="col"><span data-zh="方法" data-en="Method">Method</span></th><th scope="col" class="num"><span data-zh="分数" data-en="Score">Score</span></th><th scope="col" class="bar-col"><span class="visually-hidden">Chart</span></th><th scope="col" class="note"><span data-zh="说明" data-en="Notes">Notes</span></th></tr></thead>
+              <tbody class="board-body">
+                <tr class="ours"><td class="rank">1</td><td class="method">Object Run <span class="board-tag">F</span></td><td class="score">86.0</td><td class="bar-col" aria-hidden="true"><span class="bar" style="--score:86.0%"></span></td><td class="note"><span data-zh="10 次检查 / 8 次重启，1 小时，允许搜索" data-en="10 checks / 8 restarts, 1 h, search on">10 checks / 8 restarts, 1 h, search on</span></td></tr>
+                <tr><td class="rank">2</td><td class="method">GPT-5.6-Sol High</td><td class="score">61.0</td><td class="bar-col" aria-hidden="true"><span class="bar" style="--score:61.0%"></span></td><td class="note"><span data-zh="4 次均值，带工具" data-en="Mean of 4, with tools">Mean of 4, with tools</span></td></tr>
+                <tr><td class="rank">3</td><td class="method">Claude Fable 5 High</td><td class="score">53.5</td><td class="bar-col" aria-hidden="true"><span class="bar" style="--score:53.5%"></span></td><td class="note"><span data-zh="4 次均值，带工具" data-en="Mean of 4, with tools">Mean of 4, with tools</span></td></tr>
+                <tr><td class="rank">4</td><td class="method">Gemini 3.1 Pro High</td><td class="score">50.5</td><td class="bar-col" aria-hidden="true"><span class="bar" style="--score:50.5%"></span></td><td class="note"><span data-zh="4 次均值，无工具" data-en="Mean of 4, no tools">Mean of 4, no tools</span></td></tr>
+                <tr><td class="rank">5</td><td class="method">GPT-5</td><td class="score">30.0</td><td class="bar-col" aria-hidden="true"><span class="bar" style="--score:30.0%"></span></td><td class="note"><span data-zh="单次作答，闭卷" data-en="Single attempt, closed book">Single attempt, closed book</span></td></tr>
+                <tr><td class="rank">6</td><td class="method">o3</td><td class="score">26.0</td><td class="bar-col" aria-hidden="true"><span class="bar" style="--score:26.0%"></span></td><td class="note"><span data-zh="单次作答" data-en="Single attempt">Single attempt</span></td></tr>
+                <tr class="local"><td class="rank">7</td><td class="method"><span data-zh="单次作答" data-en="Single attempt">Single attempt</span> <span class="board-tag">U</span></td><td class="score">26.0</td><td class="bar-col" aria-hidden="true"><span class="bar" style="--score:26.0%"></span></td><td class="note"><span data-zh="本地基线，同一模型" data-en="Local baseline, same model">Local baseline, same model</span></td></tr>
+                <tr><td class="rank">8</td><td class="method">GPT-5-mini</td><td class="score">24.0</td><td class="bar-col" aria-hidden="true"><span class="bar" style="--score:24.0%"></span></td><td class="note"><span data-zh="单次作答" data-en="Single attempt">Single attempt</span></td></tr>
+                <tr><td class="rank">9</td><td class="method">o4-mini</td><td class="score">18.0</td><td class="bar-col" aria-hidden="true"><span class="bar" style="--score:18.0%"></span></td><td class="note"><span data-zh="单次作答" data-en="Single attempt">Single attempt</span></td></tr>
+                <tr><td class="rank">10</td><td class="method">GPT-5-nano</td><td class="score">14.0</td><td class="bar-col" aria-hidden="true"><span class="bar" style="--score:14.0%"></span></td><td class="note"><span data-zh="单次作答" data-en="Single attempt">Single attempt</span></td></tr>
+                <tr><td class="rank">11</td><td class="method">Gemini 2.5 Pro</td><td class="score">14.0</td><td class="bar-col" aria-hidden="true"><span class="bar" style="--score:14.0%"></span></td><td class="note"><span data-zh="单次作答" data-en="Single attempt">Single attempt</span></td></tr>
+                <tr><td class="rank">12</td><td class="method">LLaMA Maverick</td><td class="score">12.0</td><td class="bar-col" aria-hidden="true"><span class="bar" style="--score:12.0%"></span></td><td class="note"><span data-zh="原论文 Table 2，Pass@1" data-en="Original paper Table 2, pass@1">Original paper Table 2, pass@1</span></td></tr>
+                <tr><td class="rank">13</td><td class="method">Claude 4.0 Opus</td><td class="score">10.0</td><td class="bar-col" aria-hidden="true"><span class="bar" style="--score:10.0%"></span></td><td class="note"><span data-zh="原论文 Table 2，Pass@1" data-en="Original paper Table 2, pass@1">Original paper Table 2, pass@1</span></td></tr>
+                <tr><td class="rank">14</td><td class="method">Gemini 2.0 Flash</td><td class="score">10.0</td><td class="bar-col" aria-hidden="true"><span class="bar" style="--score:10.0%"></span></td><td class="note"><span data-zh="原论文 Table 2，Pass@1" data-en="Original paper Table 2, pass@1">Original paper Table 2, pass@1</span></td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div class="board" id="board-chembench" role="tabpanel" aria-labelledby="tab-chembench" hidden>
+          <div class="board-head"><span class="board-title">ChemBench (500)</span><span class="board-meta" data-zh="500 题 · 完成率（%）" data-en="500 tasks · completion rate (%)">500 tasks · completion rate (%)</span></div>
+          <div class="table-scroll">
+            <table class="board">
+              <thead><tr><th scope="col">#</th><th scope="col"><span data-zh="方法" data-en="Method">Method</span></th><th scope="col" class="num"><span data-zh="分数" data-en="Score">Score</span></th><th scope="col" class="bar-col"><span class="visually-hidden">Chart</span></th><th scope="col" class="note"><span data-zh="说明" data-en="Notes">Notes</span></th></tr></thead>
+              <tbody class="board-body">
+                <tr class="ours"><td class="rank">1</td><td class="method">Object Run <span class="board-tag">F</span></td><td class="score">95.8</td><td class="bar-col" aria-hidden="true"><span class="bar" style="--score:95.8%"></span></td><td class="note"><span data-zh="每次尝试 5 次检查，10 分钟" data-en="5 checks per attempt, 10 min">5 checks per attempt, 10 min</span></td></tr>
+                <tr><td class="rank">2</td><td class="method">S1-671B-Base</td><td class="score">68.4</td><td class="bar-col" aria-hidden="true"><span class="bar" style="--score:68.4%"></span></td><td class="note"><span data-zh="公开全集；本地为 500 题子集" data-en="Public full set; local seeded subset of 500">Public full set; local seeded subset of 500</span></td></tr>
+                <tr class="local"><td class="rank">3</td><td class="method"><span data-zh="单次作答" data-en="Single attempt">Single attempt</span> <span class="board-tag">U</span></td><td class="score">67.4</td><td class="bar-col" aria-hidden="true"><span class="bar" style="--score:67.4%"></span></td><td class="note"><span data-zh="本地基线，同一模型" data-en="Local baseline, same model">Local baseline, same model</span></td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div class="board" id="board-chemiq" role="tabpanel" aria-labelledby="tab-chemiq" hidden>
+          <div class="board-head"><span class="board-title">ChemIQ</span><span class="board-meta" data-zh="816 题 · 完成率（%）" data-en="816 tasks · completion rate (%)">816 tasks · completion rate (%)</span></div>
+          <div class="table-scroll">
+            <table class="board">
+              <thead><tr><th scope="col">#</th><th scope="col"><span data-zh="方法" data-en="Method">Method</span></th><th scope="col" class="num"><span data-zh="分数" data-en="Score">Score</span></th><th scope="col" class="bar-col"><span class="visually-hidden">Chart</span></th><th scope="col" class="note"><span data-zh="说明" data-en="Notes">Notes</span></th></tr></thead>
+              <tbody class="board-body">
+                <tr class="ours"><td class="rank">1</td><td class="method">Object Run <span class="board-tag">F</span></td><td class="score">96.1</td><td class="bar-col" aria-hidden="true"><span class="bar" style="--score:96.1%"></span></td><td class="note"><span data-zh="每次尝试 5 次检查，15 分钟" data-en="5 checks per attempt, 15 min">5 checks per attempt, 15 min</span></td></tr>
+                <tr><td class="rank">2</td><td class="method">GPT-5</td><td class="score">70.2</td><td class="bar-col" aria-hidden="true"><span class="bar" style="--score:70.2%"></span></td><td class="note"><span data-zh="单次作答" data-en="Single attempt">Single attempt</span></td></tr>
+                <tr class="local"><td class="rank">3</td><td class="method"><span data-zh="单次作答" data-en="Single attempt">Single attempt</span> <span class="board-tag">U</span></td><td class="score">65.6</td><td class="bar-col" aria-hidden="true"><span class="bar" style="--score:65.6%"></span></td><td class="note"><span data-zh="本地基线，同一模型" data-en="Local baseline, same model">Local baseline, same model</span></td></tr>
+                <tr><td class="rank">4</td><td class="method">o3-mini (high)</td><td class="score">56.7</td><td class="bar-col" aria-hidden="true"><span class="bar" style="--score:56.7%"></span></td><td class="note"><span data-zh="单次作答" data-en="Single attempt">Single attempt</span></td></tr>
+                <tr><td class="rank">5</td><td class="method">Gemini 2.5 Pro</td><td class="score">55.5</td><td class="bar-col" aria-hidden="true"><span class="bar" style="--score:55.5%"></span></td><td class="note"><span data-zh="单次作答，32k thinking" data-en="Single attempt, 32k thinking">Single attempt, 32k thinking</span></td></tr>
+                <tr><td class="rank">6</td><td class="method">Gemini 2.5 Pro (8192 thinking)</td><td class="score">54.8</td><td class="bar-col" aria-hidden="true"><span class="bar" style="--score:54.8%"></span></td><td class="note"><span data-zh="原论文附表，思考预算 8192" data-en="Original paper appendix, 8192 thinking">Original paper appendix, 8192 thinking</span></td></tr>
+                <tr><td class="rank">7</td><td class="method">DeepSeek-R1</td><td class="score">50.2</td><td class="bar-col" aria-hidden="true"><span class="bar" style="--score:50.2%"></span></td><td class="note"><span data-zh="单次作答" data-en="Single attempt">Single attempt</span></td></tr>
+                <tr><td class="rank">8</td><td class="method">o3-mini (medium)</td><td class="score">43.4</td><td class="bar-col" aria-hidden="true"><span class="bar" style="--score:43.4%"></span></td><td class="note"><span data-zh="原论文附表" data-en="Original paper appendix">Original paper appendix</span></td></tr>
+                <tr><td class="rank">9</td><td class="method">Gemini 2.5 Flash (24576 thinking)</td><td class="score">35.0</td><td class="bar-col" aria-hidden="true"><span class="bar" style="--score:35.0%"></span></td><td class="note"><span data-zh="原论文附表，思考预算 24576" data-en="Original paper appendix, 24576 thinking">Original paper appendix, 24576 thinking</span></td></tr>
+                <tr><td class="rank">10</td><td class="method">o3-mini (low)</td><td class="score">27.2</td><td class="bar-col" aria-hidden="true"><span class="bar" style="--score:27.2%"></span></td><td class="note"><span data-zh="原论文附表" data-en="Original paper appendix">Original paper appendix</span></td></tr>
+                <tr><td class="rank">11</td><td class="method">DeepSeek-V3-0324</td><td class="score">7.0</td><td class="bar-col" aria-hidden="true"><span class="bar" style="--score:7.0%"></span></td><td class="note"><span data-zh="原论文附表，非推理模型" data-en="Original paper appendix, non-reasoning">Original paper appendix, non-reasoning</span></td></tr>
+                <tr><td class="rank">12</td><td class="method">GPT-4o</td><td class="score">6.9</td><td class="bar-col" aria-hidden="true"><span class="bar" style="--score:6.9%"></span></td><td class="note"><span data-zh="原论文附表，非推理模型" data-en="Original paper appendix, non-reasoning">Original paper appendix, non-reasoning</span></td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div class="board" id="board-scibench" role="tabpanel" aria-labelledby="tab-scibench" hidden>
+          <div class="board-head"><span class="board-title">SciBench</span><span class="board-meta" data-zh="416 题 · 完成率（%）" data-en="416 tasks · completion rate (%)">416 tasks · completion rate (%)</span></div>
+          <div class="table-scroll">
+            <table class="board">
+              <thead><tr><th scope="col">#</th><th scope="col"><span data-zh="方法" data-en="Method">Method</span></th><th scope="col" class="num"><span data-zh="分数" data-en="Score">Score</span></th><th scope="col" class="bar-col"><span class="visually-hidden">Chart</span></th><th scope="col" class="note"><span data-zh="说明" data-en="Notes">Notes</span></th></tr></thead>
+              <tbody class="board-body">
+                <tr class="ours"><td class="rank">1</td><td class="method">Object Run <span class="board-tag">F</span></td><td class="score">92.1</td><td class="bar-col" aria-hidden="true"><span class="bar" style="--score:92.1%"></span></td><td class="note"><span data-zh="每次尝试 5 次检查，10 分钟" data-en="5 checks per attempt, 10 min">5 checks per attempt, 10 min</span></td></tr>
+                <tr><td class="rank">2</td><td class="method">S1-32B-Base</td><td class="score">86.4</td><td class="bar-col" aria-hidden="true"><span class="bar" style="--score:86.4%"></span></td><td class="note"><span data-zh="公开 580 题，本地 416 题" data-en="Public 580 tasks vs local 416">Public 580 tasks vs local 416</span></td></tr>
+                <tr><td class="rank">3</td><td class="method">o3 (high)</td><td class="score">72.1</td><td class="bar-col" aria-hidden="true"><span class="bar" style="--score:72.1%"></span></td><td class="note"><span data-zh="聚合榜单，题集未注明" data-en="Aggregator board, task set not stated">Aggregator board, task set not stated</span></td></tr>
+                <tr><td class="rank">4</td><td class="method">GPT-5 (high)</td><td class="score">72.0</td><td class="bar-col" aria-hidden="true"><span class="bar" style="--score:72.0%"></span></td><td class="note"><span data-zh="聚合榜单，题集未注明" data-en="Aggregator board, task set not stated">Aggregator board, task set not stated</span></td></tr>
+                <tr><td class="rank">5</td><td class="method">MindLoom</td><td class="score">71.39</td><td class="bar-col" aria-hidden="true"><span class="bar" style="--score:71.39%"></span></td><td class="note"><span data-zh="微调模型，题集未注明" data-en="Fine-tuned model, task set not stated">Fine-tuned model, task set not stated</span></td></tr>
+                <tr><td class="rank">6</td><td class="method">Gemini 2.5 Pro (low)</td><td class="score">71.0</td><td class="bar-col" aria-hidden="true"><span class="bar" style="--score:71.0%"></span></td><td class="note"><span data-zh="聚合榜单，题集未注明" data-en="Aggregator board, task set not stated">Aggregator board, task set not stated</span></td></tr>
+                <tr><td class="rank">7</td><td class="method">RCSD</td><td class="score">70.8</td><td class="bar-col" aria-hidden="true"><span class="bar" style="--score:70.8%"></span></td><td class="note"><span data-zh="训练方法，SciBench 测试集" data-en="Training method, SciBench test split">Training method, SciBench test split</span></td></tr>
+                <tr><td class="rank">8</td><td class="method">o4-mini (high)</td><td class="score">69.7</td><td class="bar-col" aria-hidden="true"><span class="bar" style="--score:69.7%"></span></td><td class="note"><span data-zh="聚合榜单，题集未注明" data-en="Aggregator board, task set not stated">Aggregator board, task set not stated</span></td></tr>
+                <tr><td class="rank">9</td><td class="method">Qwen3-8B</td><td class="score">69.1</td><td class="bar-col" aria-hidden="true"><span class="bar" style="--score:69.1%"></span></td><td class="note"><span data-zh="SciBench 测试集" data-en="SciBench test split">SciBench test split</span></td></tr>
+                <tr><td class="rank">10</td><td class="method">Claude Sonnet 4 (high)</td><td class="score">67.1</td><td class="bar-col" aria-hidden="true"><span class="bar" style="--score:67.1%"></span></td><td class="note"><span data-zh="聚合榜单，题集未注明" data-en="Aggregator board, task set not stated">Aggregator board, task set not stated</span></td></tr>
+                <tr><td class="rank">11</td><td class="method">o3-mini (high)</td><td class="score">66.3</td><td class="bar-col" aria-hidden="true"><span class="bar" style="--score:66.3%"></span></td><td class="note"><span data-zh="聚合榜单，题集未注明" data-en="Aggregator board, task set not stated">Aggregator board, task set not stated</span></td></tr>
+                <tr class="local"><td class="rank">12</td><td class="method"><span data-zh="单次作答" data-en="Single attempt">Single attempt</span> <span class="board-tag">U</span></td><td class="score">45.9</td><td class="bar-col" aria-hidden="true"><span class="bar" style="--score:45.9%"></span></td><td class="note"><span data-zh="本地基线，同一模型" data-en="Local baseline, same model">Local baseline, same model</span></td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div class="board" id="board-fso" role="tabpanel" aria-labelledby="tab-fso" hidden>
+          <div class="board-head"><span class="board-title">FrontierScience-Olympiad</span><span class="board-meta" data-zh="100 题 · 完成率（%）" data-en="100 tasks · completion rate (%)">100 tasks · completion rate (%)</span></div>
+          <div class="table-scroll">
+            <table class="board">
+              <thead><tr><th scope="col">#</th><th scope="col"><span data-zh="方法" data-en="Method">Method</span></th><th scope="col" class="num"><span data-zh="分数" data-en="Score">Score</span></th><th scope="col" class="bar-col"><span class="visually-hidden">Chart</span></th><th scope="col" class="note"><span data-zh="说明" data-en="Notes">Notes</span></th></tr></thead>
+              <tbody class="board-body">
+                <tr class="ours"><td class="rank">1</td><td class="method">Object Run <span class="board-tag">F</span></td><td class="score">86.0</td><td class="bar-col" aria-hidden="true"><span class="bar" style="--score:86.0%"></span></td><td class="note"><span data-zh="每次尝试 5 次检查，10 分钟" data-en="5 checks per attempt, 10 min">5 checks per attempt, 10 min</span></td></tr>
+                <tr><td class="rank">2</td><td class="method">Argus Parallel</td><td class="score">80.0</td><td class="bar-col" aria-hidden="true"><span class="bar" style="--score:80.0%"></span></td><td class="note"><span data-zh="8 个初始 Searcher" data-en="8 initial searchers">8 initial searchers</span></td></tr>
+                <tr><td class="rank">3</td><td class="method">GPT-5.2 xhigh</td><td class="score">77.1</td><td class="bar-col" aria-hidden="true"><span class="bar" style="--score:77.1%"></span></td><td class="note"><span data-zh="20 次试验均值" data-en="Mean of 20 trials">Mean of 20 trials</span></td></tr>
+                <tr><td class="rank">4</td><td class="method">Gemini 3 Pro</td><td class="score">76.1</td><td class="bar-col" aria-hidden="true"><span class="bar" style="--score:76.1%"></span></td><td class="note"><span data-zh="OpenAI 论文，20 次平均" data-en="OpenAI paper, mean of 20">OpenAI paper, mean of 20</span></td></tr>
+                <tr><td class="rank">5</td><td class="method">Claude Opus 4.5</td><td class="score">71.4</td><td class="bar-col" aria-hidden="true"><span class="bar" style="--score:71.4%"></span></td><td class="note"><span data-zh="OpenAI 论文，20 次平均" data-en="OpenAI paper, mean of 20">OpenAI paper, mean of 20</span></td></tr>
+                <tr><td class="rank">6</td><td class="method">GPT-5.1</td><td class="score">70.0</td><td class="bar-col" aria-hidden="true"><span class="bar" style="--score:70.0%"></span></td><td class="note"><span data-zh="OpenAI 论文，20 次平均" data-en="OpenAI paper, mean of 20">OpenAI paper, mean of 20</span></td></tr>
+                <tr><td class="rank">7</td><td class="method">GPT-5</td><td class="score">69.7</td><td class="bar-col" aria-hidden="true"><span class="bar" style="--score:69.7%"></span></td><td class="note"><span data-zh="OpenAI 论文，20 次平均" data-en="OpenAI paper, mean of 20">OpenAI paper, mean of 20</span></td></tr>
+                <tr><td class="rank">8</td><td class="method">GPT-5.2 (low effort)</td><td class="score">67.5</td><td class="bar-col" aria-hidden="true"><span class="bar" style="--score:67.5%"></span></td><td class="note"><span data-zh="OpenAI 论文，低推理强度" data-en="OpenAI paper, low effort">OpenAI paper, low effort</span></td></tr>
+                <tr><td class="rank">9</td><td class="method">Grok 4</td><td class="score">66.2</td><td class="bar-col" aria-hidden="true"><span class="bar" style="--score:66.2%"></span></td><td class="note"><span data-zh="OpenAI 论文，20 次平均" data-en="OpenAI paper, mean of 20">OpenAI paper, mean of 20</span></td></tr>
+                <tr><td class="rank">10</td><td class="method">DeepSeek-V3.2 (Thinking)</td><td class="score">65.9</td><td class="bar-col" aria-hidden="true"><span class="bar" style="--score:65.9%"></span></td><td class="note"><span data-zh="后续论文报告" data-en="Reported by a follow-up paper">Reported by a follow-up paper</span></td></tr>
+                <tr><td class="rank">11</td><td class="method">PhysicsMinions</td><td class="score">65.4</td><td class="bar-col" aria-hidden="true"><span class="bar" style="--score:65.4%"></span></td><td class="note"><span data-zh="智能体框架，P1 论文报告" data-en="Agent framework, P1 paper">Agent framework, P1 paper</span></td></tr>
+                <tr><td class="rank">12</td><td class="method">Kimi K2 (Thinking)</td><td class="score">65.1</td><td class="bar-col" aria-hidden="true"><span class="bar" style="--score:65.1%"></span></td><td class="note"><span data-zh="后续论文报告" data-en="Reported by a follow-up paper">Reported by a follow-up paper</span></td></tr>
+                <tr><td class="rank">13</td><td class="method">o3</td><td class="score">62.9</td><td class="bar-col" aria-hidden="true"><span class="bar" style="--score:62.9%"></span></td><td class="note"><span data-zh="OpenAI 论文，20 次平均" data-en="OpenAI paper, mean of 20">OpenAI paper, mean of 20</span></td></tr>
+                <tr class="local"><td class="rank">14</td><td class="method"><span data-zh="单次作答" data-en="Single attempt">Single attempt</span> <span class="board-tag">U</span></td><td class="score">59.0</td><td class="bar-col" aria-hidden="true"><span class="bar" style="--score:59.0%"></span></td><td class="note"><span data-zh="本地基线，同一模型" data-en="Local baseline, same model">Local baseline, same model</span></td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div class="board" id="board-olympiad" role="tabpanel" aria-labelledby="tab-olympiad" hidden>
+          <div class="board-head"><span class="board-title">OlympiadBench</span><span class="board-meta" data-zh="236 题 · 完成率（%）" data-en="236 tasks · completion rate (%)">236 tasks · completion rate (%)</span></div>
+          <div class="table-scroll">
+            <table class="board">
+              <thead><tr><th scope="col">#</th><th scope="col"><span data-zh="方法" data-en="Method">Method</span></th><th scope="col" class="num"><span data-zh="分数" data-en="Score">Score</span></th><th scope="col" class="bar-col"><span class="visually-hidden">Chart</span></th><th scope="col" class="note"><span data-zh="说明" data-en="Notes">Notes</span></th></tr></thead>
+              <tbody class="board-body">
+                <tr class="ours"><td class="rank">1</td><td class="method">Object Run <span class="board-tag">F</span></td><td class="score">76.3</td><td class="bar-col" aria-hidden="true"><span class="bar" style="--score:76.3%"></span></td><td class="note"><span data-zh="每次尝试 5 次检查，10 分钟；英文物理文本 236 题" data-en="5 checks per attempt, 10 min; 236 English physics text problems">5 checks per attempt, 10 min; 236 English physics text problems</span></td></tr>
+                <tr class="local"><td class="rank">2</td><td class="method"><span data-zh="单次作答" data-en="Single attempt">Single attempt</span> <span class="board-tag">U</span></td><td class="score">39.4</td><td class="bar-col" aria-hidden="true"><span class="bar" style="--score:39.4%"></span></td><td class="note"><span data-zh="本地基线，同一模型" data-en="Local baseline, same model">Local baseline, same model</span></td></tr>
+                <tr><td class="rank">3</td><td class="method">Hogwild! Inference †</td><td class="score">39.03</td><td class="bar-col" aria-hidden="true"><span class="bar" style="--score:39.03%"></span></td><td class="note"><span data-zh="16k 思考预算，两个 worker" data-en="16k thinking budget, two workers">16k thinking budget, two workers</span></td></tr>
+                <tr><td class="rank">4</td><td class="method">GPT-4V</td><td class="score">12.71</td><td class="bar-col" aria-hidden="true"><span class="bar" style="--score:12.71%"></span></td><td class="note"><span data-zh="原论文，物理英文，纯文本" data-en="Original paper, physics EN, text-only">Original paper, physics EN, text-only</span></td></tr>
+                <tr><td class="rank">5</td><td class="method">GPT-4</td><td class="score">12.29</td><td class="bar-col" aria-hidden="true"><span class="bar" style="--score:12.29%"></span></td><td class="note"><span data-zh="原论文，物理英文，纯文本" data-en="Original paper, physics EN, text-only">Original paper, physics EN, text-only</span></td></tr>
+                <tr><td class="rank">6</td><td class="method">GPT-4V</td><td class="score">11.42</td><td class="bar-col" aria-hidden="true"><span class="bar" style="--score:11.42%"></span></td><td class="note"><span data-zh="原论文，物理英文，含图题" data-en="Original paper, physics EN, with images">Original paper, physics EN, with images</span></td></tr>
+                <tr><td class="rank">7</td><td class="method">DeepSeekMath-7B-RL</td><td class="score">6.78</td><td class="bar-col" aria-hidden="true"><span class="bar" style="--score:6.78%"></span></td><td class="note"><span data-zh="原论文，物理英文，纯文本" data-en="Original paper, physics EN, text-only">Original paper, physics EN, text-only</span></td></tr>
+                <tr><td class="rank">8</td><td class="method">Gemini-Pro-Vision</td><td class="score">4.66</td><td class="bar-col" aria-hidden="true"><span class="bar" style="--score:4.66%"></span></td><td class="note"><span data-zh="原论文，物理英文，纯文本" data-en="Original paper, physics EN, text-only">Original paper, physics EN, text-only</span></td></tr>
+                <tr><td class="rank">9</td><td class="method">Qwen-VL-Max</td><td class="score">4.24</td><td class="bar-col" aria-hidden="true"><span class="bar" style="--score:4.24%"></span></td><td class="note"><span data-zh="原论文，物理英文，纯文本" data-en="Original paper, physics EN, text-only">Original paper, physics EN, text-only</span></td></tr>
+                <tr><td class="rank">10</td><td class="method">Gemini-Pro-Vision</td><td class="score">3.19</td><td class="bar-col" aria-hidden="true"><span class="bar" style="--score:3.19%"></span></td><td class="note"><span data-zh="原论文，物理英文，含图题" data-en="Original paper, physics EN, with images">Original paper, physics EN, with images</span></td></tr>
+                <tr><td class="rank">11</td><td class="method">LLaVA-NeXT-34B</td><td class="score">2.12</td><td class="bar-col" aria-hidden="true"><span class="bar" style="--score:2.12%"></span></td><td class="note"><span data-zh="原论文，物理英文，纯文本" data-en="Original paper, physics EN, text-only">Original paper, physics EN, text-only</span></td></tr>
+                <tr><td class="rank">12</td><td class="method">Yi-VL-34B</td><td class="score">0.85</td><td class="bar-col" aria-hidden="true"><span class="bar" style="--score:0.85%"></span></td><td class="note"><span data-zh="原论文，物理英文，纯文本" data-en="Original paper, physics EN, text-only">Original paper, physics EN, text-only</span></td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div class="board" id="board-labbench" role="tabpanel" aria-labelledby="tab-labbench" hidden>
+          <div class="board-head"><span class="board-title">LAB-Bench</span><span class="board-meta" data-zh="708 题 · 完成率（%）" data-en="708 tasks · completion rate (%)">708 tasks · completion rate (%)</span></div>
+          <div class="table-scroll">
+            <table class="board">
+              <thead><tr><th scope="col">#</th><th scope="col"><span data-zh="方法" data-en="Method">Method</span></th><th scope="col" class="num"><span data-zh="分数" data-en="Score">Score</span></th><th scope="col" class="bar-col"><span class="visually-hidden">Chart</span></th><th scope="col" class="note"><span data-zh="说明" data-en="Notes">Notes</span></th></tr></thead>
+              <tbody class="board-body">
+                <tr class="ours"><td class="rank">1</td><td class="method">Object Run <span class="board-tag">F</span></td><td class="score">99.6</td><td class="bar-col" aria-hidden="true"><span class="bar" style="--score:99.6%"></span></td><td class="note"><span data-zh="每次尝试 5 次检查，10 分钟" data-en="5 checks per attempt, 10 min">5 checks per attempt, 10 min</span></td></tr>
+                <tr><td class="rank">2</td><td class="method">GPT-4o</td><td class="score">53.0</td><td class="bar-col" aria-hidden="true"><span class="bar" style="--score:53.0%"></span></td><td class="note"><span data-zh="仅 ProtocolQA 子任务" data-en="ProtocolQA subtask only">ProtocolQA subtask only</span></td></tr>
+                <tr><td class="rank">3</td><td class="method">Claude 3 Opus</td><td class="score">52.0</td><td class="bar-col" aria-hidden="true"><span class="bar" style="--score:52.0%"></span></td><td class="note"><span data-zh="仅 ProtocolQA 子任务" data-en="ProtocolQA subtask only">ProtocolQA subtask only</span></td></tr>
+                <tr><td class="rank">4</td><td class="method">Claude 3.5 Sonnet</td><td class="score">51.0</td><td class="bar-col" aria-hidden="true"><span class="bar" style="--score:51.0%"></span></td><td class="note"><span data-zh="由原文表 2 近似汇总；885 题对本地 708 题" data-en="Approximate aggregate from Table 2; 885 vs local 708 tasks">Approximate aggregate from Table 2; 885 vs local 708 tasks</span></td></tr>
+                <tr><td class="rank">5</td><td class="method">Claude 3.5 Sonnet</td><td class="score">48.0</td><td class="bar-col" aria-hidden="true"><span class="bar" style="--score:48.0%"></span></td><td class="note"><span data-zh="仅 ProtocolQA 子任务" data-en="ProtocolQA subtask only">ProtocolQA subtask only</span></td></tr>
+                <tr><td class="rank">6</td><td class="method">Gemini 1.5 Pro</td><td class="score">47.0</td><td class="bar-col" aria-hidden="true"><span class="bar" style="--score:47.0%"></span></td><td class="note"><span data-zh="仅 ProtocolQA 子任务" data-en="ProtocolQA subtask only">ProtocolQA subtask only</span></td></tr>
+                <tr><td class="rank">7</td><td class="method">Claude 3 Haiku</td><td class="score">45.0</td><td class="bar-col" aria-hidden="true"><span class="bar" style="--score:45.0%"></span></td><td class="note"><span data-zh="仅 ProtocolQA 子任务" data-en="ProtocolQA subtask only">ProtocolQA subtask only</span></td></tr>
+                <tr><td class="rank">8</td><td class="method">Llama 3 70B Instruct</td><td class="score">44.0</td><td class="bar-col" aria-hidden="true"><span class="bar" style="--score:44.0%"></span></td><td class="note"><span data-zh="仅 ProtocolQA 子任务" data-en="ProtocolQA subtask only">ProtocolQA subtask only</span></td></tr>
+                <tr class="local"><td class="rank">9</td><td class="method"><span data-zh="单次作答" data-en="Single attempt">Single attempt</span> <span class="board-tag">U</span></td><td class="score">41.8</td><td class="bar-col" aria-hidden="true"><span class="bar" style="--score:41.8%"></span></td><td class="note"><span data-zh="本地基线，同一模型" data-en="Local baseline, same model">Local baseline, same model</span></td></tr>
+                <tr><td class="rank">10</td><td class="method">GPT-4 Turbo</td><td class="score">37.0</td><td class="bar-col" aria-hidden="true"><span class="bar" style="--score:37.0%"></span></td><td class="note"><span data-zh="仅 ProtocolQA 子任务" data-en="ProtocolQA subtask only">ProtocolQA subtask only</span></td></tr>
+                <tr><td class="rank">11</td><td class="method">GPT-4o</td><td class="score">28.0</td><td class="bar-col" aria-hidden="true"><span class="bar" style="--score:28.0%"></span></td><td class="note"><span data-zh="仅 CloningScenarios 子任务" data-en="CloningScenarios subtask only">CloningScenarios subtask only</span></td></tr>
+                <tr><td class="rank">12</td><td class="method">Claude 3 Opus</td><td class="score">27.0</td><td class="bar-col" aria-hidden="true"><span class="bar" style="--score:27.0%"></span></td><td class="note"><span data-zh="仅 CloningScenarios 子任务" data-en="CloningScenarios subtask only">CloningScenarios subtask only</span></td></tr>
+                <tr><td class="rank">13</td><td class="method">GPT-4o</td><td class="score">27.0</td><td class="bar-col" aria-hidden="true"><span class="bar" style="--score:27.0%"></span></td><td class="note"><span data-zh="仅 LitQA2 子任务，无检索" data-en="LitQA2 subtask only, no retrieval">LitQA2 subtask only, no retrieval</span></td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div class="board" id="board-climaqa" role="tabpanel" aria-labelledby="tab-climaqa" hidden>
+          <div class="board-head"><span class="board-title">ClimaQA-Gold MCQ</span><span class="board-meta" data-zh="245 题 · 完成率（%）" data-en="245 tasks · completion rate (%)">245 tasks · completion rate (%)</span></div>
+          <div class="table-scroll">
+            <table class="board">
+              <thead><tr><th scope="col">#</th><th scope="col"><span data-zh="方法" data-en="Method">Method</span></th><th scope="col" class="num"><span data-zh="分数" data-en="Score">Score</span></th><th scope="col" class="bar-col"><span class="visually-hidden">Chart</span></th><th scope="col" class="note"><span data-zh="说明" data-en="Notes">Notes</span></th></tr></thead>
+              <tbody class="board-body">
+                <tr class="ours"><td class="rank">1</td><td class="method">Object Run <span class="board-tag">F</span></td><td class="score">96.3</td><td class="bar-col" aria-hidden="true"><span class="bar" style="--score:96.3%"></span></td><td class="note"><span data-zh="每次尝试 1 次检查，10 分钟" data-en="1 check per attempt, 10 min">1 check per attempt, 10 min</span></td></tr>
+                <tr><td class="rank">2</td><td class="method">GPT-4o + RAG-source</td><td class="score">92.8</td><td class="bar-col" aria-hidden="true"><span class="bar" style="--score:92.8%"></span></td><td class="note"><span data-zh="检索原始教材" data-en="RAG over source textbooks">RAG over source textbooks</span></td></tr>
+                <tr><td class="rank">3</td><td class="method">Llama 3.1 8B + RAG-source</td><td class="score">90.2</td><td class="bar-col" aria-hidden="true"><span class="bar" style="--score:90.2%"></span></td><td class="note"><span data-zh="原论文 Table 3，检索原始教材" data-en="Paper Table 3, RAG over source books">Paper Table 3, RAG over source books</span></td></tr>
+                <tr><td class="rank">4</td><td class="method">Llama 3 70B + RAG-source</td><td class="score">88.98</td><td class="bar-col" aria-hidden="true"><span class="bar" style="--score:88.98%"></span></td><td class="note"><span data-zh="原论文 Table 3，检索原始教材" data-en="Paper Table 3, RAG over source books">Paper Table 3, RAG over source books</span></td></tr>
+                <tr><td class="rank">5</td><td class="method">Mistral 7B + RAG-source</td><td class="score">88.98</td><td class="bar-col" aria-hidden="true"><span class="bar" style="--score:88.98%"></span></td><td class="note"><span data-zh="原论文 Table 3，检索原始教材" data-en="Paper Table 3, RAG over source books">Paper Table 3, RAG over source books</span></td></tr>
+                <tr class="local"><td class="rank">6</td><td class="method"><span data-zh="单次作答" data-en="Single attempt">Single attempt</span> <span class="board-tag">U</span></td><td class="score">87.3</td><td class="bar-col" aria-hidden="true"><span class="bar" style="--score:87.3%"></span></td><td class="note"><span data-zh="本地基线，同一模型" data-en="Local baseline, same model">Local baseline, same model</span></td></tr>
+                <tr><td class="rank">7</td><td class="method">GPT-4o (few-shot)</td><td class="score">86.39</td><td class="bar-col" aria-hidden="true"><span class="bar" style="--score:86.39%"></span></td><td class="note"><span data-zh="原论文 Table 3，少样本" data-en="Paper Table 3, few-shot">Paper Table 3, few-shot</span></td></tr>
+                <tr><td class="rank">8</td><td class="method">GPT-4o</td><td class="score">85.71</td><td class="bar-col" aria-hidden="true"><span class="bar" style="--score:85.71%"></span></td><td class="note"><span data-zh="原论文 Table 3，零样本" data-en="Paper Table 3, zero-shot">Paper Table 3, zero-shot</span></td></tr>
+                <tr><td class="rank">9</td><td class="method">Gemma 27B + RAG-source</td><td class="score">85.31</td><td class="bar-col" aria-hidden="true"><span class="bar" style="--score:85.31%"></span></td><td class="note"><span data-zh="原论文 Table 3，检索原始教材" data-en="Paper Table 3, RAG over source books">Paper Table 3, RAG over source books</span></td></tr>
+                <tr><td class="rank">10</td><td class="method">Mixtral 8x22B + RAG-source</td><td class="score">84.9</td><td class="bar-col" aria-hidden="true"><span class="bar" style="--score:84.9%"></span></td><td class="note"><span data-zh="原论文 Table 3，检索原始教材" data-en="Paper Table 3, RAG over source books">Paper Table 3, RAG over source books</span></td></tr>
+                <tr><td class="rank">11</td><td class="method">Llama 3 70B</td><td class="score">83.27</td><td class="bar-col" aria-hidden="true"><span class="bar" style="--score:83.27%"></span></td><td class="note"><span data-zh="原论文 Table 3，零样本" data-en="Paper Table 3, zero-shot">Paper Table 3, zero-shot</span></td></tr>
+                <tr><td class="rank">12</td><td class="method">Gemini 1.5 Flash + long context</td><td class="score">82.86</td><td class="bar-col" aria-hidden="true"><span class="bar" style="--score:82.86%"></span></td><td class="note"><span data-zh="原论文 Table 3，教材放入上下文" data-en="Paper Table 3, source books in context">Paper Table 3, source books in context</span></td></tr>
+                <tr><td class="rank">13</td><td class="method">Gemini 1.5 Flash</td><td class="score">80.82</td><td class="bar-col" aria-hidden="true"><span class="bar" style="--score:80.82%"></span></td><td class="note"><span data-zh="原论文 Table 3，零样本" data-en="Paper Table 3, zero-shot">Paper Table 3, zero-shot</span></td></tr>
+                <tr><td class="rank">14</td><td class="method">GPT-3.5 Turbo</td><td class="score">73.06</td><td class="bar-col" aria-hidden="true"><span class="bar" style="--score:73.06%"></span></td><td class="note"><span data-zh="原论文 Table 3，零样本" data-en="Paper Table 3, zero-shot">Paper Table 3, zero-shot</span></td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div class="board" id="board-scicode" role="tabpanel" aria-labelledby="tab-scicode" hidden>
+          <div class="board-head"><span class="board-title">SciCode</span><span class="board-meta" data-zh="65 题 · 完成率（%）" data-en="65 tasks · completion rate (%)">65 tasks · completion rate (%)</span></div>
+          <div class="table-scroll">
+            <table class="board">
+              <thead><tr><th scope="col">#</th><th scope="col"><span data-zh="方法" data-en="Method">Method</span></th><th scope="col" class="num"><span data-zh="分数" data-en="Score">Score</span></th><th scope="col" class="bar-col"><span class="visually-hidden">Chart</span></th><th scope="col" class="note"><span data-zh="说明" data-en="Notes">Notes</span></th></tr></thead>
+              <tbody class="board-body">
+                <tr class="ours"><td class="rank">1</td><td class="method">Object Run <span class="board-tag">F</span></td><td class="score">23.1</td><td class="bar-col" aria-hidden="true"><span class="bar" style="--score:23.1%"></span></td><td class="note"><span data-zh="每步 5 次检查，每步 10 分钟；完整主问题" data-en="5 checks and 10 min per step; full main problems">5 checks and 10 min per step; full main problems</span></td></tr>
+                <tr><td class="rank">2</td><td class="method">MOSAIC</td><td class="score">20.0</td><td class="bar-col" aria-hidden="true"><span class="bar" style="--score:20.0%"></span></td><td class="note"></td></tr>
+                <tr><td class="rank">3</td><td class="method">Claude Opus 5.5</td><td class="score">18.5</td><td class="bar-col" aria-hidden="true"><span class="bar" style="--score:18.5%"></span></td><td class="note"><span data-zh="Kaggle Main Standard" data-en="Kaggle Main Standard">Kaggle Main Standard</span></td></tr>
+                <tr><td class="rank">4</td><td class="method">Bayesian adversarial LCP</td><td class="score">13.8</td><td class="bar-col" aria-hidden="true"><span class="bar" style="--score:13.8%"></span></td><td class="note"></td></tr>
+                <tr><td class="rank">5</td><td class="method">o3-mini (low)</td><td class="score">10.8</td><td class="bar-col" aria-hidden="true"><span class="bar" style="--score:10.8%"></span></td><td class="note"><span data-zh="官方榜，主问题" data-en="Official board, main problems">Official board, main problems</span></td></tr>
+                <tr class="local"><td class="rank">6</td><td class="method"><span data-zh="单次作答" data-en="Single attempt">Single attempt</span> <span class="board-tag">U</span></td><td class="score">10.8</td><td class="bar-col" aria-hidden="true"><span class="bar" style="--score:10.8%"></span></td><td class="note"><span data-zh="本地基线，同一模型" data-en="Local baseline, same model">Local baseline, same model</span></td></tr>
+                <tr><td class="rank">7</td><td class="method">o3-mini (high)</td><td class="score">9.2</td><td class="bar-col" aria-hidden="true"><span class="bar" style="--score:9.2%"></span></td><td class="note"><span data-zh="官方榜，主问题" data-en="Official board, main problems">Official board, main problems</span></td></tr>
+                <tr><td class="rank">8</td><td class="method">o3-mini (medium)</td><td class="score">9.2</td><td class="bar-col" aria-hidden="true"><span class="bar" style="--score:9.2%"></span></td><td class="note"><span data-zh="官方榜，主问题" data-en="Official board, main problems">Official board, main problems</span></td></tr>
+                <tr><td class="rank">9</td><td class="method">o1-preview</td><td class="score">7.7</td><td class="bar-col" aria-hidden="true"><span class="bar" style="--score:7.7%"></span></td><td class="note"><span data-zh="官方榜，主问题" data-en="Official board, main problems">Official board, main problems</span></td></tr>
+                <tr><td class="rank">10</td><td class="method">Generator–Critic</td><td class="score">6.2</td><td class="bar-col" aria-hidden="true"><span class="bar" style="--score:6.2%"></span></td><td class="note"><span data-zh="4 轮" data-en="4 rounds">4 rounds</span></td></tr>
+                <tr><td class="rank">11</td><td class="method">DeepSeek-R1</td><td class="score">4.6</td><td class="bar-col" aria-hidden="true"><span class="bar" style="--score:4.6%"></span></td><td class="note"><span data-zh="官方榜，主问题" data-en="Official board, main problems">Official board, main problems</span></td></tr>
+                <tr><td class="rank">12</td><td class="method">Claude 3.5 Sonnet</td><td class="score">4.6</td><td class="bar-col" aria-hidden="true"><span class="bar" style="--score:4.6%"></span></td><td class="note"><span data-zh="官方榜，主问题" data-en="Official board, main problems">Official board, main problems</span></td></tr>
+                <tr><td class="rank">13</td><td class="method">Claude 3.5 Sonnet (new)</td><td class="score">4.6</td><td class="bar-col" aria-hidden="true"><span class="bar" style="--score:4.6%"></span></td><td class="note"><span data-zh="官方榜，主问题" data-en="Official board, main problems">Official board, main problems</span></td></tr>
+                <tr><td class="rank">14</td><td class="method">DeepSeek-V3</td><td class="score">3.1</td><td class="bar-col" aria-hidden="true"><span class="bar" style="--score:3.1%"></span></td><td class="note"><span data-zh="官方榜，主问题" data-en="Official board, main problems">Official board, main problems</span></td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div class="board" id="board-theophys" role="tabpanel" aria-labelledby="tab-theophys" hidden>
+          <div class="board-head"><span class="board-title">TheoPhysEval</span><span class="board-meta" data-zh="49 题 · 完成率（%）" data-en="49 tasks · completion rate (%)">49 tasks · completion rate (%)</span></div>
+          <div class="table-scroll">
+            <table class="board">
+              <thead><tr><th scope="col">#</th><th scope="col"><span data-zh="方法" data-en="Method">Method</span></th><th scope="col" class="num"><span data-zh="分数" data-en="Score">Score</span></th><th scope="col" class="bar-col"><span class="visually-hidden">Chart</span></th><th scope="col" class="note"><span data-zh="说明" data-en="Notes">Notes</span></th></tr></thead>
+              <tbody class="board-body">
+                <tr class="ours"><td class="rank">1</td><td class="method">Object Run <span class="board-tag">F</span></td><td class="score">42.9</td><td class="bar-col" aria-hidden="true"><span class="bar" style="--score:42.9%"></span></td><td class="note"><span data-zh="5 次检查 / 4 次重启，300 分钟" data-en="5 checks / 4 restarts, 300 min">5 checks / 4 restarts, 300 min</span></td></tr>
+                <tr><td class="rank">2</td><td class="method">GLM 5.3</td><td class="score">42.0</td><td class="bar-col" aria-hidden="true"><span class="bar" style="--score:42.0%"></span></td><td class="note"><span data-zh="Realistic 赛道 21/50 题；本地 49 个计分位置" data-en="Realistic track 21/50 problems; local 49 scoring positions">Realistic track 21/50 problems; local 49 scoring positions</span></td></tr>
+                <tr class="local"><td class="rank">3</td><td class="method"><span data-zh="单次作答" data-en="Single attempt">Single attempt</span> <span class="board-tag">U</span></td><td class="score">6.1</td><td class="bar-col" aria-hidden="true"><span class="bar" style="--score:6.1%"></span></td><td class="note"><span data-zh="本地基线，同一模型" data-en="Local baseline, same model">Local baseline, same model</span></td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div class="board" id="board-llmsr" role="tabpanel" aria-labelledby="tab-llmsr" hidden>
+          <div class="board-head"><span class="board-title">LLM-SRBench</span><span class="board-meta" data-zh="240 题 · 完成率（%）" data-en="240 tasks · completion rate (%)">240 tasks · completion rate (%)</span></div>
+          <div class="table-scroll">
+            <table class="board">
+              <thead><tr><th scope="col">#</th><th scope="col"><span data-zh="方法" data-en="Method">Method</span></th><th scope="col" class="num"><span data-zh="分数" data-en="Score">Score</span></th><th scope="col" class="bar-col"><span class="visually-hidden">Chart</span></th><th scope="col" class="note"><span data-zh="说明" data-en="Notes">Notes</span></th></tr></thead>
+              <tbody class="board-body">
+                <tr class="ours"><td class="rank">1</td><td class="method">Object Run <span class="board-tag">F</span></td><td class="score">51.7</td><td class="bar-col" aria-hidden="true"><span class="bar" style="--score:51.7%"></span></td><td class="note"><span data-zh="最多 5 次；费用上限；ID NMSE ≤ 0.01" data-en="Up to 5 checks; cost caps; ID NMSE ≤ 0.01">Up to 5 checks; cost caps; ID NMSE ≤ 0.01</span></td></tr>
+                <tr class="local"><td class="rank">2</td><td class="method"><span data-zh="单次作答" data-en="Single attempt">Single attempt</span> <span class="board-tag">U</span></td><td class="score">38.8</td><td class="bar-col" aria-hidden="true"><span class="bar" style="--score:38.8%"></span></td><td class="note"><span data-zh="本地基线，同一模型" data-en="Local baseline, same model">Local baseline, same model</span></td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div class="board" id="board-bird" role="tabpanel" aria-labelledby="tab-bird" hidden>
+          <div class="board-head"><span class="board-title">BIRD Dev</span><span class="board-meta" data-zh="1,534 题 · 完成率（%）" data-en="1,534 tasks · completion rate (%)">1,534 tasks · completion rate (%)</span></div>
+          <div class="table-scroll">
+            <table class="board">
+              <thead><tr><th scope="col">#</th><th scope="col"><span data-zh="方法" data-en="Method">Method</span></th><th scope="col" class="num"><span data-zh="分数" data-en="Score">Score</span></th><th scope="col" class="bar-col"><span class="visually-hidden">Chart</span></th><th scope="col" class="note"><span data-zh="说明" data-en="Notes">Notes</span></th></tr></thead>
+              <tbody class="board-body">
+                <tr class="ours"><td class="rank">1</td><td class="method">Object Run <span class="board-tag">F</span></td><td class="score">86.6</td><td class="bar-col" aria-hidden="true"><span class="bar" style="--score:86.6%"></span></td><td class="note"><span data-zh="每次尝试 5 次检查，10 分钟" data-en="5 checks per attempt, 10 min">5 checks per attempt, 10 min</span></td></tr>
+                <tr><td class="rank">2</td><td class="method">AskData</td><td class="score">78.49</td><td class="bar-col" aria-hidden="true"><span class="bar" style="--score:78.49%"></span></td><td class="note"><span data-zh="官方榜 Dev EX" data-en="Official board, Dev EX">Official board, Dev EX</span></td></tr>
+                <tr><td class="rank">3</td><td class="method">DataGallery-Text2SQL</td><td class="score">78.1</td><td class="bar-col" aria-hidden="true"><span class="bar" style="--score:78.1%"></span></td><td class="note"><span data-zh="官方 Dev 榜；Dev 版本未核对" data-en="Official Dev board; dev revision not matched">Official Dev board; dev revision not matched</span></td></tr>
+                <tr><td class="rank">4</td><td class="method">MARS-SQL</td><td class="score">77.84</td><td class="bar-col" aria-hidden="true"><span class="bar" style="--score:77.84%"></span></td><td class="note"></td></tr>
+                <tr><td class="rank">5</td><td class="method">GrainSQL</td><td class="score">77.77</td><td class="bar-col" aria-hidden="true"><span class="bar" style="--score:77.77%"></span></td><td class="note"><span data-zh="官方榜 Dev EX" data-en="Official board, Dev EX">Official board, Dev EX</span></td></tr>
+                <tr><td class="rank">6</td><td class="method">SiriusAI-SQL</td><td class="score">77.77</td><td class="bar-col" aria-hidden="true"><span class="bar" style="--score:77.77%"></span></td><td class="note"><span data-zh="官方榜 Dev EX" data-en="Official board, Dev EX">Official board, Dev EX</span></td></tr>
+                <tr><td class="rank">7</td><td class="method">CHASE-SQL</td><td class="score">73.01</td><td class="bar-col" aria-hidden="true"><span class="bar" style="--score:73.01%"></span></td><td class="note"></td></tr>
+                <tr><td class="rank">8</td><td class="method">RoboPhD</td><td class="score">71.3</td><td class="bar-col" aria-hidden="true"><span class="bar" style="--score:71.3%"></span></td><td class="note"></td></tr>
+                <tr><td class="rank">9</td><td class="method">Sphinteract</td><td class="score">68.1</td><td class="bar-col" aria-hidden="true"><span class="bar" style="--score:68.1%"></span></td><td class="note"><span data-zh="3-shot，with hints" data-en="3-shot, with hints">3-shot, with hints</span></td></tr>
+                <tr><td class="rank">10</td><td class="method">IAD</td><td class="score">68.05</td><td class="bar-col" aria-hidden="true"><span class="bar" style="--score:68.05%"></span></td><td class="note"></td></tr>
+                <tr class="local"><td class="rank">11</td><td class="method"><span data-zh="单次作答" data-en="Single attempt">Single attempt</span> <span class="board-tag">U</span></td><td class="score">63.9</td><td class="bar-col" aria-hidden="true"><span class="bar" style="--score:63.9%"></span></td><td class="note"><span data-zh="本地基线，同一模型" data-en="Local baseline, same model">Local baseline, same model</span></td></tr>
+                <tr><td class="rank">12</td><td class="method">MAC-SQL</td><td class="score">59.39</td><td class="bar-col" aria-hidden="true"><span class="bar" style="--score:59.39%"></span></td><td class="note"></td></tr>
+                <tr><td class="rank">13</td><td class="method">MAGIC</td><td class="score">59.13</td><td class="bar-col" aria-hidden="true"><span class="bar" style="--score:59.13%"></span></td><td class="note"><span data-zh="correctness-oracle 配置" data-en="Correctness-oracle setting">Correctness-oracle setting</span></td></tr>
+                <tr><td class="rank">14</td><td class="method">Self-Debugging</td><td class="score">57.24</td><td class="bar-col" aria-hidden="true"><span class="bar" style="--score:57.24%"></span></td><td class="note"><span data-zh="MAGIC 作者复现" data-en="Reproduced by the MAGIC authors">Reproduced by the MAGIC authors</span></td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div class="board" id="board-humaneval" role="tabpanel" aria-labelledby="tab-humaneval" hidden>
+          <div class="board-head"><span class="board-title">HumanEval+</span><span class="board-meta" data-zh="164 题 · 完成率（%）" data-en="164 tasks · completion rate (%)">164 tasks · completion rate (%)</span></div>
+          <div class="table-scroll">
+            <table class="board">
+              <thead><tr><th scope="col">#</th><th scope="col"><span data-zh="方法" data-en="Method">Method</span></th><th scope="col" class="num"><span data-zh="分数" data-en="Score">Score</span></th><th scope="col" class="bar-col"><span class="visually-hidden">Chart</span></th><th scope="col" class="note"><span data-zh="说明" data-en="Notes">Notes</span></th></tr></thead>
+              <tbody class="board-body">
+                <tr class="ours"><td class="rank">1</td><td class="method">Object Run <span class="board-tag">F</span></td><td class="score">96.3</td><td class="bar-col" aria-hidden="true"><span class="bar" style="--score:96.3%"></span></td><td class="note"><span data-zh="每次尝试 5 次检查，10 分钟" data-en="5 checks per attempt, 10 min">5 checks per attempt, 10 min</span></td></tr>
+                <tr><td class="rank">2</td><td class="method">LDB</td><td class="score">94.5</td><td class="bar-col" aria-hidden="true"><span class="bar" style="--score:94.5%"></span></td><td class="note"></td></tr>
+                <tr><td class="rank">3</td><td class="method">PairCoder</td><td class="score">94.5</td><td class="bar-col" aria-hidden="true"><span class="bar" style="--score:94.5%"></span></td><td class="note"></td></tr>
+                <tr class="local"><td class="rank">4</td><td class="method"><span data-zh="单次作答" data-en="Single attempt">Single attempt</span> <span class="board-tag">U</span></td><td class="score">93.3</td><td class="bar-col" aria-hidden="true"><span class="bar" style="--score:93.3%"></span></td><td class="note"><span data-zh="本地基线，同一模型" data-en="Local baseline, same model">Local baseline, same model</span></td></tr>
+                <tr><td class="rank">5</td><td class="method">MapCoder</td><td class="score">92.7</td><td class="bar-col" aria-hidden="true"><span class="bar" style="--score:92.7%"></span></td><td class="note"></td></tr>
+                <tr><td class="rank">6</td><td class="method">Self-Repair</td><td class="score">91.2</td><td class="bar-col" aria-hidden="true"><span class="bar" style="--score:91.2%"></span></td><td class="note"></td></tr>
+                <tr><td class="rank">7</td><td class="method">CodeTree</td><td class="score">90.9</td><td class="bar-col" aria-hidden="true"><span class="bar" style="--score:90.9%"></span></td><td class="note"></td></tr>
+                <tr><td class="rank">8</td><td class="method">LPW</td><td class="score">90.2</td><td class="bar-col" aria-hidden="true"><span class="bar" style="--score:90.2%"></span></td><td class="note"></td></tr>
+                <tr><td class="rank">9</td><td class="method">o1-preview</td><td class="score">89.0</td><td class="bar-col" aria-hidden="true"><span class="bar" style="--score:89.0%"></span></td><td class="note"><span data-zh="EvalPlus 榜，贪心 pass@1" data-en="EvalPlus board, greedy pass@1">EvalPlus board, greedy pass@1</span></td></tr>
+                <tr><td class="rank">10</td><td class="method">o1-mini</td><td class="score">89.0</td><td class="bar-col" aria-hidden="true"><span class="bar" style="--score:89.0%"></span></td><td class="note"><span data-zh="EvalPlus 榜，贪心 pass@1" data-en="EvalPlus board, greedy pass@1">EvalPlus board, greedy pass@1</span></td></tr>
+                <tr><td class="rank">11</td><td class="method">Qwen2.5-Coder-32B-Instruct</td><td class="score">87.2</td><td class="bar-col" aria-hidden="true"><span class="bar" style="--score:87.2%"></span></td><td class="note"><span data-zh="EvalPlus 榜，贪心 pass@1" data-en="EvalPlus board, greedy pass@1">EvalPlus board, greedy pass@1</span></td></tr>
+                <tr><td class="rank">12</td><td class="method">GPT-4o (2024-08)</td><td class="score">87.2</td><td class="bar-col" aria-hidden="true"><span class="bar" style="--score:87.2%"></span></td><td class="note"><span data-zh="EvalPlus 榜，贪心 pass@1" data-en="EvalPlus board, greedy pass@1">EvalPlus board, greedy pass@1</span></td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div class="board" id="board-mbpp" role="tabpanel" aria-labelledby="tab-mbpp" hidden>
+          <div class="board-head"><span class="board-title">MBPP+</span><span class="board-meta" data-zh="378 题 · 完成率（%）" data-en="378 tasks · completion rate (%)">378 tasks · completion rate (%)</span></div>
+          <div class="table-scroll">
+            <table class="board">
+              <thead><tr><th scope="col">#</th><th scope="col"><span data-zh="方法" data-en="Method">Method</span></th><th scope="col" class="num"><span data-zh="分数" data-en="Score">Score</span></th><th scope="col" class="bar-col"><span class="visually-hidden">Chart</span></th><th scope="col" class="note"><span data-zh="说明" data-en="Notes">Notes</span></th></tr></thead>
+              <tbody class="board-body">
+                <tr class="ours"><td class="rank">1</td><td class="method">Object Run <span class="board-tag">F</span></td><td class="score">84.7</td><td class="bar-col" aria-hidden="true"><span class="bar" style="--score:84.7%"></span></td><td class="note"><span data-zh="每次尝试 5 次检查，10 分钟" data-en="5 checks per attempt, 10 min">5 checks per attempt, 10 min</span></td></tr>
+                <tr><td class="rank">2</td><td class="method">Ling-3.0-tiny Q8</td><td class="score">84.1</td><td class="bar-col" aria-hidden="true"><span class="bar" style="--score:84.1%"></span></td><td class="note"><span data-zh="独立评测，378 题" data-en="Independent evaluation, 378 tasks">Independent evaluation, 378 tasks</span></td></tr>
+                <tr class="local"><td class="rank">3</td><td class="method"><span data-zh="单次作答" data-en="Single attempt">Single attempt</span> <span class="board-tag">U</span></td><td class="score">83.9</td><td class="bar-col" aria-hidden="true"><span class="bar" style="--score:83.9%"></span></td><td class="note"><span data-zh="本地基线，同一模型" data-en="Local baseline, same model">Local baseline, same model</span></td></tr>
+                <tr><td class="rank">4</td><td class="method">CodeTree</td><td class="score">83.3</td><td class="bar-col" aria-hidden="true"><span class="bar" style="--score:83.3%"></span></td><td class="note"></td></tr>
+                <tr><td class="rank">5</td><td class="method">LDB</td><td class="score">81.7</td><td class="bar-col" aria-hidden="true"><span class="bar" style="--score:81.7%"></span></td><td class="note"></td></tr>
+                <tr><td class="rank">6</td><td class="method">LPW</td><td class="score">81.7</td><td class="bar-col" aria-hidden="true"><span class="bar" style="--score:81.7%"></span></td><td class="note"></td></tr>
+                <tr><td class="rank">7</td><td class="method">MavenCoder</td><td class="score">81.7</td><td class="bar-col" aria-hidden="true"><span class="bar" style="--score:81.7%"></span></td><td class="note"></td></tr>
+                <tr><td class="rank">8</td><td class="method">MapCoder</td><td class="score">81.0</td><td class="bar-col" aria-hidden="true"><span class="bar" style="--score:81.0%"></span></td><td class="note"></td></tr>
+                <tr><td class="rank">9</td><td class="method">o1-preview</td><td class="score">80.2</td><td class="bar-col" aria-hidden="true"><span class="bar" style="--score:80.2%"></span></td><td class="note"><span data-zh="EvalPlus 榜，贪心 pass@1" data-en="EvalPlus board, greedy pass@1">EvalPlus board, greedy pass@1</span></td></tr>
+                <tr><td class="rank">10</td><td class="method">Self-Repair</td><td class="score">79.6</td><td class="bar-col" aria-hidden="true"><span class="bar" style="--score:79.6%"></span></td><td class="note"></td></tr>
+                <tr><td class="rank">11</td><td class="method">o1-mini</td><td class="score">78.8</td><td class="bar-col" aria-hidden="true"><span class="bar" style="--score:78.8%"></span></td><td class="note"><span data-zh="EvalPlus 榜，贪心 pass@1" data-en="EvalPlus board, greedy pass@1">EvalPlus board, greedy pass@1</span></td></tr>
+                <tr><td class="rank">12</td><td class="method">PairCoder</td><td class="score">77.5</td><td class="bar-col" aria-hidden="true"><span class="bar" style="--score:77.5%"></span></td><td class="note"></td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div class="board" id="board-classeval" role="tabpanel" aria-labelledby="tab-classeval" hidden>
+          <div class="board-head"><span class="board-title">ClassEval</span><span class="board-meta" data-zh="100 题 · 完成率（%）" data-en="100 tasks · completion rate (%)">100 tasks · completion rate (%)</span></div>
+          <div class="table-scroll">
+            <table class="board">
+              <thead><tr><th scope="col">#</th><th scope="col"><span data-zh="方法" data-en="Method">Method</span></th><th scope="col" class="num"><span data-zh="分数" data-en="Score">Score</span></th><th scope="col" class="bar-col"><span class="visually-hidden">Chart</span></th><th scope="col" class="note"><span data-zh="说明" data-en="Notes">Notes</span></th></tr></thead>
+              <tbody class="board-body">
+                <tr class="ours"><td class="rank">1</td><td class="method">Object Run <span class="board-tag">F</span></td><td class="score">62.0</td><td class="bar-col" aria-hidden="true"><span class="bar" style="--score:62.0%"></span></td><td class="note"><span data-zh="每次尝试 5 次检查，20/40 分钟" data-en="5 checks per attempt, 20/40 min">5 checks per attempt, 20/40 min</span></td></tr>
+                <tr><td class="rank">2</td><td class="method">CoT + retry</td><td class="score">55.0</td><td class="bar-col" aria-hidden="true"><span class="bar" style="--score:55.0%"></span></td><td class="note"><span data-zh="一次全局重试" data-en="One global retry">One global retry</span></td></tr>
+                <tr><td class="rank">3</td><td class="method">Direct + retry</td><td class="score">52.0</td><td class="bar-col" aria-hidden="true"><span class="bar" style="--score:52.0%"></span></td><td class="note"><span data-zh="一次全局重试" data-en="One global retry">One global retry</span></td></tr>
+                <tr class="local"><td class="rank">4</td><td class="method"><span data-zh="单次作答" data-en="Single attempt">Single attempt</span> <span class="board-tag">U</span></td><td class="score">46.0</td><td class="bar-col" aria-hidden="true"><span class="bar" style="--score:46.0%"></span></td><td class="note"><span data-zh="本地基线，同一模型" data-en="Local baseline, same model">Local baseline, same model</span></td></tr>
+                <tr><td class="rank">5</td><td class="method">GPT-4</td><td class="score">37.0</td><td class="bar-col" aria-hidden="true"><span class="bar" style="--score:37.0%"></span></td><td class="note"><span data-zh="官方结果，贪心 pass@1，整体生成" data-en="Official results, greedy pass@1, holistic">Official results, greedy pass@1, holistic</span></td></tr>
+                <tr><td class="rank">6</td><td class="method">GPT-3.5</td><td class="score">27.0</td><td class="bar-col" aria-hidden="true"><span class="bar" style="--score:27.0%"></span></td><td class="note"><span data-zh="官方结果，贪心 pass@1，增量生成" data-en="Official results, greedy pass@1, incremental">Official results, greedy pass@1, incremental</span></td></tr>
+                <tr><td class="rank">7</td><td class="method">Instruct-CodeGen</td><td class="score">11.1</td><td class="bar-col" aria-hidden="true"><span class="bar" style="--score:11.1%"></span></td><td class="note"><span data-zh="官方结果，贪心 pass@1" data-en="Official results, greedy pass@1">Official results, greedy pass@1</span></td></tr>
+                <tr><td class="rank">8</td><td class="method">WizardCoder</td><td class="score">11.0</td><td class="bar-col" aria-hidden="true"><span class="bar" style="--score:11.0%"></span></td><td class="note"><span data-zh="官方结果，贪心 pass@1" data-en="Official results, greedy pass@1">Official results, greedy pass@1</span></td></tr>
+                <tr><td class="rank">9</td><td class="method">Instruct-StarCoder</td><td class="score">10.0</td><td class="bar-col" aria-hidden="true"><span class="bar" style="--score:10.0%"></span></td><td class="note"><span data-zh="官方结果，贪心 pass@1" data-en="Official results, greedy pass@1">Official results, greedy pass@1</span></td></tr>
+                <tr><td class="rank">10</td><td class="method">SantaCoder</td><td class="score">10.0</td><td class="bar-col" aria-hidden="true"><span class="bar" style="--score:10.0%"></span></td><td class="note"><span data-zh="官方结果，贪心 pass@1" data-en="Official results, greedy pass@1">Official results, greedy pass@1</span></td></tr>
+                <tr><td class="rank">11</td><td class="method">CodeGeeX</td><td class="score">9.0</td><td class="bar-col" aria-hidden="true"><span class="bar" style="--score:9.0%"></span></td><td class="note"><span data-zh="官方结果，贪心 pass@1" data-en="Official results, greedy pass@1">Official results, greedy pass@1</span></td></tr>
+                <tr><td class="rank">12</td><td class="method">InCoder</td><td class="score">6.0</td><td class="bar-col" aria-hidden="true"><span class="bar" style="--score:6.0%"></span></td><td class="note"><span data-zh="官方结果，贪心 pass@1" data-en="Official results, greedy pass@1">Official results, greedy pass@1</span></td></tr>
+                <tr><td class="rank">13</td><td class="method">Vicuna</td><td class="score">3.0</td><td class="bar-col" aria-hidden="true"><span class="bar" style="--score:3.0%"></span></td><td class="note"><span data-zh="官方结果，贪心 pass@1" data-en="Official results, greedy pass@1">Official results, greedy pass@1</span></td></tr>
+                <tr><td class="rank">14</td><td class="method">PolyCoder</td><td class="score">3.0</td><td class="bar-col" aria-hidden="true"><span class="bar" style="--score:3.0%"></span></td><td class="note"><span data-zh="官方结果，贪心 pass@1" data-en="Official results, greedy pass@1">Official results, greedy pass@1</span></td></tr>
+                <tr><td class="rank">15</td><td class="method">ChatGLM</td><td class="score">2.0</td><td class="bar-col" aria-hidden="true"><span class="bar" style="--score:2.0%"></span></td><td class="note"><span data-zh="官方结果，贪心 pass@1" data-en="Official results, greedy pass@1">Official results, greedy pass@1</span></td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div class="board" id="board-deepswe" role="tabpanel" aria-labelledby="tab-deepswe" hidden>
+          <div class="board-head"><span class="board-title">DeepSWE</span><span class="board-meta" data-zh="112 题 · 完成率（%）" data-en="112 tasks · completion rate (%)">112 tasks · completion rate (%)</span></div>
+          <div class="table-scroll">
+            <table class="board">
+              <thead><tr><th scope="col">#</th><th scope="col"><span data-zh="方法" data-en="Method">Method</span></th><th scope="col" class="num"><span data-zh="分数" data-en="Score">Score</span></th><th scope="col" class="bar-col"><span class="visually-hidden">Chart</span></th><th scope="col" class="note"><span data-zh="说明" data-en="Notes">Notes</span></th></tr></thead>
+              <tbody class="board-body">
+                <tr class="ours"><td class="rank">1</td><td class="method">Object Run <span class="board-tag">F</span></td><td class="score">81.3</td><td class="bar-col" aria-hidden="true"><span class="bar" style="--score:81.3%"></span></td><td class="note"><span data-zh="6 次检查 / 8 次重启，2 小时" data-en="6 checks / 8 restarts, 2 h">6 checks / 8 restarts, 2 h</span></td></tr>
+                <tr><td class="rank">2</td><td class="method">Muse Spark 1.3 (Max, tools)</td><td class="score">75.4</td><td class="bar-col" aria-hidden="true"><span class="bar" style="--score:75.4%"></span></td><td class="note"><span data-zh="v1.1 榜，单次作答" data-en="v1.1 board, single attempt">v1.1 board, single attempt</span></td></tr>
+                <tr><td class="rank">3</td><td class="method">GPT-6 Astra (xhigh)</td><td class="score">74.0</td><td class="bar-col" aria-hidden="true"><span class="bar" style="--score:74.0%"></span></td><td class="note"><span data-zh="v1.1 榜，±3" data-en="v1.1 board, ±3">v1.1 board, ±3</span></td></tr>
+                <tr><td class="rank">4</td><td class="method">Gemini 3.8 Flash (high)</td><td class="score">74.0</td><td class="bar-col" aria-hidden="true"><span class="bar" style="--score:74.0%"></span></td><td class="note"><span data-zh="v1.1 榜，±1" data-en="v1.1 board, ±1">v1.1 board, ±1</span></td></tr>
+                <tr><td class="rank">5</td><td class="method">Claude Opus 5 (max)</td><td class="score">74.0</td><td class="bar-col" aria-hidden="true"><span class="bar" style="--score:74.0%"></span></td><td class="note"><span data-zh="v1.1 榜，±4" data-en="v1.1 board, ±4">v1.1 board, ±4</span></td></tr>
+                <tr><td class="rank">6</td><td class="method">GPT-5.6 Sol (max)</td><td class="score">73.0</td><td class="bar-col" aria-hidden="true"><span class="bar" style="--score:73.0%"></span></td><td class="note"><span data-zh="v1.1 榜，±3" data-en="v1.1 board, ±3">v1.1 board, ±3</span></td></tr>
+                <tr><td class="rank">7</td><td class="method">Claude Fable 5</td><td class="score">69.7</td><td class="bar-col" aria-hidden="true"><span class="bar" style="--score:69.7%"></span></td><td class="note"><span data-zh="v1.1 榜，单次作答" data-en="v1.1 board, single attempt">v1.1 board, single attempt</span></td></tr>
+                <tr><td class="rank">8</td><td class="method">GPT-5.6 Terra</td><td class="score">69.6</td><td class="bar-col" aria-hidden="true"><span class="bar" style="--score:69.6%"></span></td><td class="note"><span data-zh="v1.1 榜，单次作答" data-en="v1.1 board, single attempt">v1.1 board, single attempt</span></td></tr>
+                <tr><td class="rank">9</td><td class="method">GLM-5.3</td><td class="score">69.0</td><td class="bar-col" aria-hidden="true"><span class="bar" style="--score:69.0%"></span></td><td class="note"><span data-zh="v1.1 榜，单次作答" data-en="v1.1 board, single attempt">v1.1 board, single attempt</span></td></tr>
+                <tr><td class="rank">10</td><td class="method">Kimi K3</td><td class="score">68.5</td><td class="bar-col" aria-hidden="true"><span class="bar" style="--score:68.5%"></span></td><td class="note"><span data-zh="v1.1 榜，单次作答" data-en="v1.1 board, single attempt">v1.1 board, single attempt</span></td></tr>
+                <tr><td class="rank">11</td><td class="method">Grok 4.6 (medium)</td><td class="score">67.0</td><td class="bar-col" aria-hidden="true"><span class="bar" style="--score:67.0%"></span></td><td class="note"><span data-zh="v1.1 榜，取整显示" data-en="v1.1 board, shown rounded">v1.1 board, shown rounded</span></td></tr>
+                <tr><td class="rank">12</td><td class="method">GPT-5.6 Luna (max)</td><td class="score">67.0</td><td class="bar-col" aria-hidden="true"><span class="bar" style="--score:67.0%"></span></td><td class="note"><span data-zh="v1.1 榜，取整显示" data-en="v1.1 board, shown rounded">v1.1 board, shown rounded</span></td></tr>
+                <tr><td class="rank">13</td><td class="method">GPT-5.5 (xhigh)</td><td class="score">67.0</td><td class="bar-col" aria-hidden="true"><span class="bar" style="--score:67.0%"></span></td><td class="note"><span data-zh="v1.1 榜，取整显示" data-en="v1.1 board, shown rounded">v1.1 board, shown rounded</span></td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div class="board" id="board-terminal" role="tabpanel" aria-labelledby="tab-terminal" hidden>
+          <div class="board-head"><span class="board-title">Terminal-Bench 2.1</span><span class="board-meta" data-zh="89 题 · 完成率（%）" data-en="89 tasks · completion rate (%)">89 tasks · completion rate (%)</span></div>
+          <div class="table-scroll">
+            <table class="board">
+              <thead><tr><th scope="col">#</th><th scope="col"><span data-zh="方法" data-en="Method">Method</span></th><th scope="col" class="num"><span data-zh="分数" data-en="Score">Score</span></th><th scope="col" class="bar-col"><span class="visually-hidden">Chart</span></th><th scope="col" class="note"><span data-zh="说明" data-en="Notes">Notes</span></th></tr></thead>
+              <tbody class="board-body">
+                <tr class="ours"><td class="rank">1</td><td class="method">Object Run <span class="board-tag">F</span></td><td class="score">85.4</td><td class="bar-col" aria-hidden="true"><span class="bar" style="--score:85.4%"></span></td><td class="note"><span data-zh="任务自带限制" data-en="Task-defined limits">Task-defined limits</span></td></tr>
+                <tr><td class="rank">2</td><td class="method">Claude Code</td><td class="score">83.8</td><td class="bar-col" aria-hidden="true"><span class="bar" style="--score:83.8%"></span></td><td class="note"><span data-zh="官方榜，单次作答" data-en="Official board, single attempt">Official board, single attempt</span></td></tr>
+                <tr><td class="rank">3</td><td class="method">Codex</td><td class="score">83.1</td><td class="bar-col" aria-hidden="true"><span class="bar" style="--score:83.1%"></span></td><td class="note"><span data-zh="官方榜，单次作答" data-en="Official board, single attempt">Official board, single attempt</span></td></tr>
+                <tr><td class="rank">4</td><td class="method">Terminus 2</td><td class="score">80.45</td><td class="bar-col" aria-hidden="true"><span class="bar" style="--score:80.45%"></span></td><td class="note"><span data-zh="2.1 官方榜存档" data-en="Archived official 2.1 board">Archived official 2.1 board</span></td></tr>
+                <tr><td class="rank">5</td><td class="method">Cursor CLI</td><td class="score">79.3</td><td class="bar-col" aria-hidden="true"><span class="bar" style="--score:79.3%"></span></td><td class="note"><span data-zh="官方榜，单次作答" data-en="Official board, single attempt">Official board, single attempt</span></td></tr>
+                <tr><td class="rank">6</td><td class="method">Claude Code</td><td class="score">78.9</td><td class="bar-col" aria-hidden="true"><span class="bar" style="--score:78.9%"></span></td><td class="note"><span data-zh="官方榜，单次作答" data-en="Official board, single attempt">Official board, single attempt</span></td></tr>
+                <tr><td class="rank">7</td><td class="method">Codex</td><td class="score">78.4</td><td class="bar-col" aria-hidden="true"><span class="bar" style="--score:78.4%"></span></td><td class="note"><span data-zh="官方榜，单次作答" data-en="Official board, single attempt">Official board, single attempt</span></td></tr>
+                <tr><td class="rank">8</td><td class="method">Terminus 2</td><td class="score">77.98</td><td class="bar-col" aria-hidden="true"><span class="bar" style="--score:77.98%"></span></td><td class="note"><span data-zh="2.1 官方榜存档" data-en="Archived official 2.1 board">Archived official 2.1 board</span></td></tr>
+                <tr><td class="rank">9</td><td class="method">Terminus-2</td><td class="score">76.2</td><td class="bar-col" aria-hidden="true"><span class="bar" style="--score:76.2%"></span></td><td class="note"></td></tr>
+                <tr><td class="rank">10</td><td class="method">mini-SWE-agent</td><td class="score">76.18</td><td class="bar-col" aria-hidden="true"><span class="bar" style="--score:76.18%"></span></td><td class="note"><span data-zh="2.1 官方榜存档" data-en="Archived official 2.1 board">Archived official 2.1 board</span></td></tr>
+                <tr><td class="rank">11</td><td class="method">Codex</td><td class="score">75.73</td><td class="bar-col" aria-hidden="true"><span class="bar" style="--score:75.73%"></span></td><td class="note"><span data-zh="2.1 官方榜存档" data-en="Archived official 2.1 board">Archived official 2.1 board</span></td></tr>
+                <tr><td class="rank">12</td><td class="method">Claude Code</td><td class="score">74.6</td><td class="bar-col" aria-hidden="true"><span class="bar" style="--score:74.6%"></span></td><td class="note"><span data-zh="官方榜，单次作答" data-en="Official board, single attempt">Official board, single attempt</span></td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div class="board" id="board-skills" role="tabpanel" aria-labelledby="tab-skills" hidden>
+          <div class="board-head"><span class="board-title">SkillsBench 1.1</span><span class="board-meta" data-zh="87 题 · 完成率（%）" data-en="87 tasks · completion rate (%)">87 tasks · completion rate (%)</span></div>
+          <div class="table-scroll">
+            <table class="board">
+              <thead><tr><th scope="col">#</th><th scope="col"><span data-zh="方法" data-en="Method">Method</span></th><th scope="col" class="num"><span data-zh="分数" data-en="Score">Score</span></th><th scope="col" class="bar-col"><span class="visually-hidden">Chart</span></th><th scope="col" class="note"><span data-zh="说明" data-en="Notes">Notes</span></th></tr></thead>
+              <tbody class="board-body">
+                <tr class="ours"><td class="rank">1</td><td class="method">Object Run <span class="board-tag">F</span></td><td class="score">80.5</td><td class="bar-col" aria-hidden="true"><span class="bar" style="--score:80.5%"></span></td><td class="note"><span data-zh="任务自带限制" data-en="Task-defined limits">Task-defined limits</span></td></tr>
+                <tr><td class="rank">2</td><td class="method">OpenHands</td><td class="score">67.3</td><td class="bar-col" aria-hidden="true"><span class="bar" style="--score:67.3%"></span></td><td class="note"><span data-zh="with Skills" data-en="With Skills">With Skills</span></td></tr>
+                <tr><td class="rank">3</td><td class="method">Codex</td><td class="score">66.5</td><td class="bar-col" aria-hidden="true"><span class="bar" style="--score:66.5%"></span></td><td class="note"><span data-zh="with Skills" data-en="With Skills">With Skills</span></td></tr>
+                <tr><td class="rank">4</td><td class="method">Claude Code</td><td class="score">61.2</td><td class="bar-col" aria-hidden="true"><span class="bar" style="--score:61.2%"></span></td><td class="note"><span data-zh="with Skills" data-en="With Skills">With Skills</span></td></tr>
+                <tr><td class="rank">5</td><td class="method">Gemini CLI</td><td class="score">60.8</td><td class="bar-col" aria-hidden="true"><span class="bar" style="--score:60.8%"></span></td><td class="note"><span data-zh="with Skills" data-en="With Skills">With Skills</span></td></tr>
+                <tr><td class="rank">6</td><td class="method">OpenHands</td><td class="score">58.4</td><td class="bar-col" aria-hidden="true"><span class="bar" style="--score:58.4%"></span></td><td class="note"><span data-zh="官方榜，单次作答" data-en="Official board, single attempt">Official board, single attempt</span></td></tr>
+                <tr><td class="rank">7</td><td class="method">Claude Code</td><td class="score">55.9</td><td class="bar-col" aria-hidden="true"><span class="bar" style="--score:55.9%"></span></td><td class="note"><span data-zh="官方榜，单次作答" data-en="Official board, single attempt">Official board, single attempt</span></td></tr>
+                <tr><td class="rank">8</td><td class="method">Gemini CLI</td><td class="score">54.6</td><td class="bar-col" aria-hidden="true"><span class="bar" style="--score:54.6%"></span></td><td class="note"><span data-zh="官方榜，单次作答" data-en="Official board, single attempt">Official board, single attempt</span></td></tr>
+                <tr><td class="rank">9</td><td class="method">OpenHands</td><td class="score">54.1</td><td class="bar-col" aria-hidden="true"><span class="bar" style="--score:54.1%"></span></td><td class="note"><span data-zh="v1.1 官方榜，带技能" data-en="v1.1 official, with skills">v1.1 official, with skills</span></td></tr>
+                <tr><td class="rank">10</td><td class="method">OpenHands</td><td class="score">54.0</td><td class="bar-col" aria-hidden="true"><span class="bar" style="--score:54.0%"></span></td><td class="note"><span data-zh="v1.1 官方榜，带技能" data-en="v1.1 official, with skills">v1.1 official, with skills</span></td></tr>
+                <tr><td class="rank">11</td><td class="method">OpenHands</td><td class="score">53.1</td><td class="bar-col" aria-hidden="true"><span class="bar" style="--score:53.1%"></span></td><td class="note"><span data-zh="v1.1 官方榜，带技能" data-en="v1.1 official, with skills">v1.1 official, with skills</span></td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <!-- LEADERBOARDS:END -->
+        </div>
+        <p class="fine-print" data-reveal data-zh="已发表分数取自原论文或官方榜单，协议与预算各不相同，口径见论文附录。" data-en="Published scores come from the original papers or official boards; protocols and budgets differ. See the paper&#x27;s appendix.">Published scores come from the original papers or official boards; protocols and budgets differ. See the paper's appendix.</p>
+      </div>
+    </section>
+
+    <section class="section" id="replay" aria-labelledby="replay-title">
+      <div class="container">
+        <a class="replay-teaser" href="/runs/">
+          <div class="teaser-copy">
+            <h2 id="replay-title" data-zh="运行回放" data-en="Run replays">Run replays</h2>
+            <p data-zh="30 道任务、768 次判决，按时间顺序逐条重放：每次被拒时离通过还差多少，第几次判决通过。另附七个评测的 S(n) 曲线。" data-en="All 768 verdicts from 30 tasks, replayed in order: how close each rejected answer was, and which verdict finally passed. Also the S(n) curves for seven benchmarks.">All 768 verdicts from 30 tasks, replayed in order: how close each rejected answer was, and which verdict finally passed. Also the S(n) curves for seven benchmarks.</p>
+            <span class="teaser-link" data-zh="打开运行回放 →" data-en="Open the replays →">Open the replays →</span>
+          </div>
+          <svg class="teaser-spark" viewbox="0 0 300 140" aria-hidden="true">
+            <line class="teaser-base" x1="0" x2="300" y1="124" y2="124"></line>
+            <path class="teaser-line" pathlength="1" d="M14 124L50 45L86 40L122 40L158 40L194 124L230 26L266 14"></path>
+            <rect class="teaser-mark fmt" x="9" y="119" width="10" height="10" rx="2"></rect>
+            <circle class="teaser-mark near" cx="50" cy="45" r="5"></circle><circle class="teaser-mark near" cx="86" cy="40" r="5"></circle><circle class="teaser-mark near" cx="122" cy="40" r="5"></circle><circle class="teaser-mark near" cx="158" cy="40" r="5"></circle>
+            <rect class="teaser-mark fmt" x="189" y="119" width="10" height="10" rx="2"></rect>
+            <circle class="teaser-mark near" cx="230" cy="26" r="5"></circle>
+            <circle class="teaser-mark acc" cx="266" cy="14" r="7"></circle>
+          </svg>
+        </a>
+      </div>
+    </section>
+
+    <section class="section" id="research" aria-labelledby="research-title">
+      <div class="container">
+        <div class="section-head" data-reveal>
+          <h2 id="research-title"><span data-zh="真实的科研问题。" data-en="Real research problems.">Real research problems.</span><br><span class="muted" data-zh="每项不到 2 美元。" data-en="Under US$2 each.">Under US$2 each.</span></h2>
+        </div>
+
+        <div class="research-grid">
+          <a class="card spot research-card" href="/blog/dna-codes/" data-reveal style="--d:0">
+            <span class="research-field" data-zh="DNA 编码" data-en="DNA codes">DNA codes</span>
+            <p class="research-metric">2.5×</p>
+            <h3 data-zh="编码集合从 676 条扩大到 1,688 条" data-en="Code size raised from 676 to 1,688 words">Code size raised from 676 to 1,688 words</h3>
+          </a>
+          <a class="card spot research-card" href="/blog/runge-kutta/" data-reveal style="--d:1">
+            <span class="research-field" data-zh="数值方法" data-en="Numerical methods">Numerical methods</span>
+            <p class="research-metric">−10.65%</p>
+            <h3 data-zh="主截断误差达到可行集上的下界" data-en="Leading truncation error at the feasible lower bound">Leading truncation error at the feasible lower bound</h3>
+          </a>
+          <a class="card spot research-card" href="/blog/spherical-design/" data-reveal style="--d:2">
+            <span class="research-field" data-zh="几何优化" data-en="Geometric optimization">Geometric optimization</span>
+            <p class="research-metric">4</p>
+            <h3 data-zh="个经区间算术证明的非全局局部极小" data-en="non-global local minima, proved by interval arithmetic">non-global local minima, proved by interval arithmetic</h3>
+          </a>
+          <a class="card spot research-card" href="/blog/rna-bound/" data-reveal style="--d:3">
+            <span class="research-field" data-zh="RNA 设计" data-en="RNA design">RNA design</span>
+            <p class="research-metric">−15.8%</p>
+            <h3 data-zh="折叠概率上界从 0.1874 降至 0.1577" data-en="Folding-probability bound cut from 0.1874 to 0.1577">Folding-probability bound cut from 0.1874 to 0.1577</h3>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section closing" aria-labelledby="closing-title">
+      <div class="closing-glow" aria-hidden="true"></div>
+      <div class="container" data-reveal>
+        <h2 id="closing-title" class="gradient-text" data-zh="从一个明确的目标开始。" data-en="Start with a clear goal.">Start with a clear goal.</h2>
+        <div class="closing-actions">
+          <button class="button button-primary" type="button" data-coming-soon>GitHub</button>
+          <a class="button button-secondary" href="/paper.pdf" data-zh="阅读论文 ↗" data-en="Read the paper ↗">Read the paper ↗</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <dialog class="coming-soon" id="coming-soon" aria-labelledby="coming-soon-title">
+    <h2 id="coming-soon-title" data-zh="即将推出..." data-en="Coming soon...">Coming soon...</h2>
+    <form method="dialog">
+      <button class="button button-secondary" type="submit" data-zh="关闭" data-en="Close" autofocus>Close</button>
+    </form>
+  </dialog>
+
+  <footer class="footer">
+    <span class="footer-brand">Object Run</span>
+    <div><a href="/runs/" data-zh="运行回放" data-en="Replays">Replays</a><a href="/blog/" data-zh="博客" data-en="Blog">Blog</a><a href="https://github.com/objrun-team/objrun" data-zh="源码 ↗" data-en="Source ↗">Source ↗</a></div>
+  </footer>
+</body>
+</html>

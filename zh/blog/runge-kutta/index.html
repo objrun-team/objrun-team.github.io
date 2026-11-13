@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="zh-Hans" data-language="zh">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#08090a">
+  <meta name="description" content="成本、内存和稳定性一点不变，主误差下降 10.65%，并且精确证明不可能再低。">
+  <title>找到一个可证明最优的低存储 Runge–Kutta 方法 · Object Run</title>
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <script src="/language.js?v=83edee4d6447" defer></script>
+  <link rel="stylesheet" href="/home.css?v=c67c753469f3">
+  <link rel="stylesheet" href="/blog/blog.css?v=ecf18c98115f">
+  <script src="/blog/blog.js?v=4e6fbe503dd2" defer></script>
+  <link rel="canonical" href="https://objrun-team.github.io/zh/blog/runge-kutta/">
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+  <link rel="alternate" hreflang="zh-Hans" href="https://objrun-team.github.io/zh/blog/runge-kutta/">
+  <link rel="alternate" hreflang="en" href="https://objrun-team.github.io/blog/runge-kutta/">
+  <link rel="alternate" hreflang="x-default" href="https://objrun-team.github.io/blog/runge-kutta/">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="ObjRun">
+  <meta property="og:title" content="找到一个可证明最优的低存储 Runge–Kutta 方法 · Object Run">
+  <meta property="og:description" content="成本、内存和稳定性一点不变，主误差下降 10.65%，并且精确证明不可能再低。">
+  <meta property="og:url" content="https://objrun-team.github.io/zh/blog/runge-kutta/">
+  <meta property="og:locale" content="zh_CN">
+  <meta property="og:locale:alternate" content="en_US">
+  <meta property="og:image" content="https://objrun-team.github.io/media/objrun-poster.png">
+  <meta property="og:image:type" content="image/png">
+  <meta property="og:image:width" content="1920">
+  <meta property="og:image:height" content="1080">
+  <meta property="og:image:alt" content="Object Run">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="找到一个可证明最优的低存储 Runge–Kutta 方法 · Object Run">
+  <meta name="twitter:description" content="成本、内存和稳定性一点不变，主误差下降 10.65%，并且精确证明不可能再低。">
+  <meta name="twitter:image" content="https://objrun-team.github.io/media/objrun-poster.png">
+  <meta name="twitter:image:alt" content="Object Run">
+  <link rel="alternate" type="text/plain" href="/llms.txt" title="ObjRun source index">
+  <script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "BlogPosting", "@id": "https://objrun-team.github.io/zh/blog/runge-kutta/#page", "url": "https://objrun-team.github.io/zh/blog/runge-kutta/", "name": "找到一个可证明最优的低存储 Runge–Kutta 方法 · Object Run", "description": "成本、内存和稳定性一点不变，主误差下降 10.65%，并且精确证明不可能再低。", "inLanguage": "zh-Hans", "isPartOf": {"@id": "https://objrun-team.github.io/#website"}, "about": {"@id": "https://objrun-team.github.io/#software"}, "headline": "找到一个可证明最优的低存储 Runge–Kutta 方法", "datePublished": "2026-10-30", "mainEntityOfPage": "https://objrun-team.github.io/zh/blog/runge-kutta/", "citation": ["https://doi.org/10.1007/s10543-026-01139-3"]}]}</script>
+</head>
+<body>
+  <header class="site-header">
+    <nav class="navigation" aria-label="Main navigation">
+      <a class="brand" href="/zh/">Object Run</a>
+      <div class="nav-links">
+        <a href="/zh/#benchmarks">评测</a>
+        <a href="/zh/#leaderboards">排行榜</a>
+        <a href="/zh/runs/">运行回放</a>
+        <a href="/zh/#research">科研</a>
+        <a href="/zh/blog/">博客</a>
+        <a id="language" href="/blog/runge-kutta/" hreflang="en" data-lang="en" aria-label="Switch to English">EN</a>
+      </div>
+    </nav>
+  </header>
+  <main>
+    <article class="article">
+      <a class="article-back" href="/zh/blog/">← 全部文章</a>
+      <p class="article-kicker"><svg class="research-icon" viewbox="0 0 48 48" aria-hidden="true"><path d="M6 40h8v-8h8v-8h8v-8h8v-8h4M6 42C18 38 30 24 42 6"></path></svg><span>数值方法 · 2026 年 10 月 30 日</span></p>
+      <h1>找到一个可证明最优的低存储 Runge–Kutta 方法</h1>
+      <p class="dek">计算流体力学的大规模模拟依赖低存储 Runge–Kutta 方法。我们给 Object Run 一个今年刚发表的方法，要求它在不增加任何计算、内存和稳定性代价的前提下降低误差。1 小时 37 分钟后，它交回一个主误差低 10.65% 的新方法，而且证明了在这组约束下，没有任何方法能做得更好。</p>
+
+      <div class="stats">
+        <div class="stat"><p class="stat-value">−10.65<span>%</span></p><p class="stat-label">主截断误差范数</p></div>
+        <div class="stat"><p class="stat-value">639/45752</p><p class="stat-label">新方法的主误差范数<br>等于可行集上的下界</p></div>
+        <div class="stat"><p class="stat-value">1 h 37 m</p><p class="stat-label">从首次模型调用到结束<br>API 费用 US$1.60</p></div>
+      </div>
+
+      <h2>背景</h2>
+      <p>显式 Runge–Kutta 方法求解 <span class="math">y′ = f(t, y)</span> 时，每走一步要多次计算右端函数并保存中间结果。Williamson 提出的 2N 格式只需要两个存储向量，与阶段数无关，因此在显存或内存受限的大规模模拟中很常用。代价是系数必须满足额外的代数关系，设计空间比一般方法小。</p>
+      <p>Bazavov 在 BIT Numerical Mathematics 发表的<a href="https://doi.org/10.1007/s10543-026-01139-3">论文</a>系统推导了 2N 格式的阶条件，并给出若干有理系数的例子。我们选取其中 Table 8 的五阶段三阶方法作为参考。</p>
+
+      <h2>实验设置</h2>
+      <p>我们把影响成本和稳定性的因素全部固定：每步 5 次函数求值，三阶精度，使用原始的 2N 递推，稳定多项式与参考方法完全相同。在这些约束下，可调的只剩 10 个低存储系数。优化目标是 NodePy 定义的四阶误差系数向量的 2-范数，即三阶方法的主截断误差系数。结果由事先确定的验证程序判定：它从提交的系数重新构造 Butcher 表，并在 100、160 和 180 位十进制精度下核对全部约束。</p>
+      <p>还有一个意外收获：在精确重建参考方法时，我们发现论文 Table 8 印刷的 a<sub>51</sub> = 12053/11172 有误，正确值应为 2053/11172。</p>
+
+      <h2>结果</h2>
+      <p>主误差范数从 0.015632 降到 0.013967。更重要的是，模型找到了为什么不可能再低：四个误差分量中，有一个只取决于稳定多项式的 z<sup>4</sup> 系数，在本设定下固定为 −639/45752。新方法让另外三个分量精确为零，因此 639/45752 是这组约束下的理论下界，新方法恰好达到了它。在这组约束下，新方法就是最优解。</p>
+      <p>为排除数值误差的影响，我们用精确有理数区间算术，从原始递推独立构造方程组和 Jacobian，借助区间 Newton 法证明在一个极小的有理区间盒内存在唯一的代数解。保存的系数与该解的距离小于 3.5×10<sup>−180</sup>。这一证明不依赖模型给出的多项式、Jacobian 或判定结果。</p>
+
+      <figure class="figure">
+        <p class="figure-title">四个实际问题上的误差变化</p>
+        <p class="figure-sub">相同函数求值次数（1,600 次）下的终点最大误差，相对原方法。测试问题在优化开始前选定，未参与优化。</p>
+        <svg viewbox="0 0 720 236" role="img" aria-label="新方法相对原方法的误差变化：非自治 Riccati −40.7%，立方衰减 −31.0%，耦合非线性系统 −24.5%，Logistic +8.5%。">
+          <g class="grid"><line x1="262.9" x2="262.9" y1="8" y2="206"></line><line x1="408.6" x2="408.6" y1="8" y2="206"></line><line x1="700.0" x2="700.0" y1="8" y2="206"></line></g>
+          <line class="zero" x1="554.3" x2="554.3" y1="8" y2="206"></line>
+          <g class="axis"><text x="262.9" y="226" text-anchor="middle">-40%</text><text x="408.6" y="226" text-anchor="middle">-20%</text><text x="554.3" y="226" text-anchor="middle">0</text><text x="700.0" y="226" text-anchor="middle">+20%</text></g>
+          <text class="label-strong" x="0" y="35">非自治 Riccati</text><rect id="rk-b0" class="bar-good" x="257.8" y="20" width="296.5" height="22" rx="4"></rect><text class="label-strong" x="249.8" y="35" text-anchor="end">-40.7%</text><text class="label-strong" x="0" y="85">立方衰减</text><rect id="rk-b1" class="bar-good" x="328.4" y="70" width="225.9" height="22" rx="4"></rect><text class="label-strong" x="320.4" y="85" text-anchor="end">-31.0%</text><text class="label-strong" x="0" y="135">耦合非线性系统</text><rect id="rk-b2" class="bar-good" x="375.8" y="120" width="178.5" height="22" rx="4"></rect><text class="label-strong" x="367.8" y="135" text-anchor="end">-24.5%</text><text class="label-strong" x="0" y="185">Logistic</text><rect id="rk-b3" class="bar-bad" x="554.3" y="170" width="61.9" height="22" rx="4"></rect><text class="label-strong" x="624.2" y="185" text-anchor="start">+8.5%</text>
+          <rect class="hit" x="0" y="8" width="720" height="46" data-mark="rk-b0" data-tip="非自治 Riccati
+原方法误差 1.422e-08
+新方法误差 8.429e-09
+变化 -40.7%"></rect><rect class="hit" x="0" y="58" width="720" height="46" data-mark="rk-b1" data-tip="立方衰减
+原方法误差 1.457e-08
+新方法误差 1.006e-08
+变化 -31.0%"></rect><rect class="hit" x="0" y="108" width="720" height="46" data-mark="rk-b2" data-tip="耦合非线性系统
+原方法误差 9.429e-09
+新方法误差 7.115e-09
+变化 -24.5%"></rect><rect class="hit" x="0" y="158" width="720" height="46" data-mark="rk-b3" data-tip="Logistic
+原方法误差 2.126e-09
+新方法误差 2.306e-09
+变化 +8.5%"></rect>
+        </svg>
+        <div class="legend"><span><i class="swatch-good"></i>误差降低</span><span><i class="swatch-bad"></i>误差升高</span></div>
+        <details><summary>查看数据表</summary>
+          <table class="data"><thead><tr><th>问题</th><th>原方法误差</th><th>新方法误差</th><th>变化</th></tr></thead><tbody><tr><td>非自治 Riccati</td><td>1.422e-08</td><td>8.429e-09</td><td>-40.7%</td></tr><tr><td>立方衰减</td><td>1.457e-08</td><td>1.006e-08</td><td>-31.0%</td></tr><tr><td>耦合非线性系统</td><td>9.429e-09</td><td>7.115e-09</td><td>-24.5%</td></tr><tr><td>Logistic</td><td>2.126e-09</td><td>2.306e-09</td><td>+8.5%</td></tr></tbody></table>
+        </details>
+      </figure>
+
+      <p>在四个从未参与优化的非线性常微分方程上，新方法在相同计算量下有三个问题的误差下降 24% 到 41%。</p>
+
+      <section class="scope">
+        <h2>注释</h2>
+        <p>最优性针对固定的五阶段 2N 结构和固定稳定多项式；采用其他稳定多项式的方法属于不同的可行集。新方法最大系数绝对值为 5.32（原方法 1.49）。Logistic 测试问题误差上升约 8.5%。运行共 88 次模型请求，API 费用 1.60 美元。</p>
+      </section>
+
+      <nav class="post-nav" aria-label="更多文章"><a class="prev" href="/zh/blog/dna-codes/"><small>← 上一篇</small>五小时，把 DNA 编码扩大到原来的 2.5 倍</a><a class="next" href="/zh/blog/spherical-design/"><small>下一篇 →</small>把一个数学猜测变成四个定理</a></nav>
+    </article>
+
+  </main>
+  <footer class="footer">
+    <span class="footer-brand">Object Run</span>
+    <div><a href="/zh/blog/">博客</a><a href="https://github.com/objrun-team/objrun">源码 ↗</a><a href="/paper.pdf">论文 ↗</a></div>
+  </footer>
+</body>
+</html>

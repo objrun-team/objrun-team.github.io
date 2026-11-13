@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="en" data-language="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#08090a">
+  <meta name="description" content="After enumerating 8.15 billion base assignments, Object Run tightened the probability upper bound for an Eterna100 puzzle from 0.1874 to 0.1577.">
+  <title>Proving the design limit of an RNA structure · Object Run</title>
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <script src="/language.js?v=83edee4d6447" defer></script>
+  <link rel="stylesheet" href="/home.css?v=c67c753469f3">
+  <link rel="stylesheet" href="/blog/blog.css?v=ecf18c98115f">
+  <script src="/blog/blog.js?v=4e6fbe503dd2" defer></script>
+  <link rel="canonical" href="https://objrun-team.github.io/blog/rna-bound/">
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+  <link rel="alternate" hreflang="zh-Hans" href="https://objrun-team.github.io/zh/blog/rna-bound/">
+  <link rel="alternate" hreflang="en" href="https://objrun-team.github.io/blog/rna-bound/">
+  <link rel="alternate" hreflang="x-default" href="https://objrun-team.github.io/blog/rna-bound/">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="ObjRun">
+  <meta property="og:title" content="Proving the design limit of an RNA structure · Object Run">
+  <meta property="og:description" content="After enumerating 8.15 billion base assignments, Object Run tightened the probability upper bound for an Eterna100 puzzle from 0.1874 to 0.1577.">
+  <meta property="og:url" content="https://objrun-team.github.io/blog/rna-bound/">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:locale:alternate" content="zh_CN">
+  <meta property="og:image" content="https://objrun-team.github.io/media/objrun-poster.png">
+  <meta property="og:image:type" content="image/png">
+  <meta property="og:image:width" content="1920">
+  <meta property="og:image:height" content="1080">
+  <meta property="og:image:alt" content="Object Run">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Proving the design limit of an RNA structure · Object Run">
+  <meta name="twitter:description" content="After enumerating 8.15 billion base assignments, Object Run tightened the probability upper bound for an Eterna100 puzzle from 0.1874 to 0.1577.">
+  <meta name="twitter:image" content="https://objrun-team.github.io/media/objrun-poster.png">
+  <meta name="twitter:image:alt" content="Object Run">
+  <link rel="alternate" type="text/plain" href="/llms.txt" title="ObjRun source index">
+  <script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "BlogPosting", "@id": "https://objrun-team.github.io/blog/rna-bound/#page", "url": "https://objrun-team.github.io/blog/rna-bound/", "name": "Proving the design limit of an RNA structure · Object Run", "description": "After enumerating 8.15 billion base assignments, Object Run tightened the probability upper bound for an Eterna100 puzzle from 0.1874 to 0.1577.", "inLanguage": "en", "isPartOf": {"@id": "https://objrun-team.github.io/#website"}, "about": {"@id": "https://objrun-team.github.io/#software"}, "headline": "Proving the design limit of an RNA structure", "datePublished": "2026-10-30", "mainEntityOfPage": "https://objrun-team.github.io/blog/rna-bound/", "citation": ["https://arxiv.org/abs/2602.13610"]}]}</script>
+</head>
+<body>
+  <header class="site-header">
+    <nav class="navigation" aria-label="Main navigation">
+      <a class="brand" href="/">Object Run</a>
+      <div class="nav-links">
+        <a href="/#benchmarks">Benchmarks</a>
+        <a href="/#leaderboards">Leaderboards</a>
+        <a href="/runs/">Replays</a>
+        <a href="/#research">Research</a>
+        <a href="/blog/">Blog</a>
+        <a id="language" href="/zh/blog/rna-bound/" hreflang="zh-Hans" data-lang="zh" aria-label="切换为中文">中文</a>
+      </div>
+    </nav>
+  </header>
+  <main>
+    <article class="article">
+      <a class="article-back" href="/blog/">← All posts</a>
+      <p class="article-kicker"><svg class="research-icon" viewbox="0 0 48 48" aria-hidden="true"><path d="M17 44V19a7 7 0 0 1 14 0v25M17 25h14M17 31h14M17 37h14"></path></svg><span>RNA design · October 30, 2026</span></p>
+      <h1>Proving the design limit of an RNA structure</h1>
+      <p class="dek">Finding a good RNA sequence only shows what is possible. Proving that no sequence can do better shows where the limit of design lies. For Repetitious Sequences 8/10 in Eterna100, Object Run enumerated 8.15 billion base assignments and tightened the provable upper bound on the folding probability from 0.1874 to 0.1577.</p>
+
+      <div class="stats">
+        <div class="stat"><p class="stat-value">−15.85<span>%</span></p><p class="stat-label">Overall probability upper bound</p></div>
+        <div class="stat"><p class="stat-value">8.15<span> B</span></p><p class="stat-label">Base assignments fully enumerated</p></div>
+        <div class="stat"><p class="stat-value">2 h 7 m</p><p class="stat-label">From first model call to finish<br>API spend US$1.02</p></div>
+      </div>
+
+      <h2>Background</h2>
+      <p>In a thermodynamic model, an RNA sequence can fold into many secondary structures, and the probability of each is determined by its free energy. A designer wants the target structure's probability to be as high as possible, but some structures have inherent competitors: whatever sequence is chosen, other structures always take a sizable share of the probability.</p>
+      <p><a href="https://arxiv.org/abs/2602.13610">arXiv:2602.13610</a> proposes a method that gives upper bounds of this kind. It decomposes the target structure into structural motifs, picks a set of competing structures for each motif, computes an upper limit on the target structure's probability over every base assignment of the motif that satisfies the pairing constraints, and then combines the per-motif results into an overall bound. The better the competing structures, the tighter the bound.</p>
+
+      <h2>Setup</h2>
+      <p>The target structure and energy model were fixed before the run. The main target was <strong>Repetitious Sequences 8/10</strong>, whose upper bound reproduced from the authors' public cache is 0.18740126; the fallback target was Chicken feet. The energy model is ViennaRNA 2.7.0 with Turner 2004 parameters at 37°C, without pseudoknots. The model's job was to find a better combination of competing structures; whether a bound holds was decided by an independent verifier.</p>
+
+      <h2>Results</h2>
+      <p>The model used 14 competing structures on the core motif. That motif has 5 paired sites and 10 unpaired sites, for 6<sup>5</sup> × 4<sup>10</sup> = 8,153,726,976 feasible assignments, all of which the verifier enumerated. The three short hairpin motifs each used 15 competing structures and cover 147,456 assignments each. The combined overall bound is about 0.157700067, 15.85% tighter than the authors' result.</p>
+
+      <figure class="figure">
+        <p class="figure-title">Upper bound on the folding probability of Repetitious Sequences 8/10</p>
+        <p class="figure-sub">The highest probability with which any sequence can fold into the target structure under the given energy model.</p>
+        <svg viewbox="0 0 720 150" role="img" aria-label="Upper bound on the folding probability of Repetitious Sequences 8/10: original bound 0.18740, new bound 0.15770.">
+          <g class="grid"><line x1="317.5" x2="317.5" y1="8" y2="112"></line><line x1="435.0" x2="435.0" y1="8" y2="112"></line><line x1="552.5" x2="552.5" y1="8" y2="112"></line><line x1="670.0" x2="670.0" y1="8" y2="112"></line></g>
+          <line class="zero" x1="200" x2="200" y1="8" y2="112"></line>
+          <g class="axis"><text x="200.0" y="132" text-anchor="middle">0.00</text><text x="317.5" y="132" text-anchor="middle">0.05</text><text x="435.0" y="132" text-anchor="middle">0.10</text><text x="552.5" y="132" text-anchor="middle">0.15</text><text x="670.0" y="132" text-anchor="middle">0.20</text></g>
+          <text class="label-strong" x="0" y="35">Original (authors)</text>
+          <rect id="rna-b0" x="200" y="20" width="440.4" height="22" rx="4" class="bar-ref"></rect>
+          <text class="label-strong" x="648.4" y="35">0.1874</text>
+          <text class="label-strong" x="0" y="85">New bound</text>
+          <rect id="rna-b1" class="bar-good" x="200" y="70" width="370.6" height="22" rx="4"></rect>
+          <text class="label-strong" x="578.6" y="85">0.1577</text>
+          <rect class="hit" x="0" y="8" width="720" height="46" data-mark="rna-b0" data-tip="Bound reproduced from the authors&#x27; public data
+0.18740125894"></rect>
+          <rect class="hit" x="0" y="58" width="720" height="46" data-mark="rna-b1" data-tip="New overall bound (conservatively rounded)
+0.15770006692
+15.85% tighter"></rect>
+        </svg>
+      </figure>
+
+
+      <h2>Verification</h2>
+      <p>The verifier uses none of the numbers reported by the model. It rederives the variables from the target structure, rebuilds the energy parameter tables, checks that every competing structure is a legal secondary structure and that the motif decomposition preserves the boundary conditions, then fully enumerates every assignment and wraps the floating-point results in conservative interval envelopes. Maxima from random sampling and unfinished enumerations are never accepted as bounds. The final bound is given to 60 decimal places, with every rounding in the direction that works against the claim.</p>
+
+      <section class="scope">
+        <h2>Notes</h2>
+        <p>Results are based on ViennaRNA 2.7.0 with the Turner 2004 energy model. The fallback target from the same run, Chicken feet, did not improve. The run made 337 model requests, cost US$1.02 in API spend and took 2 hours 7 minutes.</p>
+      </section>
+
+      <nav class="post-nav" aria-label="More posts"><a class="prev" href="/blog/spherical-design/"><small>← Previous</small>Turning a conjecture into four theorems</a><span></span></nav>
+    </article>
+
+  </main>
+  <footer class="footer">
+    <span class="footer-brand">Object Run</span>
+    <div><a href="/blog/">Blog</a><a href="https://github.com/objrun-team/objrun">Source ↗</a><a href="/paper.pdf">Paper ↗</a></div>
+  </footer>
+</body>
+</html>

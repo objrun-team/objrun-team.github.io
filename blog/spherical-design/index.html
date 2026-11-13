@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="en" data-language="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#08090a">
+  <meta name="description" content="A 2024 paper conjectured that the spherical-design landscape has non-global local minima. Object Run found four and proved each one rigorously.">
+  <title>Turning a conjecture into four theorems · Object Run</title>
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <script src="/language.js?v=83edee4d6447" defer></script>
+  <link rel="stylesheet" href="/home.css?v=c67c753469f3">
+  <link rel="stylesheet" href="/blog/blog.css?v=ecf18c98115f">
+  <script src="/blog/blog.js?v=4e6fbe503dd2" defer></script>
+  <link rel="canonical" href="https://objrun-team.github.io/blog/spherical-design/">
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+  <link rel="alternate" hreflang="zh-Hans" href="https://objrun-team.github.io/zh/blog/spherical-design/">
+  <link rel="alternate" hreflang="en" href="https://objrun-team.github.io/blog/spherical-design/">
+  <link rel="alternate" hreflang="x-default" href="https://objrun-team.github.io/blog/spherical-design/">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="ObjRun">
+  <meta property="og:title" content="Turning a conjecture into four theorems · Object Run">
+  <meta property="og:description" content="A 2024 paper conjectured that the spherical-design landscape has non-global local minima. Object Run found four and proved each one rigorously.">
+  <meta property="og:url" content="https://objrun-team.github.io/blog/spherical-design/">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:locale:alternate" content="zh_CN">
+  <meta property="og:image" content="https://objrun-team.github.io/media/objrun-poster.png">
+  <meta property="og:image:type" content="image/png">
+  <meta property="og:image:width" content="1920">
+  <meta property="og:image:height" content="1080">
+  <meta property="og:image:alt" content="Object Run">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Turning a conjecture into four theorems · Object Run">
+  <meta name="twitter:description" content="A 2024 paper conjectured that the spherical-design landscape has non-global local minima. Object Run found four and proved each one rigorously.">
+  <meta name="twitter:image" content="https://objrun-team.github.io/media/objrun-poster.png">
+  <meta name="twitter:image:alt" content="Object Run">
+  <link rel="alternate" type="text/plain" href="/llms.txt" title="ObjRun source index">
+  <script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "BlogPosting", "@id": "https://objrun-team.github.io/blog/spherical-design/#page", "url": "https://objrun-team.github.io/blog/spherical-design/", "name": "Turning a conjecture into four theorems · Object Run", "description": "A 2024 paper conjectured that the spherical-design landscape has non-global local minima. Object Run found four and proved each one rigorously.", "inLanguage": "en", "isPartOf": {"@id": "https://objrun-team.github.io/#website"}, "about": {"@id": "https://objrun-team.github.io/#software"}, "headline": "Turning a conjecture into four theorems", "datePublished": "2026-10-30", "mainEntityOfPage": "https://objrun-team.github.io/blog/spherical-design/", "citation": ["https://arxiv.org/abs/2405.19353"]}]}</script>
+</head>
+<body>
+  <header class="site-header">
+    <nav class="navigation" aria-label="Main navigation">
+      <a class="brand" href="/">Object Run</a>
+      <div class="nav-links">
+        <a href="/#benchmarks">Benchmarks</a>
+        <a href="/#leaderboards">Leaderboards</a>
+        <a href="/runs/">Replays</a>
+        <a href="/#research">Research</a>
+        <a href="/blog/">Blog</a>
+        <a id="language" href="/zh/blog/spherical-design/" hreflang="zh-Hans" data-lang="zh" aria-label="切换为中文">中文</a>
+      </div>
+    </nav>
+  </header>
+  <main>
+    <article class="article">
+      <a class="article-back" href="/blog/">← All posts</a>
+      <p class="article-kicker"><svg class="research-icon" viewbox="0 0 48 48" aria-hidden="true"><circle cx="24" cy="24" r="17"></circle><ellipse cx="24" cy="24" rx="17" ry="6.5"></ellipse><path d="M24 7c-6 6-6 28 0 34"></path><circle class="dot" cx="13" cy="19" r="2"></circle><circle class="dot" cx="31" cy="14" r="2"></circle><circle class="dot" cx="33" cy="31" r="2"></circle><circle class="dot" cx="19" cy="34" r="2"></circle></svg><span>Geometric optimization · October 30, 2026</span></p>
+      <h1>Turning a conjecture into four theorems</h1>
+      <p class="dek">A 2024 paper found that optimization algorithms searching for spherical designs sometimes get stuck. The authors conjectured that the optimization landscape contains non-global local minima, but gave no proof. In two hours, Object Run found four such local minima and produced a rigorous mathematical proof for each.</p>
+
+      <div class="stats">
+        <div class="stat"><p class="stat-value">4</p><p class="stat-label">Mutually inequivalent non-global local minima</p></div>
+        <div class="stat"><p class="stat-value">29,359</p><p class="stat-label">Configurations rechecked by an independent verifier</p></div>
+        <div class="stat"><p class="stat-value">2 h 2 m</p><p class="stat-label">From first model call to finish<br>API spend US$1.66</p></div>
+      </div>
+
+      <h2>Background</h2>
+      <p>A spherical design is a finite set of points on the sphere whose average over any low-degree polynomial equals that polynomial's average over the whole sphere. Such point sets are used in numerical integration, experimental design and coding theory. <a href="https://arxiv.org/abs/2405.19353">arXiv:2405.19353</a> casts the search for a spherical design as an optimization problem. For 24 unit vectors in six dimensions, the goal is to minimize</p>
+      <div class="display-math">F(V) = Σ<sub>i,j</sub> ⟨v<sub>i</sub>, v<sub>j</sub>⟩<sup>4</sup> − 36</div>
+      <p>When F reaches 0, the vectors form the design the paper is looking for. In Example 5.2 the paper observes that gradient-type methods sometimes stop where F is clearly above 0, and conjectures from this that the landscape has non-global local minima. But that is only a conjecture: a stopping point could also be a saddle point, or simply slow convergence. Turning the conjecture into a theorem needs a rigorous proof.</p>
+
+      <h2>Setup</h2>
+      <p>The task was to find at least one non-global local minimum that can be rigorously proven. The model wrote multi-start search, high-precision refinement and perturbation-check programs, and designed a procedure that leaves a saddle point along a direction of negative curvature and keeps descending. All 29,359 configurations saved during the search were recomputed by an independent verifier (Riemannian gradient, Hessian spectrum and perturbation response); none showed file corruption or computational error.</p>
+
+      <h2>Results</h2>
+
+      <figure class="figure">
+        <p class="figure-title">Energy of the four local minima</p>
+        <p class="figure-sub">The target design's energy is bounded above by 5.9×10<sup>−12</sup> and coincides with 0 in this chart.</p>
+        <svg viewbox="0 0 720 272" role="img" aria-label="The four local minima have energies 0.1237, 0.1373, 0.1768 and 0.2968; the paper&#x27;s target design is about 0.">
+          <g class="grid"><line x1="330.0" x2="330.0" y1="8" y2="242"></line><line x1="490.0" x2="490.0" y1="8" y2="242"></line><line x1="650.0" x2="650.0" y1="8" y2="242"></line></g>
+          <line class="zero" x1="170" x2="170" y1="8" y2="242"></line>
+          <g class="axis"><text x="170.0" y="262" text-anchor="middle">0.0</text><text x="330.0" y="262" text-anchor="middle">0.1</text><text x="490.0" y="262" text-anchor="middle">0.2</text><text x="650.0" y="262" text-anchor="middle">0.3</text></g>
+          <text class="label-strong" x="0" y="31">Paper's target</text>
+          <circle class="marker" cx="170" cy="26" r="5"></circle>
+          <text class="label" x="184" y="31">≈ 0 (global optimum)</text>
+          <text class="label-strong" x="0" y="77">Local minimum 1</text><rect id="sp-b0" class="bar-good" x="170" y="62" width="198.0" height="22" rx="4"></rect><text class="label-strong" x="376.0" y="77">0.1237</text><text class="label-strong" x="0" y="123">Local minimum 2</text><rect id="sp-b1" class="bar-good" x="170" y="108" width="219.6" height="22" rx="4"></rect><text class="label-strong" x="397.6" y="123">0.1373</text><text class="label-strong" x="0" y="169">Local minimum 3</text><rect id="sp-b2" class="bar-good" x="170" y="154" width="282.9" height="22" rx="4"></rect><text class="label-strong" x="460.9" y="169">0.1768</text><text class="label-strong" x="0" y="215">Local minimum 4</text><rect id="sp-b3" class="bar-good" x="170" y="200" width="474.9" height="22" rx="4"></rect><text class="label-strong" x="652.9" y="215">0.2968</text>
+          <rect class="hit" x="0" y="50" width="720" height="46" data-mark="sp-b0" data-tip="Local minimum 1
+Energy F = 0.123748846
+Smallest transverse Hessian eigenvalue 0.0771"></rect><rect class="hit" x="0" y="96" width="720" height="46" data-mark="sp-b1" data-tip="Local minimum 2
+Energy F = 0.137259931
+Smallest transverse Hessian eigenvalue 0.0215"></rect><rect class="hit" x="0" y="142" width="720" height="46" data-mark="sp-b2" data-tip="Local minimum 3
+Energy F = 0.176815226
+Smallest transverse Hessian eigenvalue 0.0886"></rect><rect class="hit" x="0" y="188" width="720" height="46" data-mark="sp-b3" data-tip="Local minimum 4
+Energy F = 0.296786738
+Smallest transverse Hessian eigenvalue 0.0577"></rect>
+        </svg>
+        <details><summary>Show data table</summary>
+          <table class="data"><thead><tr><th>Configuration</th><th>Energy F</th><th>Smallest transverse eigenvalue</th></tr></thead><tbody><tr><td>Local minimum 1</td><td>0.123748846</td><td>0.0771</td></tr><tr><td>Local minimum 2</td><td>0.137259931</td><td>0.0215</td></tr><tr><td>Local minimum 3</td><td>0.176815226</td><td>0.0886</td></tr><tr><td>Local minimum 4</td><td>0.296786738</td><td>0.0577</td></tr></tbody></table>
+        </details>
+      </figure>
+
+      <p>Four classes of configurations passed every check, with energies of about 0.1237, 0.1373, 0.1768 and 0.2968. The four energy intervals are pairwise disjoint, so no two of them are related by a global rotation, a reordering of the points or a change of signs. After rigorous normalization, the paper's target design has an energy bounded above by 5.9×10<sup>−12</sup>, below all four minima, so none of the four is a global optimum.</p>
+
+      <h2>Proof</h2>
+      <p>For each minimum, we placed the 183-dimensional KKT system in a box of dyadic rationals with radius 2<sup>−180</sup> and used outward-rounded interval arithmetic to verify two things: the box contains a stationary point that satisfies every unit-length constraint, and, after removing the 15 directions corresponding to global O(6) rotations, the Hessian is strictly positive definite on the remaining 105 tangent directions. Together these show that the point in the box is a strict local minimum modulo rotation.</p>
+      <p>The proofs were a joint effort between the model and us. We provided a reproduction of the paper's results, the verifier and the interval proof program for the first minimum. The model selected the second class of candidates and rewrote the proof program in a form based on an augmented system and Cholesky congruence transforms. The third class was found by one random seed of an existing solver, which the model recognized and refined; the fourth came from the saddle-descent procedure the model designed.</p>
+
+      <section class="scope">
+        <h2>Notes</h2>
+        <p>The proofs are computer-assisted, based on Arb interval arithmetic. This experiment proves the existence of four local minima; it does not classify all local minima. The run made 265 model requests, cost US$1.66 in API spend and took 2 hours 2 minutes.</p>
+      </section>
+
+      <nav class="post-nav" aria-label="More posts"><a class="prev" href="/blog/runge-kutta/"><small>← Previous</small>A provably optimal low-storage Runge–Kutta method</a><a class="next" href="/blog/rna-bound/"><small>Next →</small>Proving the design limit of an RNA structure</a></nav>
+    </article>
+
+  </main>
+  <footer class="footer">
+    <span class="footer-brand">Object Run</span>
+    <div><a href="/blog/">Blog</a><a href="https://github.com/objrun-team/objrun">Source ↗</a><a href="/paper.pdf">Paper ↗</a></div>
+  </footer>
+</body>
+</html>

@@ -1,0 +1,325 @@
+{
+  "snapshotDate": "2026-10-31",
+  "source": {
+    "path": "paper/current/data/comparison-presentation-v6.17.json",
+    "version": "v6.17-unified-comparisons",
+    "sha256": "ac2ea5aa7bfb30d64656c256dd5e0ce3da777192943b8c93eda62cf942c5b8ce"
+  },
+  "scope": "All twenty benchmarks from the paper headline set; featured ones are shown by default, the rest on expand. Historical trajectory configurations are not used.",
+  "metric": "Accepted outcomes divided by the full evaluation denominator. Non-accepted outcomes contribute zero.",
+  "comparison": "U is a locally executed single-attempt baseline. F includes objective checks and retries within the benchmark-specific budget; this is not a compute-matched comparison.",
+  "referencePolicy": "DeepSWE, Terminal-Bench and SkillsBench are shown as F completion rates only. Their external U references are not represented as paired local baselines.",
+  "results": [
+    {
+      "name": "FrontierScience-Olympiad",
+      "display": "comparison",
+      "featured": true,
+      "tasks": 100,
+      "baseline": {
+        "passed": 59,
+        "percent": 59.0
+      },
+      "objectRun": {
+        "passed": 86,
+        "percent": 86.0
+      },
+      "budget": "5/native, 10 min",
+      "protocol": "5/native, 10 min"
+    },
+    {
+      "name": "LAB-Bench",
+      "display": "comparison",
+      "featured": true,
+      "tasks": 708,
+      "baseline": {
+        "passed": 296,
+        "percent": 41.80790960451977
+      },
+      "objectRun": {
+        "passed": 705,
+        "percent": 99.57627118644068
+      },
+      "budget": "5/native, 10 min",
+      "protocol": "5/native, 10 min"
+    },
+    {
+      "name": "BIRD",
+      "display": "comparison",
+      "featured": true,
+      "tasks": 1534,
+      "baseline": {
+        "passed": 980,
+        "percent": 63.88526727509778
+      },
+      "objectRun": {
+        "passed": 1328,
+        "percent": 86.57105606258149
+      },
+      "budget": "5 checks per attempt; 10 minutes; oracle execution feedback; search off",
+      "protocol": "Oracle EX feedback; count-bounded controls"
+    },
+    {
+      "name": "Terminal-Bench 2.1",
+      "display": "completion",
+      "featured": true,
+      "tasks": 89,
+      "baseline": null,
+      "objectRun": {
+        "passed": 76,
+        "percent": 85.39325842696628
+      },
+      "budget": "Full 89-task F evaluation; task-specific limits; search off",
+      "protocol": "Full 89-task F evaluation; external U reference, not a local U arm."
+    },
+    {
+      "name": "AIME 2024–25",
+      "display": "comparison",
+      "featured": false,
+      "tasks": 60,
+      "baseline": {
+        "passed": 56,
+        "percent": 93.33333333333333
+      },
+      "objectRun": {
+        "passed": 60,
+        "percent": 100.0
+      },
+      "budget": "No-search historical pair",
+      "protocol": "No-search historical pair"
+    },
+    {
+      "name": "GPQA Diamond",
+      "display": "comparison",
+      "featured": false,
+      "tasks": 198,
+      "baseline": {
+        "passed": 163,
+        "percent": 82.32323232323232
+      },
+      "objectRun": {
+        "passed": 195,
+        "percent": 98.48484848484848
+      },
+      "budget": "Headline four-arm campaign; 5 checks per attempt; 10 minutes; search off",
+      "protocol": "Formal 198-task U/R/F campaign; separate binary batch. Six-benchmark trajectory cohort remains the earlier configuration."
+    },
+    {
+      "name": "CMT-Benchmark",
+      "display": "comparison",
+      "featured": false,
+      "tasks": 50,
+      "baseline": {
+        "passed": 13,
+        "percent": 26.0
+      },
+      "objectRun": {
+        "passed": 43,
+        "percent": 86.0
+      },
+      "budget": "Historical objective-mounted run",
+      "protocol": "Historical objective-mounted run"
+    },
+    {
+      "name": "ClimaQA-Gold MCQ",
+      "display": "comparison",
+      "featured": false,
+      "tasks": 245,
+      "baseline": {
+        "passed": 214,
+        "percent": 87.34693877551021
+      },
+      "objectRun": {
+        "passed": 236,
+        "percent": 96.3265306122449
+      },
+      "budget": "1 check per attempt; 10 minutes; hand-in repair included; search off",
+      "protocol": "Primary ObjRun score 236/245; hand-in repair included for six prior no-candidate tasks"
+    },
+    {
+      "name": "ChemBench (500)",
+      "display": "comparison",
+      "featured": false,
+      "tasks": 500,
+      "baseline": {
+        "passed": 337,
+        "percent": 67.4
+      },
+      "objectRun": {
+        "passed": 479,
+        "percent": 95.8
+      },
+      "budget": "Retained one-attempt U; current F cohort",
+      "protocol": "Retained one-attempt U; current F cohort"
+    },
+    {
+      "name": "ChemIQ",
+      "display": "comparison",
+      "featured": false,
+      "tasks": 816,
+      "baseline": {
+        "passed": 535,
+        "percent": 65.56372549019608
+      },
+      "objectRun": {
+        "passed": 784,
+        "percent": 96.07843137254902
+      },
+      "budget": "Retained one-attempt U; current F",
+      "protocol": "Retained one-attempt U; current F"
+    },
+    {
+      "name": "HumanEval+",
+      "display": "comparison",
+      "featured": false,
+      "tasks": 164,
+      "baseline": {
+        "passed": 153,
+        "percent": 93.29268292682927
+      },
+      "objectRun": {
+        "passed": 158,
+        "percent": 96.34146341463415
+      },
+      "budget": "Cumulative recovery, four extra rounds",
+      "protocol": "Cumulative recovery, four extra rounds"
+    },
+    {
+      "name": "MBPP+",
+      "display": "comparison",
+      "featured": false,
+      "tasks": 378,
+      "baseline": {
+        "passed": 317,
+        "percent": 83.86243386243386
+      },
+      "objectRun": {
+        "passed": 320,
+        "percent": 84.65608465608466
+      },
+      "budget": "Base feedback; final base+plus",
+      "protocol": "Base feedback; final base+plus"
+    },
+    {
+      "name": "ClassEval",
+      "display": "comparison",
+      "featured": false,
+      "tasks": 100,
+      "baseline": {
+        "passed": 46,
+        "percent": 46.0
+      },
+      "objectRun": {
+        "passed": 62,
+        "percent": 62.0
+      },
+      "budget": "Fixed denominator; four terminal zeros",
+      "protocol": "Fixed denominator; four terminal zeros"
+    },
+    {
+      "name": "SciBench",
+      "display": "comparison",
+      "featured": false,
+      "tasks": 416,
+      "baseline": {
+        "passed": 191,
+        "percent": 45.91346153846153
+      },
+      "objectRun": {
+        "passed": 383,
+        "percent": 92.0673076923077
+      },
+      "budget": "5 checks per attempt; 10 minutes; search off",
+      "protocol": "5/native, 10 min"
+    },
+    {
+      "name": "SciCode",
+      "display": "comparison",
+      "featured": false,
+      "tasks": 65,
+      "baseline": {
+        "passed": 7,
+        "percent": 10.76923076923077
+      },
+      "objectRun": {
+        "passed": 15,
+        "percent": 23.076923076923077
+      },
+      "budget": "5/native, 10 min/step",
+      "protocol": "5/native, 10 min/step"
+    },
+    {
+      "name": "TheoPhysEval",
+      "display": "comparison",
+      "featured": false,
+      "tasks": 49,
+      "baseline": {
+        "passed": 3,
+        "percent": 6.122448979591836
+      },
+      "objectRun": {
+        "passed": 21,
+        "percent": 42.857142857142854
+      },
+      "budget": "5/4, 300 min",
+      "protocol": "5/4, 300 min"
+    },
+    {
+      "name": "LLM-SRBench",
+      "display": "comparison",
+      "featured": false,
+      "tasks": 240,
+      "baseline": {
+        "passed": 93,
+        "percent": 38.75
+      },
+      "objectRun": {
+        "passed": 124,
+        "percent": 51.66666666666667
+      },
+      "budget": "up to 5; cost caps",
+      "protocol": "up to 5; cost caps"
+    },
+    {
+      "name": "OlympiadBench",
+      "display": "comparison",
+      "featured": false,
+      "tasks": 236,
+      "baseline": {
+        "passed": 93,
+        "percent": 39.40677966101695
+      },
+      "objectRun": {
+        "passed": 180,
+        "percent": 76.27118644067797
+      },
+      "budget": "5/native, 10 min",
+      "protocol": "5/native, 10 min"
+    },
+    {
+      "name": "DeepSWE",
+      "display": "completion",
+      "featured": false,
+      "tasks": 112,
+      "baseline": null,
+      "objectRun": {
+        "passed": 91,
+        "percent": 81.25
+      },
+      "budget": "Historical reported 91/112; 53.0% U reference, not a newly executed paired U run.",
+      "protocol": "Historical reported 91/112; 53.0% U reference, not a newly executed paired U run."
+    },
+    {
+      "name": "SkillsBench 1.1",
+      "display": "completion",
+      "featured": false,
+      "tasks": 87,
+      "baseline": null,
+      "objectRun": {
+        "passed": 70,
+        "percent": 80.45977011494253
+      },
+      "budget": "Full 87-task F evaluation; task-specific limits; search off",
+      "protocol": "Full 87-task F evaluation; external U reference, not a local U arm."
+    }
+  ]
+}

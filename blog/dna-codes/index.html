@@ -1,0 +1,151 @@
+<!doctype html>
+<html lang="en" data-language="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#08090a">
+  <meta name="description" content="Under the same constraints, Object Run grew a DNA code from the paper&#x27;s 676 sequences to 1,688 in five hours for US$1.34.">
+  <title>A DNA code 2.5× larger, in five hours · Object Run</title>
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <script src="/language.js?v=83edee4d6447" defer></script>
+  <link rel="stylesheet" href="/home.css?v=c67c753469f3">
+  <link rel="stylesheet" href="/blog/blog.css?v=ecf18c98115f">
+  <script src="/blog/blog.js?v=4e6fbe503dd2" defer></script>
+  <link rel="canonical" href="https://objrun-team.github.io/blog/dna-codes/">
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+  <link rel="alternate" hreflang="zh-Hans" href="https://objrun-team.github.io/zh/blog/dna-codes/">
+  <link rel="alternate" hreflang="en" href="https://objrun-team.github.io/blog/dna-codes/">
+  <link rel="alternate" hreflang="x-default" href="https://objrun-team.github.io/blog/dna-codes/">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="ObjRun">
+  <meta property="og:title" content="A DNA code 2.5× larger, in five hours · Object Run">
+  <meta property="og:description" content="Under the same constraints, Object Run grew a DNA code from the paper&#x27;s 676 sequences to 1,688 in five hours for US$1.34.">
+  <meta property="og:url" content="https://objrun-team.github.io/blog/dna-codes/">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:locale:alternate" content="zh_CN">
+  <meta property="og:image" content="https://objrun-team.github.io/media/objrun-poster.png">
+  <meta property="og:image:type" content="image/png">
+  <meta property="og:image:width" content="1920">
+  <meta property="og:image:height" content="1080">
+  <meta property="og:image:alt" content="Object Run">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="A DNA code 2.5× larger, in five hours · Object Run">
+  <meta name="twitter:description" content="Under the same constraints, Object Run grew a DNA code from the paper&#x27;s 676 sequences to 1,688 in five hours for US$1.34.">
+  <meta name="twitter:image" content="https://objrun-team.github.io/media/objrun-poster.png">
+  <meta name="twitter:image:alt" content="Object Run">
+  <link rel="alternate" type="text/plain" href="/llms.txt" title="ObjRun source index">
+  <script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "BlogPosting", "@id": "https://objrun-team.github.io/blog/dna-codes/#page", "url": "https://objrun-team.github.io/blog/dna-codes/", "name": "A DNA code 2.5× larger, in five hours · Object Run", "description": "Under the same constraints, Object Run grew a DNA code from the paper's 676 sequences to 1,688 in five hours for US$1.34.", "inLanguage": "en", "isPartOf": {"@id": "https://objrun-team.github.io/#website"}, "about": {"@id": "https://objrun-team.github.io/#software"}, "headline": "A DNA code 2.5× larger, in five hours", "datePublished": "2026-10-30", "mainEntityOfPage": "https://objrun-team.github.io/blog/dna-codes/", "citation": ["https://arxiv.org/abs/2409.06519"]}]}</script>
+</head>
+<body>
+  <header class="site-header">
+    <nav class="navigation" aria-label="Main navigation">
+      <a class="brand" href="/">Object Run</a>
+      <div class="nav-links">
+        <a href="/#benchmarks">Benchmarks</a>
+        <a href="/#leaderboards">Leaderboards</a>
+        <a href="/runs/">Replays</a>
+        <a href="/#research">Research</a>
+        <a href="/blog/">Blog</a>
+        <a id="language" href="/zh/blog/dna-codes/" hreflang="zh-Hans" data-lang="zh" aria-label="切换为中文">中文</a>
+      </div>
+    </nav>
+  </header>
+  <main>
+    <article class="article">
+      <a class="article-back" href="/blog/">← All posts</a>
+      <p class="article-kicker"><svg class="research-icon" viewbox="0 0 48 48" aria-hidden="true"><path d="M15 5c0 10 18 9 18 19s-18 9-18 19M33 5c0 10-18 9-18 19s18 9 18 19M18 12h12M18 36h12M21 18h6M21 30h6"></path></svg><span>DNA codes · October 30, 2026</span></p>
+      <h1>A DNA code 2.5× larger, in five hours</h1>
+      <p class="dek">DNA data storage needs a dictionary of sequences that can never be mistaken for one another; the bigger the dictionary, the more information it can encode. Under the construction rules of Wang, Liu and Chen (2024), the paper's dictionary holds 676 sequences. In five hours and US$1.34 of API spend, Object Run grew it to 1,688.</p>
+
+      <div class="stats">
+        <div class="stat"><p class="stat-value">1,688</p><p class="stat-label">Sequences in the valid set<br>Reference set: 676</p></div>
+        <div class="stat"><p class="stat-value">+149.7<span>%</span></p><p class="stat-label">Versus the paper's reference set</p></div>
+        <div class="stat"><p class="stat-value">8<span> min</span></p><p class="stat-label">To the first valid set<br>with 1,396 sequences</p></div>
+      </div>
+
+      <h2>Background</h2>
+      <p>DNA storage writes digital information as sequences of bases. During reading and writing, sequences can hybridize with each other in unintended ways, so the sequences in use must differ from one another by enough and must not fold onto themselves. A set of sequences that satisfies these constraints is called a DNA code. With the constraints fixed, a larger set means more sequences available to tell pieces of information apart.</p>
+      <p>Our setting comes from Table 4 of <a href="https://arxiv.org/abs/2409.06519">arXiv:2409.06519</a>: sequences of length 10, each with exactly 5 G or C bases; any two sequences differ in at least 4 positions; no sequence contains a pair of 3-base fragments that are reverse complements of each other; and the whole set is closed under reversal and complementation. The paper uses a [10,6,4] linear code over GF(4) to select 676 sequences, which is the reference value for this experiment.</p>
+
+      <h2>Setup</h2>
+      <p>The model received the rules above, the reference set and a sandbox with no network access. The acceptance criterion was fixed before the run and enforced by a verifier outside the sandbox, which the model could neither read nor modify. The model chose its own search methods and code; only sets confirmed valid by the verifier count toward the result. The initial target was to beat 676; each time it was reached, the target was raised to the current best within the same five-hour limit.</p>
+
+      <h2>Results</h2>
+
+      <figure class="figure">
+        <p class="figure-title">Size of the valid set over time</p>
+        <p class="figure-sub">Each point is a submission the verifier confirmed as valid; the horizontal axis is time since the first model call.</p>
+        <svg viewbox="0 0 720 336" role="img" aria-label="Size of the valid set over time: 1,396 sequences at minute 8 and 1,688 at minute 277; the paper&#x27;s reference is 676.">
+          <g class="grid"><line x1="64" x2="704" y1="206.7" y2="206.7"></line><line x1="64" x2="704" y1="113.3" y2="113.3"></line><line x1="64" x2="704" y1="20.0" y2="20.0"></line></g>
+          <line class="zero" x1="64" x2="704" y1="300" y2="300"></line>
+          <line class="ref" x1="64" x2="704" y1="194.8" y2="194.8"></line>
+          <text class="label" x="704" y="186.8" text-anchor="end">Paper reference 676</text>
+          <g class="axis"><text x="54" y="304.0" text-anchor="end">0</text><text x="54" y="210.7" text-anchor="end">600</text><text x="54" y="117.3" text-anchor="end">1,200</text><text x="54" y="24.0" text-anchor="end">1,800</text><text x="64.0" y="322" text-anchor="middle">0 h</text><text x="192.0" y="322" text-anchor="middle">1 h</text><text x="320.0" y="322" text-anchor="middle">2 h</text><text x="448.0" y="322" text-anchor="middle">3 h</text><text x="576.0" y="322" text-anchor="middle">4 h</text><text x="704.0" y="322" text-anchor="middle">5 h</text></g>
+          <path class="series" d="M81.1 82.8 H88.5 V69.2 H101.8 V62.9 H122.7 V58.0 H147.8 V57.3 H228.1 V56.7 H306.8 V56.1 H506.0 V49.2 H535.9 V44.3 H552.7 V40.5 H602.0 V39.3 H634.7 V38.0 H656.0 V37.4 H704"></path>
+          <circle id="dna-m0" class="marker" cx="81.1" cy="82.8" r="4"></circle>
+          <circle id="dna-m1" class="marker" cx="88.5" cy="69.2" r="4"></circle>
+          <circle id="dna-m2" class="marker" cx="101.8" cy="62.9" r="4"></circle>
+          <circle id="dna-m3" class="marker" cx="122.7" cy="58.0" r="4"></circle>
+          <circle id="dna-m4" class="marker" cx="147.8" cy="57.3" r="4"></circle>
+          <circle id="dna-m5" class="marker" cx="228.1" cy="56.7" r="4"></circle>
+          <circle id="dna-m6" class="marker" cx="306.8" cy="56.1" r="4"></circle>
+          <circle id="dna-m7" class="marker" cx="506.0" cy="49.2" r="4"></circle>
+          <circle id="dna-m8" class="marker" cx="535.9" cy="44.3" r="4"></circle>
+          <circle id="dna-m9" class="marker" cx="552.7" cy="40.5" r="4"></circle>
+          <circle id="dna-m10" class="marker" cx="602.0" cy="39.3" r="4"></circle>
+          <circle id="dna-m11" class="marker" cx="634.7" cy="38.0" r="4"></circle>
+          <circle id="dna-m12" class="marker" cx="656.0" cy="37.4" r="4"></circle>
+          <text class="label-strong" x="656.0" y="23.4" text-anchor="middle">1,688</text>
+          <text class="label-strong" x="91.1" y="104.8">1,396</text>
+          <circle class="hit" cx="81.1" cy="82.8" r="12" data-mark="dna-m0" data-tip="17:06 Beijing time (minute 8)
+Valid set: 1,396"></circle>
+          <circle class="hit" cx="88.5" cy="69.2" r="12" data-mark="dna-m1" data-tip="17:10 Beijing time (minute 11)
+Valid set: 1,484"></circle>
+          <circle class="hit" cx="101.8" cy="62.9" r="12" data-mark="dna-m2" data-tip="17:16 Beijing time (minute 17)
+Valid set: 1,524"></circle>
+          <circle class="hit" cx="122.7" cy="58.0" r="12" data-mark="dna-m3" data-tip="17:26 Beijing time (minute 27)
+Valid set: 1,556"></circle>
+          <circle class="hit" cx="147.8" cy="57.3" r="12" data-mark="dna-m4" data-tip="17:38 Beijing time (minute 39)
+Valid set: 1,560"></circle>
+          <circle class="hit" cx="228.1" cy="56.7" r="12" data-mark="dna-m5" data-tip="18:15 Beijing time (minute 76)
+Valid set: 1,564"></circle>
+          <circle class="hit" cx="306.8" cy="56.1" r="12" data-mark="dna-m6" data-tip="18:52 Beijing time (minute 113)
+Valid set: 1,568"></circle>
+          <circle class="hit" cx="506.0" cy="49.2" r="12" data-mark="dna-m7" data-tip="20:26 Beijing time (minute 207)
+Valid set: 1,612"></circle>
+          <circle class="hit" cx="535.9" cy="44.3" r="12" data-mark="dna-m8" data-tip="20:39 Beijing time (minute 221)
+Valid set: 1,644"></circle>
+          <circle class="hit" cx="552.7" cy="40.5" r="12" data-mark="dna-m9" data-tip="20:47 Beijing time (minute 229)
+Valid set: 1,668"></circle>
+          <circle class="hit" cx="602.0" cy="39.3" r="12" data-mark="dna-m10" data-tip="21:11 Beijing time (minute 252)
+Valid set: 1,676"></circle>
+          <circle class="hit" cx="634.7" cy="38.0" r="12" data-mark="dna-m11" data-tip="21:26 Beijing time (minute 267)
+Valid set: 1,684"></circle>
+          <circle class="hit" cx="656.0" cy="37.4" r="12" data-mark="dna-m12" data-tip="21:36 Beijing time (minute 277)
+Valid set: 1,688"></circle>
+        </svg>
+        <details><summary>Show data table</summary>
+          <table class="data"><thead><tr><th>Beijing time</th><th>Minutes elapsed</th><th>Set size</th></tr></thead><tbody><tr><td>17:06</td><td>8</td><td>1,396</td></tr><tr><td>17:10</td><td>11</td><td>1,484</td></tr><tr><td>17:16</td><td>17</td><td>1,524</td></tr><tr><td>17:26</td><td>27</td><td>1,556</td></tr><tr><td>17:38</td><td>39</td><td>1,560</td></tr><tr><td>18:15</td><td>76</td><td>1,564</td></tr><tr><td>18:52</td><td>113</td><td>1,568</td></tr><tr><td>20:26</td><td>207</td><td>1,612</td></tr><tr><td>20:39</td><td>221</td><td>1,644</td></tr><tr><td>20:47</td><td>229</td><td>1,668</td></tr><tr><td>21:11</td><td>252</td><td>1,676</td></tr><tr><td>21:26</td><td>267</td><td>1,684</td></tr><tr><td>21:36</td><td>277</td><td>1,688</td></tr></tbody></table>
+        </details>
+      </figure>
+
+      <p>At minute 8, the first valid set already held 1,396 sequences, twice the paper's reference set. The model grouped each sequence with its reverse, complement and reverse complement into a single orbit, built a conflict graph between orbits, reduced the problem to maximum independent set, and solved it with multi-start local search. Over the next four and a half hours it kept improving its own code. It even noticed that its own Hamming-distance prefilter was stricter than the constraint itself and corrected it, reopening the search space. The final result is 1,688 sequences, 1,012 more than the reference set.</p>
+
+      <h2>Verification</h2>
+      <p>The final set is stored in plain text, one sequence per line. Two independently written verifiers check every constraint pair by pair with exact integer arithmetic, and they agree: the minimum Hamming distance is 4, and the GC content, fragment exclusion and closure conditions all hold. SHA-256 hashes of the set file and both verifiers are recorded for reproduction.</p>
+
+      <section class="scope">
+        <h2>Notes</h2>
+        <p>The paper's text also describes a stronger reverse / reverse-complement distance condition that the paper's own published set does not satisfy. This experiment uses the rules the paper's actual construction satisfies, so the result is compared with the reference set on the same terms. The run made 364 model requests, with 41.66 million input tokens (33.13 million served from cache) and 1.13 million output tokens.</p>
+      </section>
+
+      <nav class="post-nav" aria-label="More posts"><span></span><a class="next" href="/blog/runge-kutta/"><small>Next →</small>A provably optimal low-storage Runge–Kutta method</a></nav>
+    </article>
+
+  </main>
+  <footer class="footer">
+    <span class="footer-brand">Object Run</span>
+    <div><a href="/blog/">Blog</a><a href="https://github.com/objrun-team/objrun">Source ↗</a><a href="/paper.pdf">Paper ↗</a></div>
+  </footer>
+</body>
+</html>

@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="zh-Hans" data-language="zh">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#08090a">
+  <meta name="description" content="论文作者怀疑球面设计的优化景观里藏着局部极小。Object Run 找到了四个，并为每一个给出了严格的区间算术证明。">
+  <title>把一个数学猜测变成四个定理 · Object Run</title>
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <script src="/language.js?v=83edee4d6447" defer></script>
+  <link rel="stylesheet" href="/home.css?v=c67c753469f3">
+  <link rel="stylesheet" href="/blog/blog.css?v=ecf18c98115f">
+  <script src="/blog/blog.js?v=4e6fbe503dd2" defer></script>
+  <link rel="canonical" href="https://objrun-team.github.io/zh/blog/spherical-design/">
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+  <link rel="alternate" hreflang="zh-Hans" href="https://objrun-team.github.io/zh/blog/spherical-design/">
+  <link rel="alternate" hreflang="en" href="https://objrun-team.github.io/blog/spherical-design/">
+  <link rel="alternate" hreflang="x-default" href="https://objrun-team.github.io/blog/spherical-design/">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="ObjRun">
+  <meta property="og:title" content="把一个数学猜测变成四个定理 · Object Run">
+  <meta property="og:description" content="论文作者怀疑球面设计的优化景观里藏着局部极小。Object Run 找到了四个，并为每一个给出了严格的区间算术证明。">
+  <meta property="og:url" content="https://objrun-team.github.io/zh/blog/spherical-design/">
+  <meta property="og:locale" content="zh_CN">
+  <meta property="og:locale:alternate" content="en_US">
+  <meta property="og:image" content="https://objrun-team.github.io/media/objrun-poster.png">
+  <meta property="og:image:type" content="image/png">
+  <meta property="og:image:width" content="1920">
+  <meta property="og:image:height" content="1080">
+  <meta property="og:image:alt" content="Object Run">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="把一个数学猜测变成四个定理 · Object Run">
+  <meta name="twitter:description" content="论文作者怀疑球面设计的优化景观里藏着局部极小。Object Run 找到了四个，并为每一个给出了严格的区间算术证明。">
+  <meta name="twitter:image" content="https://objrun-team.github.io/media/objrun-poster.png">
+  <meta name="twitter:image:alt" content="Object Run">
+  <link rel="alternate" type="text/plain" href="/llms.txt" title="ObjRun source index">
+  <script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "BlogPosting", "@id": "https://objrun-team.github.io/zh/blog/spherical-design/#page", "url": "https://objrun-team.github.io/zh/blog/spherical-design/", "name": "把一个数学猜测变成四个定理 · Object Run", "description": "论文作者怀疑球面设计的优化景观里藏着局部极小。Object Run 找到了四个，并为每一个给出了严格的区间算术证明。", "inLanguage": "zh-Hans", "isPartOf": {"@id": "https://objrun-team.github.io/#website"}, "about": {"@id": "https://objrun-team.github.io/#software"}, "headline": "把一个数学猜测变成四个定理", "datePublished": "2026-10-30", "mainEntityOfPage": "https://objrun-team.github.io/zh/blog/spherical-design/", "citation": ["https://arxiv.org/abs/2405.19353"]}]}</script>
+</head>
+<body>
+  <header class="site-header">
+    <nav class="navigation" aria-label="Main navigation">
+      <a class="brand" href="/zh/">Object Run</a>
+      <div class="nav-links">
+        <a href="/zh/#benchmarks">评测</a>
+        <a href="/zh/#leaderboards">排行榜</a>
+        <a href="/zh/runs/">运行回放</a>
+        <a href="/zh/#research">科研</a>
+        <a href="/zh/blog/">博客</a>
+        <a id="language" href="/blog/spherical-design/" hreflang="en" data-lang="en" aria-label="Switch to English">EN</a>
+      </div>
+    </nav>
+  </header>
+  <main>
+    <article class="article">
+      <a class="article-back" href="/zh/blog/">← 全部文章</a>
+      <p class="article-kicker"><svg class="research-icon" viewbox="0 0 48 48" aria-hidden="true"><circle cx="24" cy="24" r="17"></circle><ellipse cx="24" cy="24" rx="17" ry="6.5"></ellipse><path d="M24 7c-6 6-6 28 0 34"></path><circle class="dot" cx="13" cy="19" r="2"></circle><circle class="dot" cx="31" cy="14" r="2"></circle><circle class="dot" cx="33" cy="31" r="2"></circle><circle class="dot" cx="19" cy="34" r="2"></circle></svg><span>几何优化 · 2026 年 10 月 30 日</span></p>
+      <h1>把一个数学猜测变成四个定理</h1>
+      <p class="dek">一篇 2024 年的论文发现，寻找球面设计的优化算法有时会卡住，作者推测原因是优化景观里存在非全局的局部极小，但论文没有给出证明。Object Run 用两个小时找到了四个这样的局部极小，并为每一个都给出了严格的数学证明。</p>
+
+      <div class="stats">
+        <div class="stat"><p class="stat-value">4</p><p class="stat-label">互不等价的非全局局部极小</p></div>
+        <div class="stat"><p class="stat-value">29,359</p><p class="stat-label">经独立验证程序复核的配置</p></div>
+        <div class="stat"><p class="stat-value">2 h 2 m</p><p class="stat-label">从首次模型调用到结束<br>API 费用 US$1.66</p></div>
+      </div>
+
+      <h2>背景</h2>
+      <p>球面设计是球面上的一组有限点，它们对低次多项式给出的平均值与整个球面上的平均值相同。这类点集用于数值积分、实验设计和编码理论。<a href="https://arxiv.org/abs/2405.19353">arXiv:2405.19353</a> 把寻找球面设计写成优化问题。对 24 个六维单位向量，目标是最小化</p>
+      <div class="display-math">F(V) = Σ<sub>i,j</sub> ⟨v<sub>i</sub>, v<sub>j</sub>⟩<sup>4</sup> − 36</div>
+      <p>F 达到 0 时，这组向量就是论文要找的设计。论文在 Example 5.2 中观察到，梯度类方法有时会停在 F 明显大于 0 的位置，并据此推测优化景观中存在非全局局部极小。但这只是猜测：停下的位置也可能是鞍点，或者只是收敛太慢。要把猜测变成定理，需要严格证明。</p>
+
+      <h2>实验设置</h2>
+      <p>任务目标是找到至少一个可被严格证明的非全局局部极小。模型编写了多起点搜索、高精度精修和扰动检查程序，并设计了一个沿负曲率方向离开鞍点、继续下降的流程。搜索期间保存的 29,359 份配置均由独立验证程序重新计算黎曼梯度、Hessian 谱和扰动响应，无一出现文件损坏或计算错误。</p>
+
+      <h2>结果</h2>
+
+      <figure class="figure">
+        <p class="figure-title">四个局部极小的能量</p>
+        <p class="figure-sub">目标设计的能量上界小于 5.9×10<sup>−12</sup>，在图中与 0 重合。</p>
+        <svg viewbox="0 0 720 272" role="img" aria-label="四个局部极小的能量分别为 0.1237、0.1373、0.1768、0.2968，论文目标设计约为 0。">
+          <g class="grid"><line x1="330.0" x2="330.0" y1="8" y2="242"></line><line x1="490.0" x2="490.0" y1="8" y2="242"></line><line x1="650.0" x2="650.0" y1="8" y2="242"></line></g>
+          <line class="zero" x1="170" x2="170" y1="8" y2="242"></line>
+          <g class="axis"><text x="170.0" y="262" text-anchor="middle">0.0</text><text x="330.0" y="262" text-anchor="middle">0.1</text><text x="490.0" y="262" text-anchor="middle">0.2</text><text x="650.0" y="262" text-anchor="middle">0.3</text></g>
+          <text class="label-strong" x="0" y="31">论文目标设计</text>
+          <circle class="marker" cx="170" cy="26" r="5"></circle>
+          <text class="label" x="184" y="31">≈ 0（全局最优）</text>
+          <text class="label-strong" x="0" y="77">局部极小 1</text><rect id="sp-b0" class="bar-good" x="170" y="62" width="198.0" height="22" rx="4"></rect><text class="label-strong" x="376.0" y="77">0.1237</text><text class="label-strong" x="0" y="123">局部极小 2</text><rect id="sp-b1" class="bar-good" x="170" y="108" width="219.6" height="22" rx="4"></rect><text class="label-strong" x="397.6" y="123">0.1373</text><text class="label-strong" x="0" y="169">局部极小 3</text><rect id="sp-b2" class="bar-good" x="170" y="154" width="282.9" height="22" rx="4"></rect><text class="label-strong" x="460.9" y="169">0.1768</text><text class="label-strong" x="0" y="215">局部极小 4</text><rect id="sp-b3" class="bar-good" x="170" y="200" width="474.9" height="22" rx="4"></rect><text class="label-strong" x="652.9" y="215">0.2968</text>
+          <rect class="hit" x="0" y="50" width="720" height="46" data-mark="sp-b0" data-tip="局部极小 1
+能量 F = 0.123748846
+最小横向 Hessian 特征值 0.0771"></rect><rect class="hit" x="0" y="96" width="720" height="46" data-mark="sp-b1" data-tip="局部极小 2
+能量 F = 0.137259931
+最小横向 Hessian 特征值 0.0215"></rect><rect class="hit" x="0" y="142" width="720" height="46" data-mark="sp-b2" data-tip="局部极小 3
+能量 F = 0.176815226
+最小横向 Hessian 特征值 0.0886"></rect><rect class="hit" x="0" y="188" width="720" height="46" data-mark="sp-b3" data-tip="局部极小 4
+能量 F = 0.296786738
+最小横向 Hessian 特征值 0.0577"></rect>
+        </svg>
+        <details><summary>查看数据表</summary>
+          <table class="data"><thead><tr><th>配置</th><th>能量 F</th><th>最小横向特征值</th></tr></thead><tbody><tr><td>局部极小 1</td><td>0.123748846</td><td>0.0771</td></tr><tr><td>局部极小 2</td><td>0.137259931</td><td>0.0215</td></tr><tr><td>局部极小 3</td><td>0.176815226</td><td>0.0886</td></tr><tr><td>局部极小 4</td><td>0.296786738</td><td>0.0577</td></tr></tbody></table>
+        </details>
+      </figure>
+
+      <p>四类配置通过了全部检查，能量分别约为 0.1237、0.1373、0.1768 和 0.2968。四个能量区间互不相交，所以它们不能通过整体旋转、点的重排或符号变化相互得到。论文中的目标设计经过严格归一化后，能量上界小于 5.9×10<sup>−12</sup>，低于全部四个极小，因此这四个点都不是全局最优。</p>
+
+      <h2>证明</h2>
+      <p>对每个极小，我们把 183 维的 KKT 方程组放进半径为 2<sup>−180</sup> 的二进有理数盒子中，用外向舍入的区间算术验证两件事：盒内存在满足全部单位长度约束的驻点；去掉整体 O(6) 旋转对应的 15 个方向后，其余 105 个切方向上的 Hessian 严格正定。两者合起来说明，盒内的点在模掉旋转后是严格局部极小。</p>
+      <p>证明由模型和我们共同完成。我们提供了论文结果的复现、验证程序和第一个极小的区间证明程序；模型选出第二类候选，并把证明程序改写为基于增广系统和 Cholesky 合同变换的形式。第三类由已有求解器的一个随机种子找到，模型识别后完成精修；第四类来自模型设计的鞍点下降流程。</p>
+
+      <section class="scope">
+        <h2>注释</h2>
+        <p>证明为基于 Arb 区间算术的计算机辅助证明。本实验证明了四个局部极小的存在，未对全部局部极小做分类。运行共 265 次模型请求，API 费用 1.66 美元，用时 2 小时 2 分钟。</p>
+      </section>
+
+      <nav class="post-nav" aria-label="更多文章"><a class="prev" href="/zh/blog/runge-kutta/"><small>← 上一篇</small>找到一个可证明最优的低存储 Runge–Kutta 方法</a><a class="next" href="/zh/blog/rna-bound/"><small>下一篇 →</small>证明一个 RNA 结构的设计极限</a></nav>
+    </article>
+
+  </main>
+  <footer class="footer">
+    <span class="footer-brand">Object Run</span>
+    <div><a href="/zh/blog/">博客</a><a href="https://github.com/objrun-team/objrun">源码 ↗</a><a href="/paper.pdf">论文 ↗</a></div>
+  </footer>
+</body>
+</html>

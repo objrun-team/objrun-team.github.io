@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="zh-Hans" data-language="zh">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#08090a">
+  <meta name="description" content="穷举 81 亿个碱基赋值后，Object Run 把 Eterna100 谜题的概率上界从 0.1874 压到 0.1577。">
+  <title>证明一个 RNA 结构的设计极限 · Object Run</title>
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <script src="/language.js?v=83edee4d6447" defer></script>
+  <link rel="stylesheet" href="/home.css?v=c67c753469f3">
+  <link rel="stylesheet" href="/blog/blog.css?v=ecf18c98115f">
+  <script src="/blog/blog.js?v=4e6fbe503dd2" defer></script>
+  <link rel="canonical" href="https://objrun-team.github.io/zh/blog/rna-bound/">
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+  <link rel="alternate" hreflang="zh-Hans" href="https://objrun-team.github.io/zh/blog/rna-bound/">
+  <link rel="alternate" hreflang="en" href="https://objrun-team.github.io/blog/rna-bound/">
+  <link rel="alternate" hreflang="x-default" href="https://objrun-team.github.io/blog/rna-bound/">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="ObjRun">
+  <meta property="og:title" content="证明一个 RNA 结构的设计极限 · Object Run">
+  <meta property="og:description" content="穷举 81 亿个碱基赋值后，Object Run 把 Eterna100 谜题的概率上界从 0.1874 压到 0.1577。">
+  <meta property="og:url" content="https://objrun-team.github.io/zh/blog/rna-bound/">
+  <meta property="og:locale" content="zh_CN">
+  <meta property="og:locale:alternate" content="en_US">
+  <meta property="og:image" content="https://objrun-team.github.io/media/objrun-poster.png">
+  <meta property="og:image:type" content="image/png">
+  <meta property="og:image:width" content="1920">
+  <meta property="og:image:height" content="1080">
+  <meta property="og:image:alt" content="Object Run">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="证明一个 RNA 结构的设计极限 · Object Run">
+  <meta name="twitter:description" content="穷举 81 亿个碱基赋值后，Object Run 把 Eterna100 谜题的概率上界从 0.1874 压到 0.1577。">
+  <meta name="twitter:image" content="https://objrun-team.github.io/media/objrun-poster.png">
+  <meta name="twitter:image:alt" content="Object Run">
+  <link rel="alternate" type="text/plain" href="/llms.txt" title="ObjRun source index">
+  <script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "BlogPosting", "@id": "https://objrun-team.github.io/zh/blog/rna-bound/#page", "url": "https://objrun-team.github.io/zh/blog/rna-bound/", "name": "证明一个 RNA 结构的设计极限 · Object Run", "description": "穷举 81 亿个碱基赋值后，Object Run 把 Eterna100 谜题的概率上界从 0.1874 压到 0.1577。", "inLanguage": "zh-Hans", "isPartOf": {"@id": "https://objrun-team.github.io/#website"}, "about": {"@id": "https://objrun-team.github.io/#software"}, "headline": "证明一个 RNA 结构的设计极限", "datePublished": "2026-10-30", "mainEntityOfPage": "https://objrun-team.github.io/zh/blog/rna-bound/", "citation": ["https://arxiv.org/abs/2602.13610"]}]}</script>
+</head>
+<body>
+  <header class="site-header">
+    <nav class="navigation" aria-label="Main navigation">
+      <a class="brand" href="/zh/">Object Run</a>
+      <div class="nav-links">
+        <a href="/zh/#benchmarks">评测</a>
+        <a href="/zh/#leaderboards">排行榜</a>
+        <a href="/zh/runs/">运行回放</a>
+        <a href="/zh/#research">科研</a>
+        <a href="/zh/blog/">博客</a>
+        <a id="language" href="/blog/rna-bound/" hreflang="en" data-lang="en" aria-label="Switch to English">EN</a>
+      </div>
+    </nav>
+  </header>
+  <main>
+    <article class="article">
+      <a class="article-back" href="/zh/blog/">← 全部文章</a>
+      <p class="article-kicker"><svg class="research-icon" viewbox="0 0 48 48" aria-hidden="true"><path d="M17 44V19a7 7 0 0 1 14 0v25M17 25h14M17 31h14M17 37h14"></path></svg><span>RNA 设计 · 2026 年 10 月 30 日</span></p>
+      <h1>证明一个 RNA 结构的设计极限</h1>
+      <p class="dek">找到一条好的 RNA 序列，只能说明“能做到”。证明所有序列都做不到更好，才能说明设计的极限在哪里。对 Eterna100 中的 Repetitious Sequences 8/10，Object Run 穷举了 81 亿个碱基赋值，把折叠概率的可证明上界从 0.1874 压到 0.1577。</p>
+
+      <div class="stats">
+        <div class="stat"><p class="stat-value">−15.85<span>%</span></p><p class="stat-label">整体概率上界</p></div>
+        <div class="stat"><p class="stat-value">81.5<span> 亿</span></p><p class="stat-label">完全枚举的碱基赋值</p></div>
+        <div class="stat"><p class="stat-value">2 h 7 m</p><p class="stat-label">从首次模型调用到结束<br>API 费用 US$1.02</p></div>
+      </div>
+
+      <h2>背景</h2>
+      <p>在热力学模型中，一条 RNA 序列可以折叠成许多种二级结构，每种结构出现的概率由它的自由能决定。设计者希望目标结构的概率尽可能高，但有些结构存在固有的竞争者：无论序列如何选择，总有其他结构分走相当一部分概率。</p>
+      <p><a href="https://arxiv.org/abs/2602.13610">arXiv:2602.13610</a> 提出了一种给出这类上界的方法。它把目标结构分解为若干结构基序（motif），为每个基序选取一组竞争结构，对基序上所有满足配对约束的碱基赋值计算目标结构概率的上限，再把各基序的结果组合成整体上界。竞争结构选得越好，上界越紧。</p>
+
+      <h2>实验设置</h2>
+      <p>目标结构和能量模型在实验开始前确定。主目标为 <strong>Repetitious Sequences 8/10</strong>，用作者公开缓存复现的上界为 0.18740126；备用目标为 Chicken feet。能量模型使用 ViennaRNA 2.7.0 和 Turner 2004 参数，温度 37°C，不考虑伪结。模型负责寻找更好的竞争结构组合，上界是否成立由独立验证程序判定。</p>
+
+      <h2>结果</h2>
+      <p>模型在核心基序上使用了 14 个竞争结构。该基序有 5 个配对位点和 10 个未配对位点，可行赋值共 6<sup>5</sup> × 4<sup>10</sup> = 8,153,726,976 个，验证程序对它们做了完全枚举。另外三个短发夹基序各使用 15 个竞争结构，每个覆盖 147,456 个赋值。组合后的整体上界约为 0.157700067，比论文作者的结果收紧 15.85%。</p>
+
+      <figure class="figure">
+        <p class="figure-title">Repetitious Sequences 8/10 的折叠概率上界</p>
+        <p class="figure-sub">在给定能量模型下，任意序列折叠为目标结构的概率上限。</p>
+        <svg viewbox="0 0 720 150" role="img" aria-label="Repetitious Sequences 8/10 的折叠概率上界：原上界 0.18740，新上界 0.15770。">
+          <g class="grid"><line x1="317.5" x2="317.5" y1="8" y2="112"></line><line x1="435.0" x2="435.0" y1="8" y2="112"></line><line x1="552.5" x2="552.5" y1="8" y2="112"></line><line x1="670.0" x2="670.0" y1="8" y2="112"></line></g>
+          <line class="zero" x1="200" x2="200" y1="8" y2="112"></line>
+          <g class="axis"><text x="200.0" y="132" text-anchor="middle">0.00</text><text x="317.5" y="132" text-anchor="middle">0.05</text><text x="435.0" y="132" text-anchor="middle">0.10</text><text x="552.5" y="132" text-anchor="middle">0.15</text><text x="670.0" y="132" text-anchor="middle">0.20</text></g>
+          <text class="label-strong" x="0" y="35">原上界（作者）</text>
+          <rect id="rna-b0" x="200" y="20" width="440.4" height="22" rx="4" class="bar-ref"></rect>
+          <text class="label-strong" x="648.4" y="35">0.1874</text>
+          <text class="label-strong" x="0" y="85">新上界</text>
+          <rect id="rna-b1" class="bar-good" x="200" y="70" width="370.6" height="22" rx="4"></rect>
+          <text class="label-strong" x="578.6" y="85">0.1577</text>
+          <rect class="hit" x="0" y="8" width="720" height="46" data-mark="rna-b0" data-tip="用作者公开数据复现的上界
+0.18740125894"></rect>
+          <rect class="hit" x="0" y="58" width="720" height="46" data-mark="rna-b1" data-tip="新的整体上界（保守舍入）
+0.15770006692
+收紧 15.85%"></rect>
+        </svg>
+      </figure>
+
+
+      <h2>验证</h2>
+      <p>验证程序不使用模型报告的任何数值。它从目标结构重新推导变量，重建能量参数表，检查每个竞争结构是否为合法二级结构、基序分解是否保持边界条件，然后完全枚举所有赋值，并对浮点结果做保守的区间包络。随机采样得到的最大值和未完成的枚举都不被接受为上界。最终上界以 60 位小数给出，所有舍入均朝不利于结论的方向。</p>
+
+      <section class="scope">
+        <h2>注释</h2>
+        <p>结果基于 ViennaRNA 2.7.0 与 Turner 2004 能量模型。同轮的备用目标 Chicken feet 未取得改进。运行共 337 次模型请求，API 费用 1.02 美元，用时 2 小时 7 分钟。</p>
+      </section>
+
+      <nav class="post-nav" aria-label="更多文章"><a class="prev" href="/zh/blog/spherical-design/"><small>← 上一篇</small>把一个数学猜测变成四个定理</a><span></span></nav>
+    </article>
+
+  </main>
+  <footer class="footer">
+    <span class="footer-brand">Object Run</span>
+    <div><a href="/zh/blog/">博客</a><a href="https://github.com/objrun-team/objrun">源码 ↗</a><a href="/paper.pdf">论文 ↗</a></div>
+  </footer>
+</body>
+</html>

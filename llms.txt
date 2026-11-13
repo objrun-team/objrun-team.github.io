@@ -1,0 +1,32 @@
+# ObjRun (Object Run)
+
+> An objective runtime for AI agents and scientific research.
+
+Criteria are sealed before a run. Agents submit candidates, receive declared feedback, and retry within a budget. Every verdict is recorded.
+
+## Pages
+
+- [ObjRun · AI 智能体与科研任务的目标运行时](https://objrun-team.github.io/zh/)
+- [ObjRun · Objective Runtime for AI Agents and Science](https://objrun-team.github.io/)
+- [运行回放 · Object Run](https://objrun-team.github.io/zh/runs/)
+- [AI Agent Run Replays · ObjRun](https://objrun-team.github.io/runs/)
+- [博客 · Object Run](https://objrun-team.github.io/zh/blog/)
+- [Blog · Object Run](https://objrun-team.github.io/blog/)
+- [五小时，把 DNA 编码扩大到原来的 2.5 倍 · Object Run](https://objrun-team.github.io/zh/blog/dna-codes/)
+- [A DNA code 2.5× larger, in five hours · Object Run](https://objrun-team.github.io/blog/dna-codes/)
+- [找到一个可证明最优的低存储 Runge–Kutta 方法 · Object Run](https://objrun-team.github.io/zh/blog/runge-kutta/)
+- [A provably optimal low-storage Runge–Kutta method · Object Run](https://objrun-team.github.io/blog/runge-kutta/)
+- [把一个数学猜测变成四个定理 · Object Run](https://objrun-team.github.io/zh/blog/spherical-design/)
+- [Turning a conjecture into four theorems · Object Run](https://objrun-team.github.io/blog/spherical-design/)
+- [证明一个 RNA 结构的设计极限 · Object Run](https://objrun-team.github.io/zh/blog/rna-bound/)
+- [Proving the design limit of an RNA structure · Object Run](https://objrun-team.github.io/blog/rna-bound/)
+
+## Primary sources and data
+
+- [Source code and setup](https://github.com/objrun-team/objrun)
+- [Runtime protocol](https://github.com/objrun-team/objrun/blob/main/docs/loop.md)
+- [Research paper](https://objrun-team.github.io/paper.pdf)
+- [Benchmark results and provenance (JSON)](https://objrun-team.github.io/benchmark-results.json)
+- [Replay verdicts and reachability data (JSON)](https://objrun-team.github.io/data/runs.json)
+
+U is a single-attempt baseline. F includes objective checks and retries within benchmark-specific budgets; it is not a compute-matched comparison. DeepSWE, Terminal-Bench and SkillsBench have external U references rather than paired local baselines.

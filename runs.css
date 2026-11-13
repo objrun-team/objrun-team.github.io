@@ -1,0 +1,159 @@
+/* Run replay page. Builds on the tokens, header and footer in home.css.
+   Laid out like a figure page: left-aligned text, hairline rules, no cards.
+   The only motion is the verdict replay itself. */
+
+.runs { width: min(var(--wide), calc(100% - 48px)); margin: 0 auto; padding-bottom: 120px; }
+.runs-head { max-width: var(--measure); padding: 64px 0 40px; }
+.runs-head h1 { font-size: clamp(30px, 3.4vw, 40px); font-weight: 600; letter-spacing: -.02em; }
+.runs-lead { margin-top: 16px; color: var(--body); font-size: 16px; line-height: 1.75; text-wrap: pretty; }
+.runs-meta { display: flex; flex-wrap: wrap; gap: 4px 18px; margin-top: 14px; color: var(--faint); font-size: 13px; }
+.runs-meta a { color: var(--body); text-decoration: underline; text-decoration-color: var(--hair-strong); text-underline-offset: 3px; }
+.runs-meta a:hover { color: var(--ink); text-decoration-color: currentColor; }
+
+.runs-h2 { display: flex; align-items: baseline; gap: 12px; padding-top: 18px; border-top: 1px solid var(--hair-strong); font-size: 18px; font-weight: 600; letter-spacing: -.01em; }
+.fig-no { color: var(--faint); font-family: var(--mono); font-size: 12.5px; font-weight: 400; letter-spacing: 0; }
+
+/* ---------- Figure 1: replay ---------- */
+.picker { margin-top: 20px; }
+.bench-tabs { display: flex; gap: 22px; overflow-x: auto; scrollbar-width: none; border-bottom: 1px solid var(--hair); }
+.bench-tabs::-webkit-scrollbar { display: none; }
+.bench-tab { flex: none; padding: 0 0 9px; border: 0; border-bottom: 2px solid transparent; margin-bottom: -1px; background: none; color: var(--muted); font-size: 14px; white-space: nowrap; }
+.bench-tab:hover { color: var(--ink); }
+.bench-tab[aria-selected="true"] { color: var(--ink); border-bottom-color: var(--ink); }
+.bench-tab .n { margin-left: 6px; color: var(--faint); font-family: var(--mono); font-size: 12px; }
+
+.task-chips { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 0 24px; margin-top: 10px; }
+.task-chip { display: flex; align-items: baseline; gap: 10px; min-width: 0; padding: 6px 0; border: 0; background: none; color: var(--muted); font-family: var(--mono); font-size: 12.5px; text-align: left; }
+.task-chip:hover { color: var(--ink); }
+.task-chip[aria-checked="true"] { color: var(--ink); }
+.task-chip[aria-checked="true"] .chip-name { text-decoration: underline; text-underline-offset: 4px; text-decoration-thickness: 1px; }
+.chip-name { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.chip-n { margin-left: auto; flex: none; color: var(--faint); }
+.task-chip[data-solved="true"] .chip-n { color: #5fd08f; }
+
+.replay-body { display: grid; grid-template-columns: minmax(0, 1fr) 280px; gap: 40px; margin-top: 28px; }
+.trajectory { min-width: 0; }
+.trajectory-head { display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px 16px; }
+.trajectory-task { color: var(--ink); font-family: var(--mono); font-size: 14px; }
+.trajectory-outcome { color: var(--muted); font-family: var(--mono); font-size: 12.5px; font-variant-numeric: tabular-nums; }
+.trajectory-outcome[data-state="done"] { color: #5fd08f; }
+.replay-button { margin-left: auto; padding: 0; border: 0; background: none; color: var(--muted); font-size: 13px; text-decoration: underline; text-decoration-color: var(--hair-strong); text-underline-offset: 3px; }
+.replay-button:hover { color: var(--ink); text-decoration-color: currentColor; }
+
+.chart { margin-top: 10px; }
+.chart svg { width: 100%; height: auto; overflow: visible; }
+.grid line { stroke: #ffffff0f; stroke-width: 1; }
+.band-line { stroke: #ffffff14; stroke-width: 1; stroke-dasharray: 2 4; }
+.tick { fill: var(--faint); font-family: var(--mono); font-size: 11px; }
+.axis-title { fill: var(--muted); font-family: var(--sans); font-size: 12px; }
+.attempt-line { stroke: #ffffff26; stroke-width: 1; stroke-dasharray: 3 4; }
+.trajectory-line { fill: none; stroke: #ffffff38; stroke-width: 1.5; stroke-linejoin: round; }
+/* A mark springs in (overshoots, then settles) as the line reaches it; reveal() sets the
+   delay so it lands with the line. An accepted verdict springs further. */
+.mark { opacity: 0; transform-box: fill-box; transform-origin: center; }
+.mark.is-shown { opacity: 1; animation: mark-in .55s var(--ease-spring) both; }
+.mark-acc.is-shown { animation: mark-in-acc .8s var(--ease-spring) both; }
+.mark.is-static { animation: none; }
+.halo { fill: none; stroke: #ffffff80; stroke-width: 1.5; opacity: 0; pointer-events: none; transform-box: fill-box; transform-origin: center; }
+.halo.is-acc { stroke: var(--v-acc); stroke-width: 2; }
+.trajectory-outcome[data-state="done"], .trajectory-outcome[data-state="failed"] { animation: outcome-in .6s var(--ease-out) both; }
+@keyframes mark-in { from { opacity: 0; transform: scale(.2); } 60% { opacity: 1; } to { opacity: 1; transform: none; } }
+@keyframes mark-in-acc { from { opacity: 0; transform: scale(.2); } 50% { opacity: 1; transform: scale(1.35); } to { opacity: 1; transform: none; } }
+@keyframes outcome-in { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: none; } }
+.mark.is-current circle, .mark.is-current rect { stroke: var(--ink); stroke-width: 1.5; }
+.mark circle, .mark rect { stroke: var(--paper); stroke-width: 2; }
+.mark-near circle { fill: var(--v-near); }
+.mark-wrong circle { fill: var(--v-wrong); }
+.mark-fmt rect { fill: var(--v-form); }
+.mark-acc circle { fill: var(--v-acc); }
+.hit { fill: transparent; cursor: default; }
+.hit:focus-visible { outline: none; stroke: #ffffff66; stroke-width: 1; }
+
+.caption { margin-top: 12px; color: var(--muted); font-size: 12.5px; }
+.legend { display: flex; flex-wrap: wrap; gap: 6px 18px; }
+.legend > span { display: inline-flex; align-items: center; gap: 6px; }
+.legend svg { width: 11px; height: 11px; }
+.legend svg[viewBox="0 0 16 12"] { width: 14px; }
+.mk-near { fill: var(--v-near); } .mk-wrong { fill: var(--v-wrong); } .mk-fmt { fill: var(--v-form); } .mk-acc { fill: var(--v-acc); }
+.mk-attempt { stroke: #ffffff66; stroke-width: 1.5; stroke-dasharray: 3 3; }
+
+.data-view { margin-top: 10px; }
+.data-view summary { width: fit-content; color: var(--muted); font-size: 12.5px; cursor: pointer; }
+.data-view summary:hover { color: var(--ink); }
+.data-view .table-scroll { max-height: 300px; overflow: auto; margin-top: 8px; border-top: 1px solid var(--hair); }
+.verdict-table { font-size: 12.5px; }
+.verdict-table th, .verdict-table td { padding: 6px 10px; }
+.verdict-table td { color: var(--body); font-family: var(--mono); }
+
+/* Readout: the verdict under the playhead, then the last few in plain text. */
+.readout { align-self: start; padding-left: 20px; border-left: 1px solid var(--hair); }
+.readout-title { color: var(--faint); font-size: 12px; font-weight: 500; }
+.readout-title + * { margin-top: 8px; }
+.readout-title:not(:first-child) { margin-top: 24px; }
+.readout-fields { display: grid; grid-template-columns: auto 1fr; gap: 5px 14px; font-size: 13px; }
+.readout-fields dt { color: var(--muted); }
+.readout-fields dd { min-width: 0; color: var(--ink); font-family: var(--mono); font-size: 12.5px; font-variant-numeric: tabular-nums; overflow-wrap: anywhere; }
+.readout-fields dd[data-kind="acc"] { color: #5fd08f; }
+.readout-fields dd[data-kind="fmt"] { color: #e0a24a; }
+.log { display: grid; gap: 3px; font-family: var(--mono); font-size: 12px; font-variant-numeric: tabular-nums; }
+.log-row { display: grid; grid-template-columns: 28px 1fr; gap: 8px; color: var(--muted); }
+.log-row:first-child { color: var(--body); }
+.log-seq { color: var(--faint); text-align: right; }
+.log-body { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.log-row[data-kind="fmt"] .log-body { color: #e0a24a; }
+.log-row[data-kind="acc"] .log-body { color: #5fd08f; }
+.log-count { margin-top: 8px; color: var(--faint); font-size: 12px; }
+
+/* ---------- Figure 2: reachability ---------- */
+.reach { padding-top: 88px; }
+.reach-lead { max-width: var(--measure); margin-top: 12px; color: var(--body); font-size: 15px; line-height: 1.75; text-wrap: pretty; }
+.reach-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 28px 24px; margin-top: 28px; }
+.reach-card { min-width: 0; }
+.reach-head { display: flex; align-items: baseline; justify-content: space-between; gap: 8px; }
+.reach-name { color: var(--ink); font-size: 13.5px; font-weight: 600; }
+.reach-final { color: var(--muted); font-family: var(--mono); font-size: 12px; }
+.reach-card svg { width: 100%; height: auto; margin-top: 6px; overflow: visible; }
+.u-line { stroke: #ffffff59; stroke-width: 1; stroke-dasharray: 4 4; }
+.u-label { fill: var(--muted); font-family: var(--mono); font-size: 11px; }
+.reach-line { fill: none; stroke: var(--ink); stroke-width: 1.5; stroke-linejoin: round; }
+.reach-end { fill: var(--ink); }
+/* Curves draw in on an ease-in-out once on screen; panels follow left to right. */
+.js .reach-card .reach-line { stroke-dasharray: 1; stroke-dashoffset: 1; transition: stroke-dashoffset 1.8s var(--ease-in-out) calc(var(--i, 0) * 120ms); }
+.js .reach-card.is-visible .reach-line { stroke-dashoffset: 0; }
+.js .reach-card .reach-end { opacity: 0; transform-box: fill-box; transform-origin: center; transform: scale(0); transition: opacity .2s linear, transform .6s var(--ease-spring); transition-delay: calc(var(--i, 0) * 120ms + 1.7s); }
+.js .reach-card.is-visible .reach-end { opacity: 1; transform: none; }
+.axis-note { margin-top: 6px; color: var(--faint); font-size: 12px; }
+.axis-note:empty { display: none; }
+.crosshair { stroke: #ffffff40; stroke-width: 1; opacity: 0; }
+.crosshair.is-on { opacity: 1; }
+.reach-data { margin-top: 18px; }
+
+.tooltip {
+  position: fixed; left: 0; top: 0; z-index: 40; pointer-events: none;
+  padding: 6px 10px; border: 1px solid var(--hair-strong); border-radius: 4px;
+  background: #111215; color: var(--ink);
+  font-size: 12px; line-height: 1.55; white-space: pre-line;
+  opacity: 0;
+}
+.tooltip.is-visible { opacity: 1; }
+
+@media (max-width: 1080px) {
+  .reach-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
+@media (max-width: 960px) {
+  .replay-body { grid-template-columns: 1fr; gap: 24px; }
+  .readout { padding: 16px 0 0; border-left: 0; border-top: 1px solid var(--hair); }
+}
+@media (max-width: 760px) {
+  .runs { width: calc(100% - 32px); }
+  .runs-head { padding: 40px 0 28px; }
+  .reach-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px 16px; }
+  .reach { padding-top: 64px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .mark { opacity: 1; }
+  .mark.is-shown, .mark-acc.is-shown, .trajectory-outcome[data-state] { animation: none; }
+  .trajectory-line { transition: none !important; }
+  .js .reach-card .reach-line { stroke-dashoffset: 0; transition: none; }
+  .js .reach-card .reach-end { opacity: 1; transform: none; transition: none; }
+}

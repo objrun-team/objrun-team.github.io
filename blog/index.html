@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en" data-language="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#08090a">
+  <meta name="description" content="Research notes from Object Run on DNA codes, numerical methods, geometric optimization and RNA design.">
+  <title>Blog · Object Run</title>
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <script src="/language.js?v=83edee4d6447" defer></script>
+  <link rel="stylesheet" href="/home.css?v=c67c753469f3">
+  <link rel="stylesheet" href="/blog/blog.css?v=ecf18c98115f">
+  <link rel="canonical" href="https://objrun-team.github.io/blog/">
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+  <link rel="alternate" hreflang="zh-Hans" href="https://objrun-team.github.io/zh/blog/">
+  <link rel="alternate" hreflang="en" href="https://objrun-team.github.io/blog/">
+  <link rel="alternate" hreflang="x-default" href="https://objrun-team.github.io/blog/">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="ObjRun">
+  <meta property="og:title" content="Blog · Object Run">
+  <meta property="og:description" content="Research notes from Object Run on DNA codes, numerical methods, geometric optimization and RNA design.">
+  <meta property="og:url" content="https://objrun-team.github.io/blog/">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:locale:alternate" content="zh_CN">
+  <meta property="og:image" content="https://objrun-team.github.io/media/objrun-poster.png">
+  <meta property="og:image:type" content="image/png">
+  <meta property="og:image:width" content="1920">
+  <meta property="og:image:height" content="1080">
+  <meta property="og:image:alt" content="Object Run">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Blog · Object Run">
+  <meta name="twitter:description" content="Research notes from Object Run on DNA codes, numerical methods, geometric optimization and RNA design.">
+  <meta name="twitter:image" content="https://objrun-team.github.io/media/objrun-poster.png">
+  <meta name="twitter:image:alt" content="Object Run">
+  <link rel="alternate" type="text/plain" href="/llms.txt" title="ObjRun source index">
+  <script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "CollectionPage", "@id": "https://objrun-team.github.io/blog/#page", "url": "https://objrun-team.github.io/blog/", "name": "Blog · Object Run", "description": "Research notes from Object Run on DNA codes, numerical methods, geometric optimization and RNA design.", "inLanguage": "en", "isPartOf": {"@id": "https://objrun-team.github.io/#website"}, "about": {"@id": "https://objrun-team.github.io/#software"}}]}</script>
+</head>
+<body>
+  <header class="site-header">
+    <nav class="navigation" aria-label="Main navigation">
+      <a class="brand" href="/">Object Run</a>
+      <div class="nav-links">
+        <a href="/#benchmarks">Benchmarks</a>
+        <a href="/#leaderboards">Leaderboards</a>
+        <a href="/runs/">Replays</a>
+        <a href="/#research">Research</a>
+        <a href="/blog/" aria-current="page">Blog</a>
+        <a id="language" href="/zh/blog/" hreflang="zh-Hans" data-lang="zh" aria-label="切换为中文">中文</a>
+      </div>
+    </nav>
+  </header>
+  <main>
+    <section class="blog-hero">
+      <p class="eyebrow">Object Run Blog</p>
+      <h1>AI doing research, with results you can verify</h1>
+      <p class="lead">We take concrete research problems from recently published papers and hand them to Object Run. The model designs the algorithm, writes the code, runs the experiments and revises from feedback; every result is checked by an independent verifier. Four fields, four improvements, each in under five hours and under US$2 of API spend.</p>
+    </section>
+    <div class="post-list">
+      <a class="post-item" href="/blog/dna-codes/">
+        <svg class="research-icon" viewbox="0 0 48 48" aria-hidden="true"><path d="M15 5c0 10 18 9 18 19s-18 9-18 19M33 5c0 10-18 9-18 19s18 9 18 19M18 12h12M18 36h12M21 18h6M21 30h6"></path></svg>
+        <div>
+          <p class="post-kicker">DNA codes</p>
+          <h2>A DNA code 2.5× larger, in five hours</h2>
+          <p class="summary">Same constraints, 1,688 sequences against the paper's 676. The first valid set arrived at minute 8 and was already twice the size of the reference.</p>
+        </div>
+        <p class="post-stat">2.5×<small>US$1.34 · 5 h</small></p>
+      </a>
+      <a class="post-item" href="/blog/runge-kutta/">
+        <svg class="research-icon" viewbox="0 0 48 48" aria-hidden="true"><path d="M6 40h8v-8h8v-8h8v-8h8v-8h4M6 42C18 38 30 24 42 6"></path></svg>
+        <div>
+          <p class="post-kicker">Numerical methods</p>
+          <h2>A provably optimal low-storage Runge–Kutta method</h2>
+          <p class="summary">Same cost, memory and stability; the leading error drops 10.65%, with an exact proof that it cannot go lower.</p>
+        </div>
+        <p class="post-stat">−10.65%<small>US$1.60 · 1 h 37 m</small></p>
+      </a>
+      <a class="post-item" href="/blog/spherical-design/">
+        <svg class="research-icon" viewbox="0 0 48 48" aria-hidden="true"><circle cx="24" cy="24" r="17"></circle><ellipse cx="24" cy="24" rx="17" ry="6.5"></ellipse><path d="M24 7c-6 6-6 28 0 34"></path><circle class="dot" cx="13" cy="19" r="2"></circle><circle class="dot" cx="31" cy="14" r="2"></circle><circle class="dot" cx="33" cy="31" r="2"></circle><circle class="dot" cx="19" cy="34" r="2"></circle></svg>
+        <div>
+          <p class="post-kicker">Geometric optimization</p>
+          <h2>Turning a conjecture into four theorems</h2>
+          <p class="summary">The paper's authors suspected that the spherical-design landscape hides local minima. Object Run found four, each with a rigorous interval-arithmetic proof.</p>
+        </div>
+        <p class="post-stat">4<small>US$1.66 · 2 h 2 m</small></p>
+      </a>
+      <a class="post-item" href="/blog/rna-bound/">
+        <svg class="research-icon" viewbox="0 0 48 48" aria-hidden="true"><path d="M17 44V19a7 7 0 0 1 14 0v25M17 25h14M17 31h14M17 37h14"></path></svg>
+        <div>
+          <p class="post-kicker">RNA design</p>
+          <h2>Proving the design limit of an RNA structure</h2>
+          <p class="summary">After enumerating 8.15 billion base assignments, Object Run tightened the probability upper bound for an Eterna100 puzzle from 0.1874 to 0.1577.</p>
+        </div>
+        <p class="post-stat">−15.8%<small>US$1.02 · 2 h 7 m</small></p>
+      </a>
+    </div>
+
+  </main>
+  <footer class="footer">
+    <span class="footer-brand">Object Run</span>
+    <div><a href="/blog/">Blog</a><a href="https://github.com/objrun-team/objrun">Source ↗</a><a href="/paper.pdf">Paper ↗</a></div>
+  </footer>
+</body>
+</html>

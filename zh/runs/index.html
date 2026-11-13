@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="zh-Hans" data-language="zh">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#08090a">
+  <meta name="description" content="30 道真实任务、768 次判决的逐条回放，以及七个评测上的可达性曲线。">
+  <title>运行回放 · Object Run</title>
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <script>document.documentElement.classList.add('js')</script>
+  <link rel="stylesheet" href="/home.css?v=c67c753469f3">
+  <link rel="stylesheet" href="/runs.css?v=8c69b86552e4">
+  <script src="/language.js?v=83edee4d6447" defer></script>
+  <script src="/data/runs.js?v=a8ba3fd08d2d" defer></script>
+  <script src="/runs-view.js?v=f18be3c11e48" defer></script>
+  <link rel="canonical" href="https://objrun-team.github.io/zh/runs/">
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+  <link rel="alternate" hreflang="zh-Hans" href="https://objrun-team.github.io/zh/runs/">
+  <link rel="alternate" hreflang="en" href="https://objrun-team.github.io/runs/">
+  <link rel="alternate" hreflang="x-default" href="https://objrun-team.github.io/runs/">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="ObjRun">
+  <meta property="og:title" content="运行回放 · Object Run">
+  <meta property="og:description" content="30 道真实任务、768 次判决的逐条回放，以及七个评测上的可达性曲线。">
+  <meta property="og:url" content="https://objrun-team.github.io/zh/runs/">
+  <meta property="og:locale" content="zh_CN">
+  <meta property="og:locale:alternate" content="en_US">
+  <meta property="og:image" content="https://objrun-team.github.io/media/objrun-poster.png">
+  <meta property="og:image:type" content="image/png">
+  <meta property="og:image:width" content="1920">
+  <meta property="og:image:height" content="1080">
+  <meta property="og:image:alt" content="Object Run">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="运行回放 · Object Run">
+  <meta name="twitter:description" content="30 道真实任务、768 次判决的逐条回放，以及七个评测上的可达性曲线。">
+  <meta name="twitter:image" content="https://objrun-team.github.io/media/objrun-poster.png">
+  <meta name="twitter:image:alt" content="Object Run">
+  <link rel="alternate" type="application/json" href="https://objrun-team.github.io/data/runs.json" title="Research data">
+  <link rel="alternate" type="text/plain" href="/llms.txt" title="ObjRun source index">
+  <script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "WebPage", "@id": "https://objrun-team.github.io/zh/runs/#page", "url": "https://objrun-team.github.io/zh/runs/", "name": "运行回放 · Object Run", "description": "30 道真实任务、768 次判决的逐条回放，以及七个评测上的可达性曲线。", "inLanguage": "zh-Hans", "isPartOf": {"@id": "https://objrun-team.github.io/#website"}, "about": {"@id": "https://objrun-team.github.io/#software"}}]}</script>
+</head>
+<body>
+  <header class="site-header is-scrolled" id="site-header">
+    <nav class="navigation" aria-label="Main navigation">
+      <a class="brand" href="/zh/">Object Run</a>
+      <div class="nav-links">
+        <a href="/zh/#benchmarks" data-zh="评测" data-en="Benchmarks">评测</a>
+        <a href="/zh/#leaderboards" data-zh="排行榜" data-en="Leaderboards">排行榜</a>
+        <a href="/zh/runs/" aria-current="page" data-zh="运行回放" data-en="Replays">运行回放</a>
+        <a href="/zh/#research" data-zh="科研" data-en="Research">科研</a>
+        <a href="/zh/blog/" data-zh="博客" data-en="Blog">博客</a>
+        <a id="language" aria-label="Switch to English" href="/runs/" hreflang="en">EN</a>
+      </div>
+    </nav>
+  </header>
+
+  <main class="runs">
+    <header class="runs-head">
+      <h1 data-zh="运行回放" data-en="Run replays">运行回放</h1>
+      <p class="runs-lead" data-zh="每道任务里，模型反复提交答案，判定器每次给出一条判决：通过、被拒，或格式不符。这里按时间顺序重放 5 个评测、30 道任务的全部 768 次判决。数据取自论文的运行记录，模型为 DeepSeek Flash 系列。" data-en="On each task the model submits answers repeatedly, and the checker returns one verdict per submission: accepted, rejected, or rejected on form. This page replays all 768 verdicts from 30 tasks on 5 benchmarks in order. The data comes from the paper&#x27;s run records; the model is from the DeepSeek Flash family.">每道任务里，模型反复提交答案，判定器每次给出一条判决：通过、被拒，或格式不符。这里按时间顺序重放 5 个评测、30 道任务的全部 768 次判决。数据取自论文的运行记录，模型为 DeepSeek Flash 系列。</p>
+      <p class="runs-meta"><a href="/paper.pdf" data-zh="论文 PDF ↗" data-en="Paper PDF ↗">论文 PDF ↗</a><span data-zh="每道任务的挑选规则写在图 1 的读数栏里。" data-en="Each task&#x27;s selection rule is shown in the Figure 1 readout.">每道任务的挑选规则写在图 1 的读数栏里。</span></p>
+    </header>
+
+    <section class="replay" aria-labelledby="replay-title">
+      <h2 id="replay-title" class="runs-h2"><span class="fig-no" data-zh="图 1" data-en="Figure 1">图 1</span><span data-zh="单道任务的判决序列" data-en="Verdicts on one task">单道任务的判决序列</span></h2>
+
+      <div class="picker">
+        <div class="bench-tabs" role="tablist" aria-label="Benchmark" id="bench-tabs"></div>
+        <div class="task-chips" id="task-chips" role="radiogroup" aria-label="Task"></div>
+      </div>
+
+      <div class="replay-body">
+        <figure class="trajectory">
+          <div class="trajectory-head">
+            <span class="trajectory-task" id="task-name"></span>
+            <span class="trajectory-outcome" id="task-outcome"></span>
+            <button class="replay-button" id="replay" type="button" data-zh="重播" data-en="Replay">重播</button>
+          </div>
+          <div class="chart" id="trajectory-chart"></div>
+          <p class="axis-note" id="axis-note"></p>
+          <figcaption class="caption">
+            <span class="legend" id="trajectory-legend">
+              <span><svg viewbox="0 0 12 12" aria-hidden="true"><circle cx="6" cy="6" r="5" class="mk-near"></circle></svg><span data-zh="被拒，附带接近程度" data-en="rejected, with how close">被拒，附带接近程度</span></span>
+              <span><svg viewbox="0 0 12 12" aria-hidden="true"><circle cx="6" cy="6" r="4.5" class="mk-wrong"></circle></svg><span data-zh="被拒，只说不对" data-en="rejected, just wrong">被拒，只说不对</span></span>
+              <span><svg viewbox="0 0 12 12" aria-hidden="true"><rect x="1" y="1" width="10" height="10" rx="2" class="mk-fmt"></rect></svg><span data-zh="格式不符" data-en="rejected on form">格式不符</span></span>
+              <span><svg viewbox="0 0 12 12" aria-hidden="true"><circle cx="6" cy="6" r="5" class="mk-acc"></circle></svg><span data-zh="通过" data-en="accepted">通过</span></span>
+              <span><svg viewbox="0 0 16 12" aria-hidden="true"><path d="M8 0V12" class="mk-attempt"></path></svg><span data-zh="新一次尝试" data-en="new attempt">新一次尝试</span></span>
+            </span>
+            <details class="data-view">
+              <summary data-zh="数据表" data-en="Data table">数据表</summary>
+              <div class="table-scroll"><table class="verdict-table" id="verdict-table"></table></div>
+            </details>
+          </figcaption>
+        </figure>
+
+        <aside class="readout" aria-label="Current verdict">
+          <h3 class="readout-title" data-zh="当前判决" data-en="Current verdict">当前判决</h3>
+          <dl class="readout-fields" id="readout"></dl>
+          <h3 class="readout-title" data-zh="最近记录" data-en="Recent log">最近记录</h3>
+          <ol class="log" id="live-rows" aria-live="off"></ol>
+          <p class="log-count" id="db-count"></p>
+        </aside>
+      </div>
+    </section>
+
+    <section class="reach" aria-labelledby="reach-title">
+      <h2 id="reach-title" class="runs-h2"><span class="fig-no" data-zh="图 2" data-en="Figure 2">图 2</span><span data-zh="判决次数与通过率" data-en="Verdict budget and pass rate">判决次数与通过率</span></h2>
+      <p class="reach-lead" data-zh="S(n) 是在前 n 次判决内首次通过的任务比例，虚线 U 是同一模型只作答一次的通过率。七个评测里，S(n) 都在第 1 或第 2 次判决就超过了 U。" data-en="S(n) is the share of tasks first accepted within n verdicts; the dashed line U is the same model&#x27;s single-attempt pass rate. On all seven benchmarks S(n) passes U by the first or second verdict.">S(n) 是在前 n 次判决内首次通过的任务比例，虚线 U 是同一模型只作答一次的通过率。七个评测里，S(n) 都在第 1 或第 2 次判决就超过了 U。</p>
+      <div class="reach-grid" id="reach-grid"></div>
+      <details class="data-view reach-data">
+        <summary data-zh="数据表" data-en="Data table">数据表</summary>
+        <div class="table-scroll"><table class="verdict-table" id="reach-table"></table></div>
+      </details>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <span class="footer-brand">Object Run</span>
+    <div><a href="/zh/" data-zh="首页" data-en="Home">首页</a><a href="/zh/blog/" data-zh="博客" data-en="Blog">博客</a><a href="/paper.pdf" data-zh="论文 ↗" data-en="Paper ↗">论文 ↗</a></div>
+  </footer>
+</body>
+</html>
