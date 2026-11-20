@@ -7,8 +7,8 @@
   <meta name="description" content="穷举 81 亿个碱基赋值后，Object Run 把 Eterna100 谜题的概率上界从 0.1874 压到 0.1577。">
   <title>证明一个 RNA 结构的设计极限 · Object Run</title>
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
-  <script src="/language.js?v=83edee4d6447" defer></script>
-  <link rel="stylesheet" href="/home.css?v=c67c753469f3">
+  <script src="/language.js?v=09c63abaa242" defer></script>
+  <link rel="stylesheet" href="/home.css?v=21daa6470a71">
   <link rel="stylesheet" href="/blog/blog.css?v=ecf18c98115f">
   <script src="/blog/blog.js?v=4e6fbe503dd2" defer></script>
   <link rel="canonical" href="https://objrun-team.github.io/zh/blog/rna-bound/">
@@ -62,6 +62,8 @@
         <div class="stat"><p class="stat-value">81.5<span> 亿</span></p><p class="stat-label">完全枚举的碱基赋值</p></div>
         <div class="stat"><p class="stat-value">2 h 7 m</p><p class="stat-label">从首次模型调用到结束<br>API 费用 US$1.02</p></div>
       </div>
+
+      <p><a href="/zh/demo/rna-bound/">观看 RNA 概率上界的证明回放 →</a></p>
 
       <h2>背景</h2>
       <p>在热力学模型中，一条 RNA 序列可以折叠成许多种二级结构，每种结构出现的概率由它的自由能决定。设计者希望目标结构的概率尽可能高，但有些结构存在固有的竞争者：无论序列如何选择，总有其他结构分走相当一部分概率。</p>

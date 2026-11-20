@@ -6,6 +6,14 @@ Criteria are sealed before a run. Agents submit candidates, receive declared fee
 
 ## Pages
 
+- [Spherical design · ObjRun replay](https://objrun-team.github.io/demo/spherical/)
+- [球面设计 · ObjRun 运行回放](https://objrun-team.github.io/zh/demo/spherical/)
+- [DNA codes · ObjRun replay](https://objrun-team.github.io/demo/dna-codes/)
+- [DNA 编码 · ObjRun 运行回放](https://objrun-team.github.io/zh/demo/dna-codes/)
+- [Runge–Kutta · ObjRun replay](https://objrun-team.github.io/demo/runge-kutta/)
+- [Runge–Kutta · ObjRun 运行回放](https://objrun-team.github.io/zh/demo/runge-kutta/)
+- [RNA structure bound · ObjRun replay](https://objrun-team.github.io/demo/rna-bound/)
+- [RNA 结构上界 · ObjRun 运行回放](https://objrun-team.github.io/zh/demo/rna-bound/)
 - [ObjRun · AI 智能体与科研任务的目标运行时](https://objrun-team.github.io/zh/)
 - [ObjRun · Objective Runtime for AI Agents and Science](https://objrun-team.github.io/)
 - [运行回放 · Object Run](https://objrun-team.github.io/zh/runs/)

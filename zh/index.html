@@ -8,8 +8,8 @@
   <title>ObjRun · AI 智能体与科研任务的目标运行时</title>
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
   <script>document.documentElement.classList.add('js')</script>
-  <link rel="stylesheet" href="/home.css?v=c67c753469f3">
-  <script src="/language.js?v=83edee4d6447" defer></script>
+  <link rel="stylesheet" href="/home.css?v=21daa6470a71">
+  <script src="/language.js?v=09c63abaa242" defer></script>
   <script src="/app.js?v=c750d1bac3e5" defer></script>
   <script src="/loop.js?v=3bb67cbe1355" defer></script>
   <link rel="canonical" href="https://objrun-team.github.io/zh/">
@@ -40,7 +40,7 @@
 </head>
 <body class="home-page">
   <header class="site-header" id="site-header">
-    <nav class="navigation" aria-label="Main navigation">
+    <nav class="navigation navigation-full" aria-label="主导航" data-zh-label="主导航" data-en-label="Main navigation">
       <a class="brand" href="#top">Object Run</a>
       <div class="nav-links">
         <a href="#benchmarks" data-zh="评测" data-en="Benchmarks">评测</a>
@@ -722,26 +722,42 @@
         </div>
 
         <div class="research-grid">
-          <a class="card spot research-card" href="/zh/blog/dna-codes/" data-reveal style="--d:0">
+          <article class="card spot research-card" data-reveal style="--d:0">
             <span class="research-field" data-zh="DNA 编码" data-en="DNA codes">DNA 编码</span>
             <p class="research-metric">2.5×</p>
             <h3 data-zh="编码集合从 676 条扩大到 1,688 条" data-en="Code size raised from 676 to 1,688 words">编码集合从 676 条扩大到 1,688 条</h3>
-          </a>
-          <a class="card spot research-card" href="/zh/blog/runge-kutta/" data-reveal style="--d:1">
+            <div class="research-actions">
+              <a class="research-demo" href="/zh/demo/dna-codes/" data-zh="观看演示" data-en="Watch demo" data-zh-label="观看DNA 编码演示" data-en-label="Watch the DNA codes demo" aria-label="观看DNA 编码演示">观看演示</a>
+              <a class="research-article" href="/zh/blog/dna-codes/" data-zh="阅读案例" data-en="Read case study" data-zh-label="阅读DNA 编码案例" data-en-label="Read the DNA codes case study" aria-label="阅读DNA 编码案例">阅读案例</a>
+            </div>
+          </article>
+          <article class="card spot research-card" data-reveal style="--d:1">
             <span class="research-field" data-zh="数值方法" data-en="Numerical methods">数值方法</span>
             <p class="research-metric">−10.65%</p>
             <h3 data-zh="主截断误差达到可行集上的下界" data-en="Leading truncation error at the feasible lower bound">主截断误差达到可行集上的下界</h3>
-          </a>
-          <a class="card spot research-card" href="/zh/blog/spherical-design/" data-reveal style="--d:2">
+            <div class="research-actions">
+              <a class="research-demo" href="/zh/demo/runge-kutta/" data-zh="观看演示" data-en="Watch demo" data-zh-label="观看Runge–Kutta 方法演示" data-en-label="Watch the Runge–Kutta methods demo" aria-label="观看Runge–Kutta 方法演示">观看演示</a>
+              <a class="research-article" href="/zh/blog/runge-kutta/" data-zh="阅读案例" data-en="Read case study" data-zh-label="阅读Runge–Kutta 方法案例" data-en-label="Read the Runge–Kutta methods case study" aria-label="阅读Runge–Kutta 方法案例">阅读案例</a>
+            </div>
+          </article>
+          <article class="card spot research-card" data-reveal style="--d:2">
             <span class="research-field" data-zh="几何优化" data-en="Geometric optimization">几何优化</span>
             <p class="research-metric">4</p>
             <h3 data-zh="个经区间算术证明的非全局局部极小" data-en="non-global local minima, proved by interval arithmetic">个经区间算术证明的非全局局部极小</h3>
-          </a>
-          <a class="card spot research-card" href="/zh/blog/rna-bound/" data-reveal style="--d:3">
+            <div class="research-actions">
+              <a class="research-demo" href="/zh/demo/spherical/" data-zh="观看演示" data-en="Watch demo" data-zh-label="观看球面设计演示" data-en-label="Watch the Spherical design demo" aria-label="观看球面设计演示">观看演示</a>
+              <a class="research-article" href="/zh/blog/spherical-design/" data-zh="阅读案例" data-en="Read case study" data-zh-label="阅读球面设计案例" data-en-label="Read the Spherical design case study" aria-label="阅读球面设计案例">阅读案例</a>
+            </div>
+          </article>
+          <article class="card spot research-card" data-reveal style="--d:3">
             <span class="research-field" data-zh="RNA 设计" data-en="RNA design">RNA 设计</span>
             <p class="research-metric">−15.8%</p>
             <h3 data-zh="折叠概率上界从 0.1874 降至 0.1577" data-en="Folding-probability bound cut from 0.1874 to 0.1577">折叠概率上界从 0.1874 降至 0.1577</h3>
-          </a>
+            <div class="research-actions">
+              <a class="research-demo" href="/zh/demo/rna-bound/" data-zh="观看演示" data-en="Watch demo" data-zh-label="观看RNA 结构上界演示" data-en-label="Watch the RNA structure bound demo" aria-label="观看RNA 结构上界演示">观看演示</a>
+              <a class="research-article" href="/zh/blog/rna-bound/" data-zh="阅读案例" data-en="Read case study" data-zh-label="阅读RNA 结构上界案例" data-en-label="Read the RNA structure bound case study" aria-label="阅读RNA 结构上界案例">阅读案例</a>
+            </div>
+          </article>
         </div>
       </div>
     </section>

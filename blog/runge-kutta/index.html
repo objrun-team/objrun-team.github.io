@@ -7,8 +7,8 @@
   <meta name="description" content="With cost, memory and stability unchanged, Object Run cut the leading error of a low-storage Runge–Kutta method by 10.65% and proved it cannot go lower.">
   <title>A provably optimal low-storage Runge–Kutta method · Object Run</title>
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
-  <script src="/language.js?v=83edee4d6447" defer></script>
-  <link rel="stylesheet" href="/home.css?v=c67c753469f3">
+  <script src="/language.js?v=09c63abaa242" defer></script>
+  <link rel="stylesheet" href="/home.css?v=21daa6470a71">
   <link rel="stylesheet" href="/blog/blog.css?v=ecf18c98115f">
   <script src="/blog/blog.js?v=4e6fbe503dd2" defer></script>
   <link rel="canonical" href="https://objrun-team.github.io/blog/runge-kutta/">
@@ -62,6 +62,8 @@
         <div class="stat"><p class="stat-value">639/45752</p><p class="stat-label">The new method's leading error norm<br>equals the lower bound on the feasible set</p></div>
         <div class="stat"><p class="stat-value">1 h 37 m</p><p class="stat-label">From first model call to finish<br>API spend US$1.60</p></div>
       </div>
+
+      <p><a href="/demo/runge-kutta/">Watch the Runge–Kutta run →</a></p>
 
       <h2>Background</h2>
       <p>When an explicit Runge–Kutta method solves <span class="math">y′ = f(t, y)</span>, each step evaluates the right-hand side several times and stores the intermediate results. Williamson's 2N format needs only two storage vectors regardless of the number of stages, which makes it popular in large simulations limited by GPU or main memory. The price is that the coefficients must satisfy extra algebraic relations, so the design space is smaller than for general methods.</p>

@@ -1,6 +1,8 @@
 // English is the default. Only an explicit switch is saved in this browser.
 (() => {
   'use strict';
+  // Replays choose their language from their entry URL in replay-language.js.
+  if (document.documentElement.dataset.replay) return;
   let preferred = 'en';
   try {
     const saved = localStorage.getItem('objrun-lang');

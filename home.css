@@ -1,3 +1,5 @@
+@import url("navigation.css");
+
 /* Dark product page in the Apple / Linear vein. All motion uses named cubic-bézier curves. */
 :root {
   color-scheme: dark;
@@ -54,23 +56,6 @@ svg { display: block; }
 }
 
 /* ---------- Header ---------- */
-.site-header {
-  position: sticky; top: 0; z-index: 20;
-  border-bottom: 1px solid transparent;
-  transition: background .5s var(--ease-out), border-color .5s var(--ease-out);
-}
-.site-header.is-scrolled { background: #08090acc; border-color: var(--hair); backdrop-filter: saturate(160%) blur(18px); -webkit-backdrop-filter: saturate(160%) blur(18px); }
-.navigation { display: flex; align-items: center; justify-content: space-between; width: min(var(--wide), calc(100% - 48px)); height: 60px; margin: auto; }
-.brand { display: inline-flex; align-items: center; gap: 10px; color: var(--ink); font-size: 15px; font-weight: 600; letter-spacing: -.01em; white-space: nowrap; flex-shrink: 0; }
-.brand::before { content: ''; width: 20px; height: 20px; border-radius: 6px; background: url(favicon.svg) center / cover; box-shadow: 0 0 0 1px var(--hair-strong); }
-.nav-links { display: flex; align-items: center; gap: 26px; color: var(--muted); font-size: 13.5px; }
-.nav-links a { position: relative; transition: color .3s var(--ease-out); }
-.nav-links a::after { content: ''; position: absolute; left: 0; right: 0; bottom: -6px; height: 1px; background: currentColor; transform: scaleX(0); transform-origin: left; transition: transform .45s var(--ease-out); }
-.nav-links a:hover, .nav-links a[aria-current="page"] { color: var(--ink); }
-.nav-links a:hover::after, .nav-links a[aria-current="page"]::after { transform: scaleX(1); }
-#language { padding: 4px 10px; border: 1px solid var(--hair-strong); border-radius: 999px; background: none; color: var(--muted); font-size: 12.5px; white-space: nowrap; flex-shrink: 0; transition: color .3s var(--ease-out), border-color .3s var(--ease-out), background .3s var(--ease-out); }
-#language::after { display: none; }
-#language:hover { color: var(--ink); border-color: #ffffff40; background: var(--tint); }
 .scroll-sentinel { position: absolute; top: 0; left: 0; width: 1px; height: 8px; pointer-events: none; }
 
 /* ---------- Buttons ---------- */
@@ -294,10 +279,13 @@ table.board tr.local .bar { background: repeating-linear-gradient(90deg, #6b7280
 /* Research */
 .research-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px; margin-top: 56px; }
 .research-card { display: flex; flex-direction: column; min-height: 260px; padding: 24px 22px 24px; }
-.research-card::after { content: '↗'; position: absolute; z-index: 1; top: 22px; right: 22px; color: var(--faint); transition: transform .5s var(--ease-spring), color .3s var(--ease-out); }
-@media (hover: hover) {
-  .research-card:hover::after { color: var(--ink); transform: translate(2px, -2px); }
-}
+.spot > .research-actions { position: static; }
+.research-actions { display: flex; flex-wrap: wrap; gap: 6px 18px; margin-top: 18px; align-items: center; font-size: 13px; }
+.research-actions a { padding-block: 4px; }
+.research-demo { position: relative; z-index: 2; color: var(--accent-hi); font-weight: 550; }
+.research-article { color: var(--muted); }
+.research-article::after { content: ''; position: absolute; inset: 0; z-index: 1; }
+.research-actions a:hover, .research-actions a:focus-visible { color: var(--ink); text-decoration: underline; text-underline-offset: 3px; }
 .research-field { color: var(--muted); font-size: 13px; }
 .research-metric { margin-top: auto; padding-top: 28px; color: var(--ink); font-size: 44px; font-weight: 600; line-height: 1; letter-spacing: -.04em; font-variant-numeric: tabular-nums; }
 .research-card h3 { margin-top: 12px; color: var(--body); font-size: 15px; font-weight: 500; line-height: 1.55; text-wrap: balance; }
@@ -327,11 +315,7 @@ table.board tr.local .bar { background: repeating-linear-gradient(90deg, #6b7280
   .research-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 @media (max-width: 760px) {
-  .navigation, .footer { width: calc(100% - 32px); }
-  .nav-links { gap: 16px; }
-  .nav-links a[href$="#benchmarks"], .nav-links a[href$="#research"] { display: none; }
-  .home-page .nav-links a[href$="blog/"], .home-page .nav-links a[href$="/runs"], .home-page .nav-links a[href$="runs.html"] { display: none; }
-  body:not(.home-page) .nav-links a[href$="#leaderboards"] { display: none; }
+  .footer { width: calc(100% - 32px); }
   .hero { padding: 56px 16px 72px; }
   .system { margin-top: 52px; border-radius: 22px; }
   .loop-field { height: 640px; }

@@ -1,0 +1,265 @@
+<!doctype html>
+<html lang="zh-Hans" data-layout="story" data-replay="runge-kutta" data-language="zh">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#08090a">
+  <title data-zh="Runge–Kutta · ObjRun 运行回放" data-en="Runge–Kutta · ObjRun replay">Runge–Kutta · ObjRun 运行回放</title>
+  <link rel="icon" href="/favicon.svg">
+  <link rel="stylesheet" href="/demo/spherical/replay.css?v=fa44b64b23be">
+  <link rel="stylesheet" href="/demo/runge-kutta/replay.css?v=c18d7c2f1641">
+  <link rel="stylesheet" href="/demo/dna-codes/kernel-trace.css?v=3b2a710249de">
+  <link rel="stylesheet" href="/demo/dna-codes/story.css?v=9b8657fa1efc">
+  <link rel="stylesheet" href="/demo/science-desk.css?v=df3856f19e3f">
+  <link rel="stylesheet" href="/navigation.css?v=3d10bd9cf21c">
+  <script src="/language.js?v=09c63abaa242" defer></script>
+  <script src="/demo/replay-language.js?v=fbb2f441c7f4" defer></script>
+  <script src="/demo/figure-motion.js?v=b54ea0b0bb69" defer></script>
+  <script src="/demo/runge-kutta/archive.js?v=0b5a0b10df24" defer></script>
+  <script src="/demo/runge-kutta/story.js?v=54072870fa6e" defer></script>
+  <script src="/demo/runge-kutta/charts.js?v=0f69eb18cfff" defer></script>
+  <script defer src="/demo/dna-codes/trace-code.js?v=998223164002"></script>
+  <script defer src="/demo/runge-kutta/execution-trace.js?v=b6fa6b87681d"></script>
+  <script defer src="/demo/dna-codes/trace-model.js?v=5d9d14662b45"></script>
+  <script defer src="/demo/dna-codes/kernel-trace.js?v=16d2082b149a"></script>
+  <script defer src="/demo/dna-codes/trace-focus.js?v=b1c301f3f3c9"></script>
+  <script defer src="/demo/case-execution.js?v=4b5ccc652c05"></script>
+  <script defer src="/demo/case-story.js?v=54f773b74068"></script>
+  <script src="/demo/runge-kutta/replay.js?v=56ccc5e40c15" defer></script>
+<link rel="canonical" href="https://objrun-team.github.io/zh/demo/runge-kutta/">
+<link rel="alternate" hreflang="en" href="https://objrun-team.github.io/demo/runge-kutta/">
+<link rel="alternate" hreflang="zh-Hans" href="https://objrun-team.github.io/zh/demo/runge-kutta/">
+<link rel="alternate" hreflang="x-default" href="https://objrun-team.github.io/demo/runge-kutta/">
+</head>
+<body>
+  <svg class="symbols" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+  <symbol id="i-archive" viewbox="0 0 24 24"><path d="M5 4h13a1 1 0 0 1 1 1v16H7a3 3 0 0 1-3-3V5a1 1 0 0 1 1-1ZM4 18a2 2 0 0 1 2-2h13M8 8h7"></path></symbol>
+
+  <symbol id="i-play" viewbox="0 0 24 24"><path d="m8 5 11 7-11 7z" fill="currentColor" stroke-width="1.3"></path></symbol>
+  <symbol id="i-pause" viewbox="0 0 24 24"><path d="M8.5 6v12M15.5 6v12" stroke-width="4"></path></symbol>
+  <symbol id="i-next" viewbox="0 0 24 24"><path d="m7 6 8 6-8 6zM18 6v12"></path></symbol>
+  </svg>
+  <header class="site-header is-scrolled" id="site-header">
+    <nav class="navigation navigation-full" aria-label="主导航" data-zh-label="主导航" data-en-label="Main navigation">
+      <a class="brand" href="/zh/#top">Object Run</a>
+      <div class="nav-links">
+        <a href="/zh/#benchmarks" data-zh="评测" data-en="Benchmarks">评测</a>
+        <a href="/zh/#video" data-zh="视频" data-en="Film">视频</a>
+        <a href="/zh/#leaderboards" data-zh="排行榜" data-en="Leaderboards">排行榜</a>
+        <a href="/zh/runs/" data-zh="运行回放" data-en="Replays">运行回放</a>
+        <a href="/zh/#research" data-zh="科研" data-en="Research">科研</a>
+        <a href="/zh/blog/" data-zh="博客" data-en="Blog">博客</a>
+        <a id="language" aria-label="Switch to English" href="/demo/runge-kutta/" hreflang="en">EN</a>
+      </div>
+    </nav>
+  </header>
+  <main class="wrap">
+    <header class="intro replay-intro"><h1>Runge–Kutta</h1>
+      <p data-zh="固定五阶段、三阶精度和稳定多项式，寻找两个寄存器能达到的最小主误差。" data-en="Find the smallest leading error for a five-stage, third-order method with two registers and a fixed stability polynomial.">固定五阶段、三阶精度和稳定多项式，寻找两个寄存器能达到的最小主误差。</p>
+      <button id="archive-button" class="text-button" type="button" aria-haspopup="dialog"><svg aria-hidden="true"><use href="#i-archive"></use></svg><span data-zh="运行档案" data-en="Run archive">运行档案</span></button>
+    </header>
+    <section id="story-view" aria-labelledby="story-title">
+      <div class="story-transport">
+        <div class="story-controls">
+          <button id="story-play" type="button"><svg aria-hidden="true"><use href="#i-play"></use></svg><span>Play</span></button>
+          <button id="story-prev" type="button" aria-label="上一步" data-zh-label="上一步" data-en-label="Previous step"><svg aria-hidden="true"><use href="#i-next"></use></svg></button>
+          <button id="story-next" type="button" aria-label="下一步" data-zh-label="下一步" data-en-label="Next step"><svg aria-hidden="true"><use href="#i-next"></use></svg></button>
+        </div>
+        <div class="story-timeline">
+          <div class="story-chapters" role="group" aria-label="各阶段" data-zh-label="各阶段" data-en-label="Chapters">
+            <button type="button" data-chapter="0"><span data-zh="启动" data-en="Setup">启动</span></button>
+            <button type="button" data-chapter="2"><span data-zh="寻根" data-en="Search">寻根</span></button>
+            <button type="button" data-chapter="6"><span data-zh="筛选" data-en="Selection">筛选</span></button>
+            <button type="button" data-chapter="12"><span data-zh="精确证明" data-en="Proof">精确证明</span></button>
+            <button type="button" data-chapter="14"><span data-zh="留出测试" data-en="Held-out tests">留出测试</span></button>
+          </div>
+          <input type="range" id="story-seek" min="0" step="any" value="0" aria-label="回放进度" data-zh-label="回放进度" data-en-label="Replay position" aria-keyshortcuts="Space ArrowLeft ArrowRight" aria-describedby="story-keys">
+          <span id="story-keys" class="sr-only" data-zh="聚焦进度条后，空格播放或暂停，左右键逐步查看。" data-en="On the timeline, Space toggles playback and the arrow keys move one step.">聚焦进度条后，空格播放或暂停，左右键逐步查看。</span>
+        </div>
+        <div class="story-playback-meta"><time id="story-timecode">00:00</time><button id="story-speed" type="button">0.75×</button></div>
+      </div>
+      <div class="story-stage" id="story-stage">
+        <div class="story-narrative"><h2 id="story-title"></h2><p id="story-description"></p></div>
+        <div id="story-crew" class="story-crew" role="group" aria-describedby="story-handoff" aria-label="回放角色" data-zh-label="回放角色" data-en-label="Replay roles">
+          <svg id="story-wire" class="story-wire" aria-hidden="true">
+            <path id="story-wire-guides"></path><path id="story-wire-path"></path><path id="story-wire-arrow"></path><circle id="story-packet" r="3" opacity="0"></circle>
+          </svg>
+          <button class="story-role" type="button" data-role="ai" aria-controls="trace-model" aria-expanded="false">
+            <svg class="story-avatar" viewbox="0 0 40 40" aria-hidden="true">
+              <rect class="avatar-shell" x="5" y="8" width="30" height="24" rx="3"></rect>
+              <path class="avatar-rim" d="M5 14h30M12 19l4 4-4 4m8 0h7"></path>
+            </svg>
+            <span class="story-role-copy"><span>AI</span><small class="story-role-status"></small></span>
+          </button>
+          <button class="story-role" type="button" data-role="db" aria-controls="trace-query" aria-expanded="false">
+            <svg class="story-avatar" viewbox="0 0 40 40" aria-hidden="true">
+              <path class="avatar-shell" d="M7 13c0-8 26-8 26 0v14c0 8-26 8-26 0Z"></path><ellipse class="avatar-rim" cx="20" cy="13" rx="13" ry="5"></ellipse><path class="avatar-rim" d="M7 24c0 6 26 6 26 0"></path>
+              <path class="avatar-rim" d="M23 19h5m-5 8h5"></path>
+            </svg>
+            <span class="story-role-copy"><span data-zh="数据库" data-en="Database">数据库</span><small class="story-role-status"></small></span>
+          </button>
+          <button class="story-role" type="button" data-role="kernel" aria-controls="trace-source" aria-expanded="false">
+            <svg class="story-avatar" viewbox="0 0 40 40" aria-hidden="true">
+              <circle class="avatar-hub" cx="20" cy="20" r="19"></circle>
+              <rect class="avatar-shell" x="10" y="10" width="20" height="20" rx="3"></rect>
+              <rect class="avatar-visor" x="15" y="15" width="10" height="10" rx="1"></rect>
+              <path class="avatar-rim" d="M15 7v3m5-3v3m5-3v3m-10 20v3m5-3v3m5-3v3M7 15h3m-3 5h3m-3 5h3m20-10h3m-3 5h3m-3 5h3"></path>
+            </svg>
+            <span class="story-role-copy"><span data-zh="内核" data-en="Kernel">内核</span><small class="story-role-status"></small></span>
+          </button>
+          <button class="story-role" type="button" data-role="verifier" aria-controls="trace-output" aria-expanded="false">
+            <svg class="story-avatar" viewbox="0 0 40 40" aria-hidden="true">
+              <path class="avatar-shell" d="M20 6l12 5v8c0 7-5 12-12 15-7-3-12-8-12-15v-8Z"></path>
+              <path class="avatar-rim" d="m14 20 4 4 8-9" stroke-width="1.8"></path>
+            </svg>
+            <span class="story-role-copy"><span data-zh="验证器" data-en="Verifier">验证器</span><small class="story-role-status"></small></span>
+          </button>
+          <span id="story-handoff" class="sr-only"></span>
+        </div>
+        <aside class="story-score" aria-labelledby="story-score-title">
+          <h3 id="story-score-title"></h3>
+          <div id="story-count"></div>
+          <p id="story-result"></p>
+          <figure class="story-chart">
+            <div class="story-chart-plot">
+              <svg viewbox="0 0 288 85" role="img" aria-labelledby="story-chart-label" preserveaspectratio="none">
+                <title id="story-chart-label"></title>
+                <path class="story-grid" d="M5 17H283 M5 69H283"></path>
+                <path class="story-base" d="M14 69H274"></path>
+                <path id="story-series" class="story-series"></path>
+              </svg>
+              <div id="story-checkpoints"></div>
+              <span id="story-marker" class="story-marker" aria-hidden="true"></span>
+            </div>
+            <figcaption><time id="story-base-time"></time><time id="story-gain-time"></time></figcaption>
+          </figure>
+        </aside>
+        <div class="story-visual">
+          <div id="story-figure" class="story-figure">
+            <div id="story-dna-lab" class="story-dna-lab runge-kutta-lab">
+        <section class="dna-canvas-card sphere-panel" aria-labelledby="stability-title">
+          <header class="dna-card-head"><h3 id="stability-title" data-zh="绝对稳定域" data-en="Absolute stability">绝对稳定域</h3>
+            <button type="button" class="quiet-button" id="polynomial" aria-haspopup="dialog"><i>R</i>(<i>z</i>) ↗</button></header>
+          <div id="stability-plot" class="stability-plot"></div>
+          <div class="stability-key"><div id="region-key"></div><output id="stability-probe"></output></div>
+          <div class="readout"><div><span data-zh="主误差范数" data-en="Leading error norm">主误差范数</span><div class="norm-readout"><strong id="norm"></strong><small id="norm-change" hidden></small></div></div><div><span data-zh="验证状态" data-en="Verification">验证状态</span><strong id="verdict"></strong></div></div>
+        </section>
+        <section class="dna-matrix-card energy-panel" aria-labelledby="metric-title">
+          <header class="dna-card-head"><h3 id="metric-title" data-zh="四阶误差分解" data-en="Fourth-order error terms">四阶误差分解</h3><button class="quiet-button" type="button" id="metric-data" aria-haspopup="dialog"><span data-zh="数据" data-en="Data">数据</span> ↗</button></header>
+          <div id="metric-plot" class="metric-plot"></div>
+          <footer class="dna-matrix-foot" id="metric-foot"></footer>
+        </section>
+        <section class="dna-side-stack energy-panel plots-bottom" aria-labelledby="checks-title">
+          <header class="dna-card-head"><h3 id="checks-title" data-zh="候选核验" data-en="Candidate checks">候选核验</h3></header>
+          <ul class="science-rows">
+            <li><span data-zh="冻结稳定性多项式" data-en="Frozen stability polynomial">冻结稳定性多项式</span><output id="check-stability"></output></li>
+            <li><span data-zh="最大系数绝对值" data-en="Largest coefficient magnitude">最大系数绝对值</span><output id="check-coefficient"></output></li>
+            <li><span data-zh="可行误差下界" data-en="Feasible error floor">可行误差下界</span><output id="check-floor"></output></li>
+            <li><span data-zh="精确证书" data-en="Exact certificate">精确证书</span><output id="check-certificate"></output></li>
+          </ul>
+          <footer id="check-note" class="dna-matrix-foot"></footer>
+        </section>
+        <section class="dna-pair-card energy-panel plots-bottom" aria-labelledby="ode-title">
+          <header class="dna-card-head"><h3 id="ode-title" data-zh="留出 ODE 测试" data-en="Held-out ODE tests">留出 ODE 测试</h3>
+            <label id="budget-label"><span class="sr-only" data-zh="函数求值次数" data-en="RHS calls">函数求值次数</span><select id="rhs"></select></label>
+            <button class="quiet-button" type="button" id="ode-data" aria-haspopup="dialog" data-zh="数据" data-en="Data">数据</button>
+          </header>
+          <div id="ode-plot" class="metric-plot"></div>
+          <footer class="dna-matrix-foot" id="ode-foot"></footer>
+        </section>
+
+            </div>
+          </div>
+        </div>
+      </div>
+      <header class="kernel-heading">
+        <h2 id="trace-title" tabindex="-1"></h2>
+        <button id="story-inspect" type="button" aria-expanded="true" aria-controls="story-trace"><span class="sr-only" data-zh="收起执行详情" data-en="Hide execution details">收起执行详情</span><svg viewbox="0 0 16 16" aria-hidden="true"><path d="m4 6 4 4 4-4"></path></svg></button>
+      </header>
+      <section id="story-trace" aria-labelledby="trace-title">
+        <div id="trace-window">
+        <div id="trace-kernel" class="kernel-desk">
+          <section class="kt-source trace-scroll" id="trace-source" tabindex="-1" aria-labelledby="trace-source-title"><header><h3 id="trace-source-title" data-zh="执行位置" data-en="Execution cursor">执行位置</h3><code id="trace-source-file">loop.ts</code></header>
+            <div id="trace-code"></div>
+          </section>
+          <div class="kt-database trace-scroll">
+            <header class="kt-task-heading">
+              <div class="kt-task-title"><h3 id="trace-units-title" data-zh="任务表" data-en="Task rows">任务表</h3><code id="trace-db-table"></code></div>
+              <div class="kt-task-columns" id="trace-db-columns" aria-hidden="true"><span>cycle</span><span>unit</span><span>from_cycle</span><span>from_unit</span></div>
+            </header>
+            <section class="kt-units" aria-labelledby="trace-units-title">
+              <div class="kt-task-table" id="trace-task-wrap"><div id="trace-cursor" aria-hidden="true">cur</div>
+                <table>
+                  <colgroup><col><col><col><col></colgroup>
+                  <thead class="sr-only"><tr><th scope="col">cycle</th><th scope="col">unit</th><th scope="col">from_cycle</th><th scope="col">from_unit</th></tr></thead>
+                  <tbody id="trace-units"></tbody>
+                </table>
+              </div>
+              <div class="kt-host-table" id="trace-host-table" hidden>
+                <table>
+                  <thead class="sr-only"><tr><th scope="col">name</th><th scope="col">usable</th></tr></thead>
+                  <tbody id="trace-host-rows"></tbody>
+                </table>
+              </div>
+              <p id="trace-units-empty" class="trace-empty" hidden></p>
+              <div class="kt-variable" id="trace-line-wrap"><code>line[]</code><div id="trace-line"></div></div>
+            </section>
+            <section class="kt-sql" id="trace-query" tabindex="-1" aria-labelledby="trace-query-title"><header><h3 id="trace-query-title"></h3><code>SQL</code></header><pre id="trace-sql"></pre></section>
+          </div>
+          <section class="kt-model" id="trace-model" tabindex="-1" aria-labelledby="trace-model-title">
+            <header>
+              <div class="trace-model-heading">
+                <h3 id="trace-model-title" data-zh="AI 代码与调用" data-en="AI code and calls">AI 代码与调用</h3>
+                <span class="trace-model-status" data-zh="正在写代码" data-en="Writing code">正在写代码</span>
+              </div>
+              <button id="trace-model-diff" type="button" aria-controls="trace-model-call" aria-pressed="false" hidden></button>
+              <code id="trace-model-file"></code>
+            </header>
+            <div id="trace-model-scroll" class="trace-scroll kt-model-body">
+              <p id="trace-model-empty" class="trace-empty" hidden></p>
+              <pre id="trace-model-call"></pre>
+            </div>
+            <div id="trace-terminal" class="kt-terminal" hidden>
+              <header class="kt-terminal-head">
+                <span class="kt-terminal-prompt">$ <span data-zh="终端输出" data-en="Terminal output">终端输出</span></span>
+                <code id="trace-terminal-source"></code>
+                <span id="trace-terminal-badge" class="kt-terminal-badge"></span>
+              </header>
+              <pre id="trace-terminal-body"></pre>
+            </div>
+          </section>
+          <section class="kt-payload" id="trace-output" tabindex="-1" aria-labelledby="trace-output-title">
+            <header><h3 id="trace-output-title">Search paths</h3><code id="trace-output-origin"></code></header>
+            <div id="trace-output-scroll" class="trace-scroll kt-output-body">
+              <div id="trace-branch-tree">
+                <h3 class="trace-branch-title" data-zh="搜索路径" data-en="Search paths">搜索路径</h3>
+                <div id="story-branches"><ul id="search-tree" class="search-tree"></ul></div>
+              </div>
+              <p id="trace-output-empty" class="trace-empty" hidden></p>
+              <dl class="trace-fields" id="trace-return-fields" hidden></dl>
+            </div>
+            <div id="trace-output-dock" class="trace-scroll kt-output-dock">
+              <details id="trace-log" class="trace-log"><summary id="trace-origin"></summary><pre id="trace-receipt"></pre></details>
+              <details class="trace-history">
+                <summary><span id="trace-history-title"></span><code id="trace-file"></code></summary>
+                <p id="trace-message-count"></p>
+                <table class="kt-messages"><thead><tr><th scope="col">#</th><th scope="col">role</th><th scope="col" data-zh="内容" data-en="Entry">内容</th></tr></thead><tbody id="trace-messages"></tbody></table>
+              </details>
+            </div>
+          </section>
+        </div>
+        </div>
+        <p id="trace-sources" class="trace-sources" data-zh="源码、调用与回执取自本次归档。逐行执行按源码重放，u0–u4 为链尾相对行号。" data-en="Source, calls and receipts come from this run. Line execution is replayed from source. u0–u4 label the relative chain tail.">源码、调用与回执取自本次归档。逐行执行按源码重放，u0–u4 为链尾相对行号。</p>
+      </section>
+    </section>
+<div hidden>
+<select id="chapter-select"></select><span id="duration"></span><span id="exchange-direction"></span><time id="run-clock"></time>
+</div>
+    <noscript data-zh="请启用 JavaScript 播放回放。" data-en="Enable JavaScript to play the replay.">请启用 JavaScript 播放回放。</noscript>
+  </main>
+  <dialog id="record-dialog" aria-labelledby="record-title"><header><h2 id="record-title"></h2><button type="button" class="dismiss" aria-label="关闭记录" data-zh-label="关闭记录" data-en-label="Close record">×</button></header>
+    <div id="record-reading"></div>
+    <a id="case-link" href="/zh/blog/runge-kutta/" aria-label="阅读案例全文" data-zh-label="阅读案例全文" data-en-label="Read the case study" hidden><span data-zh="阅读案例全文" data-en="Read the case study">阅读案例全文</span> ↗</a>
+  </dialog>
+</body>
+</html>

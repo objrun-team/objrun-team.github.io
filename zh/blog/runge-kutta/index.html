@@ -7,8 +7,8 @@
   <meta name="description" content="成本、内存和稳定性一点不变，主误差下降 10.65%，并且精确证明不可能再低。">
   <title>找到一个可证明最优的低存储 Runge–Kutta 方法 · Object Run</title>
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
-  <script src="/language.js?v=83edee4d6447" defer></script>
-  <link rel="stylesheet" href="/home.css?v=c67c753469f3">
+  <script src="/language.js?v=09c63abaa242" defer></script>
+  <link rel="stylesheet" href="/home.css?v=21daa6470a71">
   <link rel="stylesheet" href="/blog/blog.css?v=ecf18c98115f">
   <script src="/blog/blog.js?v=4e6fbe503dd2" defer></script>
   <link rel="canonical" href="https://objrun-team.github.io/zh/blog/runge-kutta/">
@@ -62,6 +62,8 @@
         <div class="stat"><p class="stat-value">639/45752</p><p class="stat-label">新方法的主误差范数<br>等于可行集上的下界</p></div>
         <div class="stat"><p class="stat-value">1 h 37 m</p><p class="stat-label">从首次模型调用到结束<br>API 费用 US$1.60</p></div>
       </div>
+
+      <p><a href="/zh/demo/runge-kutta/">观看 Runge–Kutta 方法搜索回放 →</a></p>
 
       <h2>背景</h2>
       <p>显式 Runge–Kutta 方法求解 <span class="math">y′ = f(t, y)</span> 时，每走一步要多次计算右端函数并保存中间结果。Williamson 提出的 2N 格式只需要两个存储向量，与阶段数无关，因此在显存或内存受限的大规模模拟中很常用。代价是系数必须满足额外的代数关系，设计空间比一般方法小。</p>

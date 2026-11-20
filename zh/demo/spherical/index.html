@@ -1,0 +1,324 @@
+<!doctype html>
+<html lang="zh-Hans" data-layout="story" data-replay="spherical" data-article="spherical-design" data-language="zh">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#08090a">
+  <title data-zh="球面设计 · ObjRun 运行回放" data-en="Spherical design · ObjRun replay">球面设计 · ObjRun 运行回放</title>
+  <link rel="icon" href="/favicon.svg">
+  <link rel="stylesheet" href="/demo/spherical/replay.css?v=fa44b64b23be">
+  <link rel="stylesheet" href="/demo/dna-codes/kernel-trace.css?v=3b2a710249de">
+  <link rel="stylesheet" href="/demo/dna-codes/story.css?v=9b8657fa1efc">
+  <link rel="stylesheet" href="/demo/science-desk.css?v=df3856f19e3f">
+  <link rel="stylesheet" href="/navigation.css?v=3d10bd9cf21c">
+  <script src="/language.js?v=09c63abaa242" defer></script>
+  <script src="/demo/replay-language.js?v=fbb2f441c7f4" defer></script>
+  <script src="/demo/figure-motion.js?v=b54ea0b0bb69" defer></script>
+  <script src="/demo/spherical/locale.js?v=c34a04d41c91" defer></script>
+  <script src="/demo/spherical/record.js?v=7e9af0b3684e" defer></script>
+  <script src="/demo/spherical/crew.js?v=03bffcc5caa3" defer></script>
+  <script src="/demo/spherical/geometry.js?v=7cfc67c3312c" defer></script>
+  <script defer src="/demo/dna-codes/trace-code.js?v=998223164002"></script>
+  <script defer src="/demo/spherical/execution-trace.js?v=407620aebb71"></script>
+  <script defer src="/demo/dna-codes/trace-model.js?v=5d9d14662b45"></script>
+  <script defer src="/demo/dna-codes/kernel-trace.js?v=16d2082b149a"></script>
+  <script defer src="/demo/dna-codes/trace-focus.js?v=b1c301f3f3c9"></script>
+  <script defer src="/demo/case-execution.js?v=4b5ccc652c05"></script>
+  <script defer src="/demo/case-story.js?v=54f773b74068"></script>
+  <script src="/demo/spherical/replay.js?v=28676efc3694" defer></script>
+<link rel="canonical" href="https://objrun-team.github.io/zh/demo/spherical/">
+<link rel="alternate" hreflang="en" href="https://objrun-team.github.io/demo/spherical/">
+<link rel="alternate" hreflang="zh-Hans" href="https://objrun-team.github.io/zh/demo/spherical/">
+<link rel="alternate" hreflang="x-default" href="https://objrun-team.github.io/demo/spherical/">
+</head>
+<body>
+  <svg class="symbols" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+  <symbol id="i-archive" viewbox="0 0 24 24"><path d="M5 4h13a1 1 0 0 1 1 1v16H7a3 3 0 0 1-3-3V5a1 1 0 0 1 1-1ZM4 18a2 2 0 0 1 2-2h13M8 8h7"></path></symbol>
+  <symbol id="i-globe" viewbox="0 0 24 24"><circle cx="12" cy="12" r="9"></circle><ellipse cx="12" cy="12" rx="4" ry="9" transform="rotate(-25 12 12)"></ellipse><path d="M3.6 15.1c4 .3 12.2-3.4 16.8-6.2"></path></symbol>
+  <symbol id="i-rotate" viewbox="0 0 24 24"><path d="M5 9c1-3 3-5 7-5a8 8 0 1 1-7 12M5 4v5h5"></path></symbol>
+  <symbol id="i-play" viewbox="0 0 24 24"><path d="m8 5 11 7-11 7z" fill="currentColor" stroke-width="1.3"></path></symbol>
+  <symbol id="i-pause" viewbox="0 0 24 24"><path d="M8.5 6v12M15.5 6v12" stroke-width="4"></path></symbol>
+  <symbol id="i-next" viewbox="0 0 24 24"><path d="m7 6 8 6-8 6zM18 6v12"></path></symbol>
+  </svg>
+  <header class="site-header is-scrolled" id="site-header">
+    <nav class="navigation navigation-full" aria-label="主导航" data-zh-label="主导航" data-en-label="Main navigation">
+      <a class="brand" href="/zh/#top">Object Run</a>
+      <div class="nav-links">
+        <a href="/zh/#benchmarks" data-zh="评测" data-en="Benchmarks">评测</a>
+        <a href="/zh/#video" data-zh="视频" data-en="Film">视频</a>
+        <a href="/zh/#leaderboards" data-zh="排行榜" data-en="Leaderboards">排行榜</a>
+        <a href="/zh/runs/" data-zh="运行回放" data-en="Replays">运行回放</a>
+        <a href="/zh/#research" data-zh="科研" data-en="Research">科研</a>
+        <a href="/zh/blog/" data-zh="博客" data-en="Blog">博客</a>
+        <a id="language" aria-label="Switch to English" href="/demo/spherical/" hreflang="en">EN</a>
+      </div>
+    </nav>
+  </header>
+  <main class="wrap">
+    <header class="intro replay-intro">
+      <h1 data-zh="球面设计" data-en="Spherical design">球面设计</h1>
+      <p data-zh="调整 24 个六维单位向量，寻找高于全局最低能量的局部低谷。" data-en="Find local minima above the global minimum for 24 points on the unit sphere in six dimensions.">调整 24 个六维单位向量，寻找高于全局最低能量的局部低谷。</p>
+      <button id="archive-button" class="text-button" type="button" aria-haspopup="dialog"><svg aria-hidden="true"><use href="#i-archive"></use></svg><span data-zh="运行档案" data-en="Run archive">运行档案</span></button>
+    </header>
+    <section id="story-view" aria-labelledby="story-title">
+      <div class="story-transport">
+        <div class="story-controls">
+          <button id="story-play" type="button"><svg aria-hidden="true"><use href="#i-play"></use></svg><span>Play</span></button>
+          <button id="story-prev" type="button" aria-label="上一步" data-zh-label="上一步" data-en-label="Previous step"><svg aria-hidden="true"><use href="#i-next"></use></svg></button>
+          <button id="story-next" type="button" aria-label="下一步" data-zh-label="下一步" data-en-label="Next step"><svg aria-hidden="true"><use href="#i-next"></use></svg></button>
+        </div>
+        <div class="story-timeline">
+          <div class="story-chapters" role="group" aria-label="各阶段" data-zh-label="各阶段" data-en-label="Chapters">
+            <button type="button" data-chapter="0"><span data-zh="启动" data-en="Setup">启动</span></button>
+            <button type="button" data-chapter="1"><span data-zh="精修" data-en="Refinement">精修</span></button>
+            <button type="button" data-chapter="2"><span data-zh="恢复" data-en="Recovery">恢复</span></button>
+            <button type="button" data-chapter="3"><span data-zh="构造证书" data-en="Certificates">构造证书</span></button>
+            <button type="button" data-chapter="6"><span data-zh="终检" data-en="Audit">终检</span></button>
+          </div>
+          <input type="range" id="story-seek" min="0" step="any" value="0" aria-label="回放进度" data-zh-label="回放进度" data-en-label="Replay position" aria-keyshortcuts="Space ArrowLeft ArrowRight" aria-describedby="story-keys">
+          <span id="story-keys" class="sr-only" data-zh="聚焦进度条后，空格播放或暂停，左右键逐步查看。" data-en="On the timeline, Space toggles playback and the arrow keys move one step.">聚焦进度条后，空格播放或暂停，左右键逐步查看。</span>
+        </div>
+        <div class="story-playback-meta"><time id="story-timecode">00:00</time><button id="story-speed" type="button">0.75×</button></div>
+      </div>
+      <div class="story-stage" id="story-stage">
+        <div class="story-narrative"><h2 id="story-title"></h2><p id="story-description"></p></div>
+        <div id="story-crew" class="story-crew" role="group" aria-describedby="story-handoff" aria-label="回放角色" data-zh-label="回放角色" data-en-label="Replay roles">
+          <svg id="story-wire" class="story-wire" aria-hidden="true">
+            <path id="story-wire-guides"></path><path id="story-wire-path"></path><path id="story-wire-arrow"></path><circle id="story-packet" r="3" opacity="0"></circle>
+          </svg>
+          <button class="story-role" type="button" data-role="ai" aria-controls="trace-model" aria-expanded="false">
+            <svg class="story-avatar" viewbox="0 0 40 40" aria-hidden="true">
+              <rect class="avatar-shell" x="5" y="8" width="30" height="24" rx="3"></rect>
+              <path class="avatar-rim" d="M5 14h30M12 19l4 4-4 4m8 0h7"></path>
+            </svg>
+            <span class="story-role-copy"><span>AI</span><small class="story-role-status"></small></span>
+          </button>
+          <button class="story-role" type="button" data-role="db" aria-controls="trace-query" aria-expanded="false">
+            <svg class="story-avatar" viewbox="0 0 40 40" aria-hidden="true">
+              <path class="avatar-shell" d="M7 13c0-8 26-8 26 0v14c0 8-26 8-26 0Z"></path><ellipse class="avatar-rim" cx="20" cy="13" rx="13" ry="5"></ellipse><path class="avatar-rim" d="M7 24c0 6 26 6 26 0"></path>
+              <path class="avatar-rim" d="M23 19h5m-5 8h5"></path>
+            </svg>
+            <span class="story-role-copy"><span data-zh="数据库" data-en="Database">数据库</span><small class="story-role-status"></small></span>
+          </button>
+          <button class="story-role" type="button" data-role="kernel" aria-controls="trace-source" aria-expanded="false">
+            <svg class="story-avatar" viewbox="0 0 40 40" aria-hidden="true">
+              <circle class="avatar-hub" cx="20" cy="20" r="19"></circle>
+              <rect class="avatar-shell" x="10" y="10" width="20" height="20" rx="3"></rect>
+              <rect class="avatar-visor" x="15" y="15" width="10" height="10" rx="1"></rect>
+              <path class="avatar-rim" d="M15 7v3m5-3v3m5-3v3m-10 20v3m5-3v3m5-3v3M7 15h3m-3 5h3m-3 5h3m20-10h3m-3 5h3m-3 5h3"></path>
+            </svg>
+            <span class="story-role-copy"><span data-zh="内核" data-en="Kernel">内核</span><small class="story-role-status"></small></span>
+          </button>
+          <button class="story-role" type="button" data-role="verifier" aria-controls="trace-output" aria-expanded="false">
+            <svg class="story-avatar" viewbox="0 0 40 40" aria-hidden="true">
+              <path class="avatar-shell" d="M20 6l12 5v8c0 7-5 12-12 15-7-3-12-8-12-15v-8Z"></path>
+              <path class="avatar-rim" d="m14 20 4 4 8-9" stroke-width="1.8"></path>
+            </svg>
+            <span class="story-role-copy"><span data-zh="验证器" data-en="Verifier">验证器</span><small class="story-role-status"></small></span>
+          </button>
+          <span id="story-handoff" class="sr-only"></span>
+        </div>
+        <aside class="story-score" aria-labelledby="story-score-title">
+          <h3 id="story-score-title"></h3>
+          <div id="story-count"></div>
+          <p id="story-result"></p>
+          <figure class="story-chart">
+            <div class="story-chart-plot">
+              <svg viewbox="0 0 288 85" role="img" aria-labelledby="story-chart-label" preserveaspectratio="none">
+                <title id="story-chart-label"></title>
+                <path class="story-grid" d="M5 17H283 M5 69H283"></path>
+                <path class="story-base" d="M14 69H274"></path>
+                <path id="story-series" class="story-series"></path>
+              </svg>
+              <div id="story-checkpoints"></div>
+              <span id="story-marker" class="story-marker" aria-hidden="true"></span>
+            </div>
+            <figcaption><time id="story-base-time"></time><time id="story-gain-time"></time></figcaption>
+          </figure>
+        </aside>
+        <div class="story-visual">
+          <div id="story-figure" class="story-figure">
+            <div id="story-dna-lab" class="story-dna-lab spherical-lab">
+        <section class="dna-canvas-card sphere-panel" id="pane-result" aria-labelledby="plot-title">
+          <header class="dna-card-head"><h3 id="plot-title"><svg><use href="#i-globe"></use></svg><span data-zh="球面投影" data-en="Sphere projection">球面投影</span></h3></header>
+          <div class="plot">
+            <canvas id="geometry" tabindex="0" role="img" aria-label="24 个六维单位向量的前三维投影，方向键可旋转" data-zh-label="24 个六维单位向量的前三维投影，方向键可旋转" data-en-label="Projection of 24 six-dimensional unit vectors. Rotate with the arrow keys."></canvas>
+            <canvas id="old-geometry" aria-hidden="true" hidden></canvas>
+            <div class="plot-caption"><span data-zh="前三维 · 拖动旋转" data-en="First three coordinates · drag to rotate">前三维 · 拖动旋转</span><button id="reset-view" aria-label="重置视角" data-zh-label="重置视角" data-en-label="Reset view" title="重置视角" data-zh-title="重置视角" data-en-title="Reset view"><svg><use href="#i-rotate"></use></svg></button></div>
+          </div>
+          <div class="readout"><div><span data-zh="当前构型" data-en="Configuration">当前构型</span><strong id="config-name"></strong></div><div><span><span data-zh="能量" data-en="Energy">能量</span> <i>F</i></span><strong id="energy"></strong></div></div>
+          <div id="final-choices" hidden><div id="minima" role="group" aria-label="按能量切换已验证构型" data-zh-label="按能量切换已验证构型" data-en-label="Select a verified configuration by energy"></div></div>
+        </section>
+        <section class="dna-matrix-card sphere-panel" aria-labelledby="gram-title">
+          <header class="dna-card-head"><h3 id="gram-title" data-zh="Gram 矩阵" data-en="Gram matrix">Gram 矩阵</h3><span class="science-context">24 × 24</span></header>
+          <canvas id="gram" tabindex="0" role="img" aria-label="六维内积矩阵，用方向键查看单元格。" data-zh-label="六维内积矩阵，用方向键查看单元格。" data-en-label="Six-dimensional dot products. Use the arrow keys to inspect a cell."></canvas>
+          <footer class="dna-matrix-foot gram-foot">
+            <div class="science-legend"><i style="background:#6ac0d8"></i><span data-zh="负" data-en="Negative">负</span><i style="background:#c8b4fe"></i><span data-zh="正" data-en="Positive">正</span></div>
+            <output id="gram-cell" aria-live="off"></output>
+          </footer>
+        </section>
+        <section class="dna-side-stack energy-panel" id="energy-panel" aria-labelledby="energy-trace-title">
+          <header class="dna-card-head"><h3 id="energy-trace-title" data-zh="能量收敛" data-en="Energy convergence">能量收敛</h3><div class="trace-tools"><span id="energy-trace-origin"></span><button id="trace-view" class="quiet-button" hidden data-zh="查看全程" data-en="Full trace">查看全程</button></div></header>
+          <div class="chart" id="chart-area"><canvas id="trace" role="img" aria-label="搜索日志中的各步能量，对数刻度" data-zh-label="搜索日志中的各步能量，对数刻度" data-en-label="Logged energy by iteration, on a log scale"></canvas><span id="trace-empty" aria-hidden="true" data-zh="等待首个迭代样本" data-en="Waiting for the first iteration">等待首个迭代样本</span></div>
+          <footer class="dna-matrix-foot"><span id="trace-scale" data-zh="迭代步 · 对数能量" data-en="Iteration · log energy">迭代步 · 对数能量</span></footer>
+        </section>
+        <section class="dna-pair-card energy-panel sphere-evidence" aria-labelledby="minimum-title">
+          <header class="dna-card-head"><h3 id="minimum-title" data-zh="局部极小核验" data-en="Local minimum checks">局部极小核验</h3></header>
+          <ul class="science-rows">
+            <li><span data-zh="当前能量" data-en="Current energy">当前能量</span><output id="minimum-energy"></output></li>
+            <li><span data-zh="作者参照能量" data-en="Reference energy">作者参照能量</span><output id="reference-energy"></output></li>
+            <li><span data-zh="最小横向曲率（数值）" data-en="Minimum transverse curvature (numeric)">最小横向曲率（数值）</span><output id="minimum-curvature"></output></li>
+            <li><span data-zh="独立区间验证" data-en="Independent interval check">独立区间验证</span><output id="minimum-proof"></output></li>
+          </ul>
+          <footer id="minimum-note" class="dna-matrix-foot"></footer>
+        </section>
+            </div>
+          </div>
+        </div>
+      </div>
+      <header class="kernel-heading">
+        <h2 id="trace-title" tabindex="-1"></h2>
+        <button id="story-inspect" type="button" aria-expanded="true" aria-controls="story-trace"><span class="sr-only" data-zh="收起执行详情" data-en="Hide execution details">收起执行详情</span><svg viewbox="0 0 16 16" aria-hidden="true"><path d="m4 6 4 4 4-4"></path></svg></button>
+      </header>
+      <section id="story-trace" aria-labelledby="trace-title">
+        <div id="trace-window">
+        <div id="trace-kernel" class="kernel-desk">
+          <section class="kt-source trace-scroll" id="trace-source" tabindex="-1" aria-labelledby="trace-source-title"><header><h3 id="trace-source-title" data-zh="执行位置" data-en="Execution cursor">执行位置</h3><code id="trace-source-file">loop.ts</code></header>
+            <div id="trace-code"></div>
+          </section>
+          <div class="kt-database trace-scroll">
+            <header class="kt-task-heading">
+              <div class="kt-task-title"><h3 id="trace-units-title" data-zh="任务表" data-en="Task rows">任务表</h3><code id="trace-db-table"></code></div>
+              <div class="kt-task-columns" id="trace-db-columns" aria-hidden="true"><span>cycle</span><span>unit</span><span>from_cycle</span><span>from_unit</span></div>
+            </header>
+            <section class="kt-units" aria-labelledby="trace-units-title">
+              <div class="kt-task-table" id="trace-task-wrap"><div id="trace-cursor" aria-hidden="true">cur</div>
+                <table>
+                  <colgroup><col><col><col><col></colgroup>
+                  <thead class="sr-only"><tr><th scope="col">cycle</th><th scope="col">unit</th><th scope="col">from_cycle</th><th scope="col">from_unit</th></tr></thead>
+                  <tbody id="trace-units"></tbody>
+                </table>
+              </div>
+              <div class="kt-host-table" id="trace-host-table" hidden>
+                <table>
+                  <thead class="sr-only"><tr><th scope="col">name</th><th scope="col">usable</th></tr></thead>
+                  <tbody id="trace-host-rows"></tbody>
+                </table>
+              </div>
+              <p id="trace-units-empty" class="trace-empty" hidden></p>
+              <div class="kt-variable" id="trace-line-wrap"><code>line[]</code><div id="trace-line"></div></div>
+            </section>
+            <section class="kt-sql" id="trace-query" tabindex="-1" aria-labelledby="trace-query-title"><header><h3 id="trace-query-title"></h3><code>SQL</code></header><pre id="trace-sql"></pre></section>
+          </div>
+          <section class="kt-model" id="trace-model" tabindex="-1" aria-labelledby="trace-model-title">
+            <header>
+              <div class="trace-model-heading">
+                <h3 id="trace-model-title" data-zh="AI 代码与调用" data-en="AI code and calls">AI 代码与调用</h3>
+                <span class="trace-model-status" data-zh="正在写代码" data-en="Writing code">正在写代码</span>
+              </div>
+              <button id="trace-model-diff" type="button" aria-controls="trace-model-call" aria-pressed="false" hidden></button>
+              <code id="trace-model-file"></code>
+            </header>
+            <div id="trace-model-scroll" class="trace-scroll kt-model-body">
+              <p id="trace-model-empty" class="trace-empty" hidden></p>
+              <pre id="trace-model-call"></pre>
+            </div>
+            <div id="trace-terminal" class="kt-terminal" hidden>
+              <header class="kt-terminal-head">
+                <span class="kt-terminal-prompt">$ <span data-zh="终端输出" data-en="Terminal output">终端输出</span></span>
+                <code id="trace-terminal-source"></code>
+                <span id="trace-terminal-badge" class="kt-terminal-badge"></span>
+              </header>
+              <pre id="trace-terminal-body"></pre>
+            </div>
+          </section>
+          <section class="kt-payload" id="trace-output" tabindex="-1" aria-labelledby="trace-output-title">
+            <header><h3 id="trace-output-title">Search paths</h3><code id="trace-output-origin"></code></header>
+            <div id="trace-output-scroll" class="trace-scroll kt-output-body">
+              <div id="trace-branch-tree">
+                <h3 class="trace-branch-title" data-zh="搜索路径" data-en="Search paths">搜索路径</h3>
+                <div id="story-branches"><ul id="search-tree" class="search-tree"></ul></div>
+              </div>
+              <p id="trace-output-empty" class="trace-empty" hidden></p>
+              <dl class="trace-fields" id="trace-return-fields" hidden></dl>
+            </div>
+            <div id="trace-output-dock" class="trace-scroll kt-output-dock">
+              <details id="trace-log" class="trace-log"><summary id="trace-origin"></summary><pre id="trace-receipt"></pre></details>
+              <details class="trace-history">
+                <summary><span id="trace-history-title"></span><code id="trace-file"></code></summary>
+                <p id="trace-message-count"></p>
+                <table class="kt-messages"><thead><tr><th scope="col">#</th><th scope="col">role</th><th scope="col" data-zh="内容" data-en="Entry">内容</th></tr></thead><tbody id="trace-messages"></tbody></table>
+              </details>
+            </div>
+          </section>
+        </div>
+        </div>
+        <p id="trace-sources" class="trace-sources" data-zh="源码、调用与回执取自本次归档。逐行执行按源码重放，u0–u4 为链尾相对行号。" data-en="Source, calls and receipts come from this run. Line execution is replayed from source. u0–u4 label the relative chain tail.">源码、调用与回执取自本次归档。逐行执行按源码重放，u0–u4 为链尾相对行号。</p>
+      </section>
+    </section>
+<div hidden inert>
+          <div class="network-board">
+        <svg id="collaboration-map" viewbox="0 0 760 270" role="img" aria-label="角色之间的消息链路" data-zh-label="角色之间的消息链路" data-en-label="Messages between the four roles" aria-describedby="map-description">
+          <desc id="map-description"></desc>
+          <defs>
+            <filter id="trail-blur" filterunits="userSpaceOnUse"><fegaussianblur stddeviation="1.25"></fegaussianblur></filter>
+            <marker id="route-arrow" viewbox="0 0 7 8" refx="6" refy="4" markerwidth="6" markerheight="7" orient="auto-start-reverse" markerunits="userSpaceOnUse"><path d="M1 1 6 4 1 7" fill="none" stroke="context-stroke" stroke-width="1.35"></path></marker>
+          </defs>
+          <g id="routes" aria-hidden="true"></g>
+          <g id="signal" aria-hidden="true">
+            <path id="active-route" fill="none"></path>
+            <path id="signal-tail" fill="none" filter="url(#trail-blur)"></path>
+            <circle id="signal-tip" r="3.2"></circle>
+            <circle id="arrival-ring" fill="none"></circle>
+          </g>
+        </svg>
+          <section class="station" id="station-ai" data-role="ai" aria-labelledby="name-ai">
+            <header class="station-heading"><button class="node-port" type="button" aria-label="放大AI 智能体的运行记录" data-zh-label="放大AI 智能体的运行记录" data-en-label="Open the AI agent record" aria-haspopup="dialog"><svg viewbox="0 0 64 64" aria-hidden="true"><g class="node-body"><use href="#mote-ai"></use></g></svg></button><h3 id="name-ai" data-zh="AI 智能体" data-en="AI agent">AI 智能体</h3></header>
+            <p class="station-speech" id="speech-ai"></p>
+            <div class="evidence" id="evidence-ai">
+            <div class="filebar"><button type="button" class="source-link" id="open-code" aria-label="查看完整代码节选" data-zh-label="查看完整代码节选" data-en-label="Read the full code excerpt" aria-haspopup="dialog"><span id="file-name"></span><span aria-hidden="true">↗</span></button><span id="request"></span></div>
+            <pre id="code" aria-label="本步关键代码" data-zh-label="本步关键代码" data-en-label="Code for this step"></pre>
+            <div id="revisions" role="group" aria-label="历史代码版本" data-zh-label="历史代码版本" data-en-label="Script revisions" hidden></div>
+            </div>
+          </section>
+          <section class="station" id="station-run" data-role="run" aria-labelledby="name-run">
+            <header class="station-heading"><button class="node-port" type="button" aria-label="放大Run 内核的运行记录" data-zh-label="放大Run 内核的运行记录" data-en-label="Open the run kernel record" aria-haspopup="dialog"><svg viewbox="0 0 64 64" aria-hidden="true"><g class="node-body"><use href="#mote-run"></use></g></svg></button><h3 id="name-run" data-zh="Run 内核" data-en="Run kernel">Run 内核</h3></header>
+            <p class="station-speech" id="speech-run"></p>
+            <div class="evidence" id="evidence-run">
+            <div class="filebar"><button type="button" class="source-link" id="open-run" aria-label="查看执行回执" data-zh-label="查看执行回执" data-en-label="Open the execution receipt" aria-haspopup="dialog"><span id="job-id"></span><span aria-hidden="true">↗</span></button><time id="job-time"></time></div><pre id="receipt"></pre>
+            </div>
+          </section>
+          <section class="station" id="station-db" data-role="db" aria-labelledby="name-db">
+            <header class="station-heading"><button class="node-port" type="button" aria-label="放大SQLite 数据库的运行记录" data-zh-label="放大SQLite 数据库的运行记录" data-en-label="Open the SQLite record" aria-haspopup="dialog"><svg viewbox="0 0 64 64" aria-hidden="true"><g class="node-body"><use href="#mote-db"></use></g></svg></button><h3 id="name-db" data-zh="SQLite 数据库" data-en="SQLite database">SQLite 数据库</h3></header>
+            <p class="station-speech" id="speech-db"></p>
+            <div class="evidence" id="evidence-db">
+            <div class="filebar"><button type="button" class="source-link" id="open-sql" aria-label="查看完整 SQL 和查询结果" data-zh-label="查看完整 SQL 和查询结果" data-en-label="Read the full SQL and query result" aria-haspopup="dialog"><span id="db-name"></span><span aria-hidden="true">↗</span></button><span>SQL</span></div>
+            <div class="sql-body" id="sql-output"><pre id="query" aria-label="当前查询的关键子句" data-zh-label="当前查询的关键子句" data-en-label="Key clause in the current query"></pre><div class="rows-wrap"><table><thead id="columns"></thead><tbody id="rows"></tbody></table></div></div>
+            </div>
+          </section>
+          <section class="station" id="station-result" data-role="result" aria-labelledby="name-result">
+            <header class="station-heading"><button class="node-port" type="button" aria-label="放大构型验证器的运行记录" data-zh-label="放大构型验证器的运行记录" data-en-label="Open the verifier record" aria-haspopup="dialog"><svg viewbox="0 0 64 64" aria-hidden="true"><g class="node-body"><use href="#mote-result"></use></g></svg></button><h3 id="name-result" data-zh="构型验证器" data-en="Verifier">构型验证器</h3></header>
+            <p class="station-speech" id="speech-result"></p>
+            <div class="evidence" id="evidence-result">
+            <div class="filebar"><button type="button" class="source-link" id="open-result" aria-label="查看构型坐标与验证记录" data-zh-label="查看构型坐标与验证记录" data-en-label="Open coordinates and verification record" aria-haspopup="dialog"><span id="result-file"></span><span aria-hidden="true">↗</span></button><span data-zh="六维单位向量" data-en="6D unit vectors">六维单位向量</span></div>
+            <p id="result-note"></p>
+            <details id="host-source" hidden><summary data-zh="验证脚本 · verify_certificate.py" data-en="Verifier · verify_certificate.py">验证脚本 · verify_certificate.py</summary><pre id="verify-code" tabindex="0"></pre></details>
+            </div>
+          </section>
+          </div>
+        
+<select id="chapter-select"></select><span id="duration"></span><span id="exchange-direction"></span><time id="run-clock"></time><time id="utc"></time>
+</div>
+    <noscript data-zh="请启用 JavaScript 以播放球面案例。" data-en="Enable JavaScript to play this replay.">请启用 JavaScript 以播放球面案例。</noscript>
+  </main>
+  <dialog id="record-dialog" aria-labelledby="record-title"><header><h2 id="record-title"></h2><button class="dismiss" id="close-record" aria-label="关闭运行记录" data-zh-label="关闭运行记录" data-en-label="Close record">×</button></header><div id="record-reading"></div></dialog>
+  <dialog id="archive"><header><h2 data-zh="运行档案" data-en="Run archive">运行档案</h2><button id="close" class="dismiss" aria-label="关闭档案" data-zh-label="关闭档案" data-en-label="Close archive">×</button></header>
+    <dl class="checkpoint-facts"><div><dt data-zh="当前快照" data-en="Current checkpoint">当前快照</dt><dd id="checkpoint"></dd></div><div><dt data-zh="已复核构型" data-en="Rechecked configurations">已复核构型</dt><dd id="checked"></dd></div></dl>
+    <dl id="facts"></dl><h3 data-zh="如何读图" data-en="Reading the plots">如何读图</h3>
+  <div class="formula" aria-label="24 个单位向量，目标能量为所有内积的四次方之和减去 36" data-zh-label="24 个单位向量，目标能量为所有内积的四次方之和减去 36" data-en-label="24 unit vectors. Energy is the sum of fourth powers of all dot products, minus 36."><i>F(V) = ∑<sub>i,j</sub> ⟨v<sub>i</sub>, v<sub>j</sub>⟩<sup>4</sup> − 36</i></div>
+    <p data-zh="球面图只取前三个坐标，因此点可以落在球内。Gram 矩阵用全部六维坐标计算两两内积。能量曲线先显示全程，后期放大局部区间。末步写入后，纵轴显示各步能量减去末步能量的差值，使用对称对数刻度，保留零值和回升。下方的范围条标出放大位置。" data-en="The sphere shows the first three coordinates, so points can appear inside it. The Gram matrix uses all six. The energy plot starts with the full run, then zooms in. Once the final sample arrives, it shows the difference from the final energy on a symmetric log scale, including zero and any rises. The strip below marks the visible range.">球面图只取前三个坐标，因此点可以落在球内。Gram 矩阵用全部六维坐标计算两两内积。能量曲线先显示全程，后期放大局部区间。末步写入后，纵轴显示各步能量减去末步能量的差值，使用对称对数刻度，保留零值和回升。下方的范围条标出放大位置。</p>
+    <h3 data-zh="回放依据" data-en="About this replay">回放依据</h3><p data-zh="角色对话根据七个运行快照、工具调用和搜索日志改写，时间线上的文件名、错误和回执来自归档。点击角色的记录链接可读代码节选、完整 SQL 和查询结果，点积调用中的省略号表示折叠参数。查询结果取自当时保存的记录。协作图用构型验证器表示能量评估与宿主的最终复核。搜索树按尝试的方法整理分支，单步鞍点下降的结果来自 sdA.log。每次尝试都会出现在树中，之前的分支保持展开。点击分支可回看对应事件。快照时间是实验用时，回放经过压缩。" data-en="The dialogue follows seven checkpoints, tool calls and search logs. Filenames, errors, receipts and query results come from the archive. Open a role’s record to read the archived code, full SQL or query results. The ellipsis in the dot product folds its arguments. The verifier represents both energy evaluation and the final host check. Each attempt appears as it happens. Earlier branches stay expanded. Select a branch to revisit it. Single-step descent outcomes come from sdA.log. Checkpoint times use the experiment clock. Replay time is compressed.">角色对话根据七个运行快照、工具调用和搜索日志改写，时间线上的文件名、错误和回执来自归档。点击角色的记录链接可读代码节选、完整 SQL 和查询结果，点积调用中的省略号表示折叠参数。查询结果取自当时保存的记录。协作图用构型验证器表示能量评估与宿主的最终复核。搜索树按尝试的方法整理分支，单步鞍点下降的结果来自 sdA.log。每次尝试都会出现在树中，之前的分支保持展开。点击分支可回看对应事件。快照时间是实验用时，回放经过压缩。</p>
+    <a id="case-link" href="/zh/blog/spherical-design/" target="_blank" rel="noreferrer" data-zh="阅读案例全文 ↗" data-en="Read the case study ↗">阅读案例全文 ↗</a>
+  </dialog>
+</body></html>
+

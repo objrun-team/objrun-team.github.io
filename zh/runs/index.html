@@ -8,9 +8,9 @@
   <title>运行回放 · Object Run</title>
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
   <script>document.documentElement.classList.add('js')</script>
-  <link rel="stylesheet" href="/home.css?v=c67c753469f3">
-  <link rel="stylesheet" href="/runs.css?v=8c69b86552e4">
-  <script src="/language.js?v=83edee4d6447" defer></script>
+  <link rel="stylesheet" href="/home.css?v=21daa6470a71">
+  <link rel="stylesheet" href="/runs.css?v=11b2e8c359b4">
+  <script src="/language.js?v=09c63abaa242" defer></script>
   <script src="/data/runs.js?v=a8ba3fd08d2d" defer></script>
   <script src="/runs-view.js?v=f18be3c11e48" defer></script>
   <link rel="canonical" href="https://objrun-team.github.io/zh/runs/">
@@ -59,6 +59,15 @@
       <h1 data-zh="运行回放" data-en="Run replays">运行回放</h1>
       <p class="runs-lead" data-zh="每道任务里，模型反复提交答案，判定器每次给出一条判决：通过、被拒，或格式不符。这里按时间顺序重放 5 个评测、30 道任务的全部 768 次判决。数据取自论文的运行记录，模型为 DeepSeek Flash 系列。" data-en="On each task the model submits answers repeatedly, and the checker returns one verdict per submission: accepted, rejected, or rejected on form. This page replays all 768 verdicts from 30 tasks on 5 benchmarks in order. The data comes from the paper&#x27;s run records; the model is from the DeepSeek Flash family.">每道任务里，模型反复提交答案，判定器每次给出一条判决：通过、被拒，或格式不符。这里按时间顺序重放 5 个评测、30 道任务的全部 768 次判决。数据取自论文的运行记录，模型为 DeepSeek Flash 系列。</p>
       <p class="runs-meta"><a href="/paper.pdf" data-zh="论文 PDF ↗" data-en="Paper PDF ↗">论文 PDF ↗</a><span data-zh="每道任务的挑选规则写在图 1 的读数栏里。" data-en="Each task&#x27;s selection rule is shown in the Figure 1 readout.">每道任务的挑选规则写在图 1 的读数栏里。</span></p>
+      <section class="case-replays" aria-labelledby="case-replays-title">
+        <h2 id="case-replays-title" data-zh="科研案例演示" data-en="Research demos">科研案例演示</h2>
+        <div>
+          <a href="/zh/demo/dna-codes/" data-zh="DNA 编码" data-en="DNA codes">DNA 编码</a>
+          <a href="/zh/demo/runge-kutta/" data-zh="Runge–Kutta 方法" data-en="Runge–Kutta methods">Runge–Kutta 方法</a>
+          <a href="/zh/demo/spherical/" data-zh="球面设计" data-en="Spherical design">球面设计</a>
+          <a href="/zh/demo/rna-bound/" data-zh="RNA 结构上界" data-en="RNA structure bound">RNA 结构上界</a>
+        </div>
+      </section>
     </header>
 
     <section class="replay" aria-labelledby="replay-title">
